@@ -33,7 +33,7 @@ function Footer() {
                   My Ticket
                 </span>
                 </div>
-                <CardBehind className='w-[260px] h-[210px]'/>
+                <CardBehind className='md:w-[260px] md:h-[210px] w-[180px] h-[160px]'/>
                 <div>
                   <h1>Subscribe now</h1>
                   <p className='text-sm text-[#D0D0D0]'>Industry's standard from dummy and make a type book.</p>
@@ -48,7 +48,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-          <div className='w-1/2'>
+          <div className='md:w-1/2'>
             <div className={cls.footer__navigation_block}>
               <span className={cls.footer__navigation_contact}>
                 <span className='flex items-center gap-1'>
@@ -60,7 +60,7 @@ function Footer() {
                 </span>
                 <p>nextlevel@marketing.com</p>
               </span>
-              <span className='w-1/2 h-full flex flex-col gap-3'>
+              <span className='md:w-1/2 h-full flex flex-col gap-3'>
                 <span className='flex items-center gap-1'>
                   <LocationIcon className='w-5 h-5'/>
                   <h2 className='font-semi text-lg'>Location</h2>
@@ -73,7 +73,7 @@ function Footer() {
               {
                 menuPages.map(item => (
                   <div>
-                    <span className='flex items-center'>
+                    <span className='flex items-center justify-center'>
                       <item.icon className='w-5 h-5 mr-2'/>
                       <p className="font-medium">
                         {item.title}
