@@ -7,11 +7,11 @@
 }
 
 .footer__wrapper {
-  @apply flex gap-5 items-center;
+  @apply flex md:flex-row flex-col gap-5 items-center;
 }
 
 .footer__card_block {
-  @apply w-1/2 flex justify-end mr-8;
+  @apply md:w-1/2 flex md:justify-end justify-center md:mr-8;
 }
 
 .footer__card_block__wrapper {
@@ -19,7 +19,7 @@
 }
 
 .footer__card_block__title {
-  @apply ml-5 text-3xl uppercase font-bold;
+  @apply ml-5 md:text-3xl text-xl uppercase font-bold;
 }
 
 .footer__card_block__input {
@@ -31,11 +31,11 @@
 }
 
 .footer__navigation_block {
-  @apply flex items-center justify-between gap-y-5 border-b pb-3;
+  @apply inline-block md:flex md:items-center md:justify-between gap-y-5 border-b pb-3;
 }
 
 .footer__navigation_contact {
-  @apply w-1/2 h-full flex flex-col gap-3;
+  @apply md:w-1/2 h-full flex flex-col gap-3 md:mb-0 mb-4;
 }
 
 .footer__navigation_phone {
@@ -43,7 +43,7 @@
 }
 
 .footer__navigation_links {
-  @apply grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4 pt-3;
+  @apply grid text-center grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4 pt-3;
 }
 
 .footer__navigation_item {
