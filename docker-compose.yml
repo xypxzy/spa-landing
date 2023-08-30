@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres:
+    container_name: postgres_t2
+    image: postgres:14-alpine
+    env_file:
+      - backend/.env
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes:
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./pgdata:/var/lib/postgresql/data/
+    restart: always
+
+  api:
+    container_name: djangoapp_t2
+    build:
+      context: ./backend
+    ports:
+      - "8002:8002"
+    command: python manage.py runserver 0.0.0.0:8002
+    depends_on:
+      - postgres
+    restart: always
+  
