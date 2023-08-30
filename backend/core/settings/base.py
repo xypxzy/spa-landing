@@ -11,8 +11,8 @@ SECRET_KEY = config('SECRET_KEY')
 # DEBUG
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# DEFINING THE VERSION
-PRODUCTION = config("PRODUCTION")
+# defining the project state
+PRODUCTION = config("PRODUCTION", default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
@@ -91,8 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'ru-RU'
-
-TIME_ZONE = 'Asia/Bishkek'
+TIME_ZONE = "Asia/Bishkek"
 
 USE_I18N = True
 
@@ -114,6 +113,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if not PRODUCTION:
-    from .development import *
+    from .local import *
 else:
     from .production import *

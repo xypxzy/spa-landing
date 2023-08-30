@@ -1,7 +1,9 @@
-from .base import BASE_DIR
+from .base import BASE_DIR, config
 
 # DEBUG
 DEBUG = True
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 # Database
 DATABASES = {

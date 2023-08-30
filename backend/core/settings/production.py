@@ -2,6 +2,7 @@ from decouple import config
 
 # DEBUG
 DEBUG = False
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 # Database
 DATABASES = {
