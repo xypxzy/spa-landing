@@ -1,0 +1,51 @@
+.header {
+  @apply text-gray-600;
+}
+
+.header__wrapper {
+  @apply container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center;
+}
+
+.header__logo {
+  @apply flex font-medium items-center text-gray-900 mb-4 md:mb-0;
+}
+
+.header__logo_title {
+  @apply ml-5 text-3xl uppercase font-bold;
+}
+
+.header__nav {
+  @apply md:ml-auto md:mr-auto flex flex-wrap gap-10 items-center text-base justify-center;
+}
+
+.header__nav_item {
+  @apply text-black hover:text-gray-900 text-xl;
+}
+
+.header__lang {
+  @apply inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0;
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(
+    90deg,
+    rgba(230, 18, 108, 1) 18%,
+    rgba(230, 14, 120, 1) 47%,
+    rgba(0, 164, 255, 1) 47%
+  );
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 0 100%;
+}
