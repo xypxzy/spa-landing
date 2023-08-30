@@ -3,6 +3,7 @@ import {ReactComponent as Logo} from '../../assets/logo.svg'
 import cls from './Header.module.css';
 import { useEffect, useState } from 'react';
 
+
 function Header() {
   const [scrollY, setScrollY] = useState(0);
   const handleScroll = () => setScrollY(window.scrollY);
@@ -29,10 +30,36 @@ function Header() {
           </span>
         </Link>
         <nav className={cls.header__nav}>
-          <Link to={'/'} className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}>Home</Link>
-          <Link to={'/'} className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}>About</Link>
-          <Link to={'/'} className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}>Team</Link>
-          <Link to={'/'} className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}>Contact</Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Home
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            About
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Team
+          </Link>
+          <Link
+            to={"/services"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Services
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Contact
+          </Link>
         </nav>
         <button type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
@@ -50,7 +77,7 @@ function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
