@@ -12,14 +12,14 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # defining the project state
-PRODUCTION = config("PRODUCTION", default=False, cast=bool)
+PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
 THIRD_PARTY_APPS = [
-    # 'rest_framework',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
@@ -27,6 +27,9 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = [
+    'jazzmin',
+    'modeltranslation',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,6 +100,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
+    ('kg', gettext('Kyrgyz')),
+)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -116,3 +127,22 @@ if not PRODUCTION:
     from .local import *
 else:
     from .production import *
+
+JAZZMIN_SETTINGS = {
+    "site_title": "MyTicket Admin",
+    "copyright": "Sanarip Dolboor 2023",
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "books"},
+    ],
+}
