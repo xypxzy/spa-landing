@@ -39,11 +39,11 @@
 }
 
 .footer__navigation_phone {
-  @apply bg-[#3C3C45] p-5 font-bold text-xl rounded-lg text-yellow-400;
+  @apply bg-[#3C3C45] lg:p-5 p-3 font-bold text-lg lg:text-xl rounded-lg text-yellow-400;
 }
 
 .footer__navigation_links {
-  @apply grid text-center grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4 pt-3;
+  @apply grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4 pt-3;
 }
 
 .footer__navigation_item {
