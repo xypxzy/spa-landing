@@ -1,0 +1,122 @@
+.marketing_a{
+    padding: 70px 200px;
+    display: flex;
+    align-items: center;
+}
+.kd_jj{
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(207, 207, 207, 1);
+    padding-bottom: 40px;
+}
+.jjddd{
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 156.5%;
+    letter-spacing: 2.025px;
+    text-transform: uppercase; 
+    margin-bottom: 10px;
+}
+.top{
+    margin-left: 30px;
+}
+.top p{
+    color: #292930;
+    font-family: Nunito;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110.5%; 
+}
+.strategy button{
+    border-radius: 10px;
+    background: #292930;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110.5%;
+    margin-top: 10px;
+}
+.strategy{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    flex-wrap: wrap;
+
+}
+.imaaage{
+    margin-right: 10px;
+}
+.text_down{
+    margin-top: 20px;
+    color: #555;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 156.5%; 
+}
+.text_mar{
+    width: 550px;
+    margin-left: 30px;
+}
+.pc{
+    width: auto;
+}
+
+@media (max-width: 1470px) {
+    .ps{
+        width: 450px;
+    }
+    .marketing_a{
+        padding: 50px 180px;
+        flex-direction: column-reverse;
+    }
+    .text_mar{
+        width: 100%;
+    }
+    .strategy{
+        justify-content: space-around;
+
+    }
+}
+
+@media (max-width: 920px) {
+    .jjddd{
+        font-size: 13px;
+    }
+    .top p{
+        font-size: 35px;
+    }
+    .kd_jj{
+        padding-bottom: 20px;
+    }
+    .strategy button{
+        font-size: 15px;
+    }
+    .imaaage{
+        width: 30px;
+    }
+    .text_down{
+        font-size: 15px;
+    }
+    .marketing_a{
+        padding: 50px 120px;
+    }
+}
+@media (max-width: 660px) {
+    .marketing_a{
+        padding: 15px;
+        margin-top: 30px;
+    }
+    .top p{
+        font-size: 30px;
+    }
+}

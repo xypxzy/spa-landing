@@ -1,0 +1,61 @@
+.md_fff{
+    color: #292930;
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110.5%; 
+}
+.mf_ppp{
+    color: #555;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 156.5%;
+    margin-top: 10px;
+}
+.ad_card{
+    width: 400px;
+    padding: 30px;
+    border-radius: 30px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(146, 146, 146, 0.25);
+    margin: 30px;
+}
+.imagesd{
+    margin-bottom: 20px;
+}
+.phone, .email{
+    display: flex;
+    margin-top: 10px;
+    align-items: first baseline;
+}
+.phone img, .email img{
+    margin-right: 5px;
+}
+@media (max-width: 1470px) {
+    .ad_card{
+        margin: 10px;
+    }
+}
+
+@media (max-width: 920px) {
+   .mf_ppp{
+    margin-top: 0px;
+   }
+    .under_text p:nth-child(2){
+        font-size: 35px;
+    }
+    .ad_card{
+        width: 100%;
+        margin: 10px;
+    }
+    
+}
+@media (max-width: 660px){
+    .mf_ppp{
+        font-size: 15px;
+    }
+
+}

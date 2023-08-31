@@ -1,0 +1,126 @@
+.img{
+    background-image: url('../../assets/aboutAs/Background(1).png');
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-size: cover;
+}
+.img p{
+    position: absolute;
+    top: 220px;
+    font-family: Nunito;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 900; 
+}
+.fg_mn{
+    color: #5956E8;
+}
+.num{
+    background-color: #292930;
+    display: flex;
+    padding: 70px 220px;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 508px;
+    flex-wrap: wrap;
+}
+.num_lk p:nth-child(1){
+    color: #FFF;
+    font-family: Nunito;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600; 
+    display: flex;
+}
+.num_lk p:nth-child(2){
+    color: #D0D0D0;
+    font-family: Noto Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 156.5%; /* 23.475px */
+    letter-spacing: 2.025px;
+    text-transform: uppercase; 
+    width: 120px;    
+    margin-left: 5px;
+}
+.num_lk{
+    display: flex;
+    align-items: center;
+    margin: 0px 20px;
+}
+
+@media (max-width: 1384px) {
+    .num{
+        padding: 40px 220px;
+    }
+}
+
+@media (max-width: 920px) {
+    .num{
+        padding: 20px 100px;
+        top: 564px;
+    }
+    .num_lk p:nth-child(1){
+        font-size: 25px;
+    }
+    .num_lk p:nth-child(2){
+        font-size: 10px;
+    }
+    .img{
+        padding: 0px 15px;
+    }
+}
+@media (max-width: 718px) {
+    .num{
+        position:static;
+    }
+    .img{
+        padding: 15px;
+        display: block;
+    }
+    .img p{
+        top: 290px;
+        left: 175px;
+    }
+}
+@media (max-width: 660px) {
+    .num{
+        padding: 15px;
+    }
+    .img p{
+        top: 271px;
+        left: 151px;
+    }
+}
+@media (max-width: 576px) {
+    .img p{
+        top: 255px;
+        left: 125px;
+        font-size: 50px
+    }
+}
+@media (max-width: 474px) {
+    .img p{
+        top: 220px;
+        left: 125px;
+        font-size: 40px
+    }
+}
+@media (max-width: 408px) {
+    .img p{
+        top: 191px;
+        left: 100px;
+        font-size: 40px
+    }
+}
+@media (max-width: 364px) {
+    .img p{
+        top: 169px;
+        left: 86px;
+        font-size: 40px
+    }
+}
