@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from content.models import Contact, Employee, Project
+
+admin.site.register(Contact)
+admin.site.register(Employee)
+admin.site.register(Project)
