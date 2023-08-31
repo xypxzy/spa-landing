@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from django.utils.translation import gettext_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -12,14 +13,14 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # defining the project state
-PRODUCTION = config("PRODUCTION", default=False, cast=bool)
+PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
 THIRD_PARTY_APPS = [
-    # 'rest_framework',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
@@ -27,6 +28,9 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = [
+    'jazzmin',
+    'modeltranslation',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,7 +100,15 @@ TIME_ZONE = "Asia/Bishkek"
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
+
+LANGUAGES = (
+    ('ru', gettext_lazy('Russian')),
+    ('en', gettext_lazy('English')),
+    ('ky', gettext_lazy('Kyrgyz')),
+)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -116,3 +129,22 @@ if not PRODUCTION:
     from .local import *
 else:
     from .production import *
+
+JAZZMIN_SETTINGS = {
+    "site_title": "MyTicket Admin",
+    "copyright": "Sanarip Dolboor 2023",
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "books"},
+    ],
+}

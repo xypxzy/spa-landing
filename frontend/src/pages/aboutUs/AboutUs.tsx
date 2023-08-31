@@ -3,8 +3,9 @@ import Ball from '../../components/ball/Ball'
 import Marketing from '../../components/marketing/Marketing'
 import Carousel from '../../components/carousel/Carousel'
 import BestT from '../../components/bestTeam/BestT'
-import Adress from '../../components/adresses/Adress'
 import {motion} from 'framer-motion'
+import Address from '../../components/adresses/Adress'
+
 
 const AboutUs = () => {
 
@@ -58,7 +59,7 @@ const AboutUs = () => {
            <Marketing/>
            <Carousel/>
            <BestT/>
-           <Adress/>
+           <Address/>
         </main>
     )
 }

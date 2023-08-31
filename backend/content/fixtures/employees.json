@@ -1,8 +1,12 @@
 [
     {
         "model": "content.employee",
-        "pk": 1,
+        "pk": 4,
         "fields": {
+            "first_name": "Андрей",
+            "last_name": "Кошкин",
+            "position": "backend-разработчик",
+
             "first_name_ru": "Андрей",
             "last_name_ru": "Кошкин",
             "position_ru": "backend-разработчик",
@@ -11,9 +15,9 @@
             "last_name_en": "Koshkin",
             "position_en": "backend developer",
             
-            "first_name_kg": "Андрей",
-            "last_name_kg": "Кошкин",
-            "position_kg": "backend иштеп чыгуучу",
+            "first_name_ky": "Андрей",
+            "last_name_ky": "Кошкин",
+            "position_ky": "backend иштеп чыгуучу",
             "image": "/AK.jpeg"
         }
     },
@@ -22,6 +26,10 @@
         "model": "content.employee",
         "pk": 2,
         "fields": {
+            "first_name": "Василиса",
+            "last_name": "Морозова",
+            "position": "frontend-разработчик",
+
             "first_name_ru": "Василиса",
             "last_name_ru": "Морозова",
             "position_ru": "frontend-разработчик",
@@ -30,9 +38,9 @@
             "last_name_en": "Morozova",
             "position_en": "backend developer",
 
-            "first_name_kg": "Василиса",
-            "last_name_kg": "Морозова",
-            "position_kg": "backend иштеп чыгуучу",
+            "first_name_ky": "Василиса",
+            "last_name_ky": "Морозова",
+            "position_ky": "backend иштеп чыгуучу",
             "image": "/VM.jpeg"
         }
     },
@@ -41,6 +49,10 @@
         "model": "content.employee",
         "pk": 3,
         "fields": {
+            "first_name": "Талант",
+            "last_name": "Беков",
+            "position": "Дизайнер",
+
             "first_name_ru": "Талант",
             "last_name_ru": "Беков",
             "position_ru": "Дизайнер",
@@ -49,9 +61,9 @@
             "last_name_en": "Bekov",
             "position_en": "backend developer",
 
-            "first_name_kg": "Талант",
-            "last_name_kg": "Беков",
-            "position_kg": "backend иштеп чыгуучу",
+            "first_name_ky": "Талант",
+            "last_name_ky": "Беков",
+            "position_ky": "backend иштеп чыгуучу",
             "image": "/TB.jpeg"
         }
     }

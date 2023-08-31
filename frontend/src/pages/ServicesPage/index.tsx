@@ -15,19 +15,18 @@ const Services: React.FC = () => {
       </section>
       <Features />
       <div className={styles.getInTouch}>
-        <div className={styles.getInTouch__img}>
-          <img src={getInTouch} alt="get in touch img" />
-          <div className={styles.getInTouch__content}>
-            <h3>
-              Get in touch and <span>start</span> <span>growing</span> your
-              startup today
-            </h3>
-            <div className="flex">
-              <button className={styles.getInTouch__btn1}>Get in touch</button>
-              <button className={styles.getInTouch__btn2}>Get Started</button>
-            </div>
+        <img src={getInTouch} alt="Snow" />
+        <div className={styles.getInTouch__content}>
+          <h3>
+            Get in touch and <span>start</span> <span>growing</span> your
+            startup today
+          </h3>
+          <div className="flex">
+            <button className={styles.getInTouch__btn1}>Get in touch</button>
+            <button className={styles.getInTouch__btn2}>Get Started</button>
           </div>
         </div>
+        {/* <div className={styles.centered}>Centered</div> */}
       </div>
     </>
   );
