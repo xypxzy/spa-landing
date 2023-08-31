@@ -10,8 +10,8 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="services" element={<Services />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

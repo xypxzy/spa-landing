@@ -1,7 +1,47 @@
 .error {
-  display: flex;
+  @apply flex justify-center items-center h-screen;
+}
+
+.error__container {
+  @apply flex flex-col items-center;
   width: 670px;
-  flex-direction: column;
-  align-items: center;
   gap: 34px;
+}
+
+.error__container img {
+  width: 500px;
+  height: 254.45px;
+}
+
+.error__title {
+  @apply font-extrabold  text-4xl text-center;
+  color: #292930;
+  line-height: 110.5%; /* 44.2px */
+}
+.error__desc {
+  @apply font-semibold  text-xl text-center;
+  color: #555;
+  line-height: 156.5%;
+}
+.error__btn {
+  @apply flex justify-center items-center gap-3 text-white;
+  padding: 17px 40px 18px 40px;
+  border-radius: 7px;
+  background: #292930;
+}
+
+@media screen and (max-width: 575px) {
+  .error__container img {
+    width: 250px;
+    height: 150px;
+  }
+  .error__title {
+    font-size: 32px;
+  }
+  .error__desc {
+    font-size: 14px;
+  }
+  .error__btn {
+    padding: 15px 30px 15px 30px;
+  }
 }
