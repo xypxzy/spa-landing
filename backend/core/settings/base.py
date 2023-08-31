@@ -12,14 +12,14 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # defining the project state
-PRODUCTION = config("PRODUCTION", default=False, cast=bool)
+PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
 THIRD_PARTY_APPS = [
-    # 'rest_framework',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
@@ -28,6 +28,7 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = [
     'jazzmin',
+    'modeltranslation',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -98,6 +99,14 @@ TIME_ZONE = "Asia/Bishkek"
 USE_I18N = True
 
 USE_TZ = True
+
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('en', gettext('English')),
+    ('kg', gettext('Kyrgyz')),
+)
 
 
 # Static files (CSS, JavaScript, Images)
