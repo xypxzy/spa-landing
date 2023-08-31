@@ -37,7 +37,7 @@ function Header() {
             Home
           </Link>
           <Link
-            to={"/"}
+            to={"aboutUs"}
             className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
           >
             About

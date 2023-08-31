@@ -4,7 +4,7 @@ import Marketing from '../../components/marketing/Marketing'
 import Carousel from '../../components/carousel/Carousel'
 import BestT from '../../components/bestTeam/BestT'
 import Adress from '../../components/adresses/Adress'
-
+import {motion} from 'framer-motion'
 
 const AboutUs = () => {
 
@@ -15,24 +15,45 @@ const AboutUs = () => {
         {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'}, 
 
     ]
+
+    const numAnimatio ={ 
+        hidden:{
+            x: -500,
+            opacity: 0
+        },
+        visible: {
+            x: 0,
+            opacity: 1,
+        }
+    }
     return(
         <main>
             <section className={style.top_a}>
                 <div className={style.img}>
-                    Header
                     <Ball/>
-                    <p className={style.text_about}><span className={style.fg_bn}>About</span> <span className={style.fg_mn}>Us</span></p>
+                    <div className={style.text_position}><p className={style.text_about}><span className={style.fg_bn}>About</span> <span className={style.fg_mn}>Us</span></p></div>
+                    
                 </div>
-                <div className={style.num}>
+                <motion.div className={style.num}
+                    initial='hidden'
+                    whileInView='visible'
+                    viewport={{amount: 0.5, once: true}}
+                >
                     {number.map((el) => (
                         <>
-                            <div className={style.num_lk}>
+                            <motion.div className={style.num_lk} variants={numAnimatio}   initial={{ scale: 0 }}
+                            animate={{ rotate: 360, scale: 1 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 260,
+                                damping: 20
+                            }}>
                                 <p>{el.skale} <p style={{color:`${el.color}`}}>{el.plus}</p></p>
                                 <p>{el.text}</p>
-                            </div>
+                            </motion.div>
                         </>
                     ))}
-                </div>
+                </motion.div>
             </section>
            <Marketing/>
            <Carousel/>
