@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;900&display=swap");
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+.services {
+  @apply bg-[url('../../assets/services-bg.svg')] relative bg-cover bg-center w-auto;
+  height: 450px;
+}
+
+.services__container {
+  @apply mx-auto max-w-screen-xl;
+}
+
+.services__header {
+  @apply mx-auto max-w-screen-xl text-center absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  top: 75%;
+}
+
+.services__title {
+  @apply text-6xl font-extrabold tracking-tight leading-none;
+  color: #292930;
+  letter-spacing: 0;
+  line-height: 110.5%;
+}
+
+.getInTouch {
+  @apply flex justify-center mx-36 items-center relative;
+  border-radius: 30px;
+  height: 600px;
+}
+
+.getInTouch__content {
+  @apply absolute transform -translate-x-1/2 -translate-y-1/2;
+  max-width: 600px;
+  top: 55%;
+  left: 38%;
+}
+
+.getInTouch__img img {
+  height: 350px;
+  width: 100%;
+}
+
+.getInTouch__content h3 {
+  @apply font-extrabold text-4xl mb-14 md:text-3xl sm:text-2xl;
+  max-width: 500px;
+  color: #292930;
+}
+
+.getInTouch__content span {
+  color: #5956e8;
+}
+
+.getInTouch__btn1 {
+  @apply flex  justify-center items-center gap-4 rounded-lg text-white bg-gray-800 mr-7;
+  padding: 17px 35px;
+}
+
+.getInTouch__btn2 {
+  @apply flex flex-col justify-center items-center gap-4 rounded-lg border text-black border-gray-800;
+  padding: 17px 35px;
+}

@@ -1,0 +1,52 @@
+.withoutCar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.under_text p:nth-child(2){
+    color: #292930;;
+    font-family: Nunito;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110.5%;
+}
+.image_hghg{
+    margin: 20px 0 20px 0px;
+}
+.mainsinteam_a{
+    padding: 70px 200px;
+    text-align: center;
+}
+.teamMar{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+.na_ffff{
+    font-size: 20px;
+}
+@media (max-width: 1470px){
+    .mainsinteam_a{
+        padding: 50px 180px;
+    }
+}
+
+@media (max-width: 920px) {
+    .mainsinteam_a{
+        padding: 50px 100px;
+    }
+    .na_ffff{
+        font-size: 13px;
+    }
+    .under_text p:nth-child(2){
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 660px){
+    .mainsinteam_a{
+        padding: 15px;
+    }
+}
