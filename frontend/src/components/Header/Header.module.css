@@ -1,5 +1,5 @@
 .header {
-  @apply text-gray-600 relative container;
+  @apply text-gray-600 relative container z-10;
 }
 
 .header__wrapper {
