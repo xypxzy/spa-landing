@@ -4,7 +4,6 @@ from content.models import AddressContact, Project, Employee
 
 class AddressContactTranslationOptions(TranslationOptions):
     fields = ('address',)
-    # required_languages = ('ru',)
 
 translator.register(AddressContact, AddressContactTranslationOptions)
 
