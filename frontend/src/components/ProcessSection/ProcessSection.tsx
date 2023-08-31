@@ -12,7 +12,7 @@ const ProcessSection = () => {
         <div className={cls.process__wrapper}>
 
           <div className={cls.process__header}>
-            <ProcessSectionIcon className='w-20 h-20'/>
+            <ProcessSectionIcon className='lg:w-20 lg:h-20 h-14 w-14'/>
             <span>
               <p className={cls.process__header_paragraph}>// 03 . Process</p>
               <h1 className={cls.process__header_title}>A simple, yet powerful and  efficient process</h1>
