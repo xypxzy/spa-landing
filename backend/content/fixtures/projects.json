@@ -1,0 +1,55 @@
+[
+    {
+        "model": "content.project",
+        "pk": 1,
+        "fields": {
+            "name_ru": "Технический осмотр",
+            "description_ru": "Аналитическая информационная система технического осмотра автотранспортных средств",
+            "customer_ru": "Министерство экономики КР",
+
+            "name_en": "Technical inspection",
+            "description_en": "Analytical information system for the technical inspection of vehicles",
+            "customer_en": "Ministry of Economy of the Kyrgyz Republic",
+
+            "name_kg": "Техникалык кароо",
+            "description_kg": "Автотранспорт каражаттарын техникалык кароодон өткөрүү үчүн аналитикалык маалымат системасы",
+            "customer_kg": "Кыргыз Республикасынын Экономика министрлиги"
+        }
+    },
+
+    {
+        "model": "content.project",
+        "pk": 2,
+        "fields": {
+            "name_ru": "Эталонная база данных",
+            "description_ru": "АИС 'Эталонная база данных' Таможенной Службы КР",
+            "customer_ru": "UNODC",
+
+            "name_en": "Reference database",
+            "description_en": "AIS 'Reference database' of the Customs Service of the Kyrgyz Republic",
+            "customer_en": "UNODC",
+
+            "name_kg": "Маалымат базасы",
+            "description_kg": "Кыргыз Республикасынын Бажы кызматынын АИС «Маалымат базасы».",
+            "customer_kg": "UNODC"
+        }
+    },
+
+    {
+        "model": "content.project",
+        "pk": 3,
+        "fields": {
+            "name_ru": "FinMarket",
+            "description_ru": "Цифровая финансовая платформа",
+            "customer_ru": "ОЮЛ 'Союз Банков Кыргызстана'",
+
+            "name_en": "FinMarket",
+            "description_en": "Digital financial platform",
+            "customer_en": "ALE 'Union of Banks of Kyrgyzstan'",
+
+            "name_kg": "FinMarket",
+            "description_kg": "Санарип каржы платформасы",
+            "customer_kg": "'Кыргызстан банктар союзу' АЛЕ."
+        }
+    }
+]
