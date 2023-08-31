@@ -8,7 +8,7 @@ const AboutUsSection = () => {
       <section className="text-gray-600 h-screen">
         <div className="container mx-auto flex px-5 md:flex-row flex-col items-center justify-center">
           <div className="hidden md:inline-block lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <AboutUsImg className='w-[50vw] h-screen'/>
+            <AboutUsImg className='w-[45vw] h-screen'/>
           </div>
           <div className="lg:flex-grow md:w-1/2 xl:pl-24 md:pl-0 max-w-3xl ml-0 
           flex gap-10 flex-col items-start md:text-left  justify-center h-screen text-left">

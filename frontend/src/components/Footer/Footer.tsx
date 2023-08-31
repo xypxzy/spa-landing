@@ -16,9 +16,9 @@ interface MenuPageProps {
 
 function Footer() {
   const menuPages: MenuPageProps[] = [
-    {title: 'Pages', menus: ['About','History','Careers'], icon: PageIcon},
-    {title: 'Pages', menus: ['About','History','Careers'], icon: UtilityPageIcon},
-    {title: 'Pages', menus: ['About','History','Careers'], icon: FollowIcon},
+    {title: 'Pages1', menus: ['About','History','Careers'], icon: PageIcon},
+    {title: 'Pages2', menus: ['About','History','Careers'], icon: UtilityPageIcon},
+    {title: 'Pages3', menus: ['About','History','Careers'], icon: FollowIcon},
   ]
 
   return (
@@ -72,7 +72,7 @@ function Footer() {
             <div className={cls.footer__navigation_links}>
               {
                 menuPages.map(item => (
-                  <div>
+                  <div key={item.title}>
                     <span className='flex items'>
                       <item.icon className='w-5 h-5 mr-2'/>
                       <p className="font-medium">
@@ -81,7 +81,7 @@ function Footer() {
                     </span>
                     <nav className={cls.footer__navigation_item}>
                       {item.menus.map(menu => (
-                        <a className="hover:opacity-75">{menu}</a>
+                        <a key={menu} className="hover:opacity-75">{menu}</a>
                       ))}
                     </nav>
                   </div>
