@@ -1,0 +1,52 @@
+.process {
+  @apply text-[#292930] h-[140vh];
+}
+
+.process__container {
+  @apply container mx-auto flex px-5 md:flex-row flex-col items-center justify-center;
+}
+
+.process__wrapper {
+  @apply bg-gradient-to-r from-blue-100 to-yellow-200 via-pink-200 h-[130vh] w-[60vw];
+}
+
+.process__header {
+  @apply w-[525px] mx-auto flex flex-col gap-8 items-center justify-center pt-32 pb-16 text-center;
+}
+
+.process__header_title {
+  @apply text-[40px] leading-[44.2px] font-semibold;
+}
+
+.process__header_paragraph {
+  @apply uppercase text-[#292930] text-[15px] mb-3;
+}
+
+.process__steps_card {
+  @apply w-full flex flex-col justify-center items-center;
+}
+
+.process__card {
+  @apply flex justify-between  items-center;
+}
+
+.process__card__step {
+  @apply flex flex-col justify-center items-center h-full;
+}
+
+.process__card_step_icon {
+  @apply w-20 h-20 bg-white rounded-full flex items-center
+   justify-center border-[9px] border-[#FFD1C8] text-2xl;
+}
+
+.process__card_step__line {
+  @apply border-l-[1.5px] border-dashed border-[#E38676] h-20;
+}
+
+.process__card_title {
+  @apply text-[25px] font-semibold;
+}
+
+.process__card_description {
+  @apply text-lg leading-6 text-[#555];
+}
