@@ -2,6 +2,7 @@ from django.db import models
 
 
 class AddressContact(models.Model):
+    flag = models.ImageField()
     address = models.CharField(max_length=255)
     is_visible = models.BooleanField(default=False)
 

@@ -38,7 +38,7 @@ class OurValuesTranslationOptions(TranslationOptions):
 translator.register(OurValues, OurValuesTranslationOptions)
 
 
-class BigTextualContentTranslationOptions:
+class BigTextualContentTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'tags')
 
 
