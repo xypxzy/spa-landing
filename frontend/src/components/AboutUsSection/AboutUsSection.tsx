@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import aboutUsImg from '../../assets/homePage/aboutUs.png'
 import aboutUsBadge from '../../assets/homePage/aboutUsBadge.png'
 import aboutUsIcon from '../../assets/homePage/aboutUsIcon.png'
@@ -8,14 +9,29 @@ const AboutUsSection = () => {
       <section className="text-gray-600 h-screen">
         <div className="container mx-auto flex px-5 md:flex-row flex-col items-center justify-center h-screen">
           <div className="hidden md:inline-block lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img src={aboutUsImg} alt="img" className=''/>
+            {/* <img src={aboutUsImg} alt="img" className=''/> */}
+            <motion.img
+              src={aboutUsImg}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.3,
+                ease: [0, 0.71, 0.2, 1.01],
+                scale: {
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 100,
+                  restDelta: 0.001
+                }
+              }}
+            />
           </div>
           <div className="lg:flex-grow md:w-1/2 xl:pl-24 md:pl-0 max-w-3xl ml-0 
           flex gap-10 flex-col items-start md:text-left  justify-center h-screen text-left">
             <div className='flex items-start gap-5 text-left'>
               <img src={aboutUsBadge} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
               <span>
-                <p>// 02 . About Us</p>
+                <p>// 01 . About Us</p>
                 <h1 className='text-black text-xl xl:text-4xl lg:text-3xl md:text-2xl'>The #1 digital marketing services company</h1>
               </span>
             </div>
