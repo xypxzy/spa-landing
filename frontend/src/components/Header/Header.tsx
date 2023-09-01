@@ -92,6 +92,36 @@ function Header() {
           </span>
         </Link>
         <nav className={cls.header__nav}>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Home
+          </Link>
+          <Link
+            to={"aboutUs"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            About
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Team
+          </Link>
+          <Link
+            to={"/services"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Services
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Contact
+          </Link>
           {renderNavMenu({links: navLink})}
         </nav>
         {

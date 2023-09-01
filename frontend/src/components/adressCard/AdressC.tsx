@@ -6,7 +6,7 @@ import flag from '../../assets/aboutAs/image 55.png'
 const AdressC = () => {
     return(
         <section className={style.ad_card}>
-            <img src={flag} alt="" className={style.imagesd}/>
+            <img src={flag} alt="" className={style.imagesd} width='70px'/>
             <p className={style.md_fff}>San Francisco, USA</p>
             <p className={style.mf_ppp}> 1650 Page. San Francisco, California(CA), 94117</p>
             <div className={style.phone}>
