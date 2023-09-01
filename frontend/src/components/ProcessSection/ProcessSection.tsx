@@ -1,7 +1,8 @@
-import {ReactComponent as ProcessSectionIcon} from '../../assets/proccessSectionIcon.svg'
-import {ReactComponent as ProcessSection1} from '../../assets/proccessSection1.svg'
-import {ReactComponent as ProcessSection2} from '../../assets/proccessSection2.svg'
-import {ReactComponent as ProcessSection3} from '../../assets/proccessSection3.svg'
+import processSection1 from '../../assets/homePage/proccessSection1.png'
+import processSection2 from '../../assets/homePage/proccessSection2.png'
+import processSection3 from '../../assets/homePage/proccessSection3.png'
+import processIcon from '../../assets/homePage/processIcon.png'
+
 import cls  from './ProcessSection.module.css'
 
 const ProcessSection = () => {
@@ -10,9 +11,8 @@ const ProcessSection = () => {
     <section className={cls.process}>
       <div className={cls.process__container}>
         <div className={cls.process__wrapper}>
-
           <div className={cls.process__header}>
-            <ProcessSectionIcon className='lg:w-20 lg:h-20 h-14 w-14'/>
+            <img src={processIcon} alt="" className='lg:w-20 lg:h-20 h-14 w-14' />
             <span>
               <p className={cls.process__header_paragraph}>// 03 . Process</p>
               <h1 className={cls.process__header_title}>A simple, yet powerful and  efficient process</h1>
@@ -22,13 +22,14 @@ const ProcessSection = () => {
           <div className={cls.process__steps_card}>
 
             <div className={cls.process__card}>
-              <ProcessSection3 className='w-[40%] h-[200px]'/>
+              <img src={processSection1} alt="" className='ml-24 mr-1 h-[200px] hidden sm:block' />
+
               <div className={cls.process__card__step}>
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
                 <div className={cls.process__card_step_icon}>1</div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <div className='w-[40%]'>
+              <div className='w-[40%] '>
                 <h2 className={cls.process__card_title}>Marketing Plan</h2>
                 <p className={cls.process__card_description}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm </p>
               </div>
@@ -46,11 +47,11 @@ const ProcessSection = () => {
                 </div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <ProcessSection2 className='w-[40%] h-[200px]'/>
+              <img src={processSection2} alt="" className='ml-20 mr-14 h-[200px] hidden sm:block' />
             </div>
 
-            <div className='flex justify-between  items-center'>
-              <ProcessSection1 className='w-[40%] h-[200px]'/>
+            <div className='flex justify-between items-center'>
+              <img src={processSection3} alt="" className='ml-20 mr-10 h-[200px] hidden sm:block' />
               <div className={cls.process__card__step}>
                 <div className={cls.process__card_step__line}></div>
                 <div className={cls.process__card_step_icon}>

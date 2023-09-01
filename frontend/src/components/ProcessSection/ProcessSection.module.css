@@ -23,7 +23,7 @@
 }
 
 .process__steps_card {
-  @apply w-full flex flex-col justify-center items-center;
+  @apply w-full flex flex-col justify-center items-center mb-10 px-5;
 }
 
 .process__card {
@@ -31,7 +31,7 @@
 }
 
 .process__card__step {
-  @apply flex flex-col justify-center items-center h-full;
+  @apply flex flex-col justify-center items-center md:h-full h-[200px];
 }
 
 .process__card_step_icon {
@@ -40,7 +40,7 @@
 }
 
 .process__card_step__line {
-  @apply border-l-[1.5px] border-dashed border-[#E38676] lg:h-20 md:h-[75px] h-[72px];
+  @apply hidden md:block border-l-[1.5px] border-dashed border-[#E38676] lg:h-24 md:h-[75px] h-[72px];
 }
 
 .process__card_title {
