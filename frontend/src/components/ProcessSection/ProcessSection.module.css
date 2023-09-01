@@ -1,0 +1,52 @@
+.process {
+  @apply text-[#292930] mb-10;
+}
+
+.process__container {
+  @apply container mx-auto flex px-5 md:flex-row flex-col items-center justify-center;
+}
+
+.process__wrapper {
+  @apply bg-gradient-to-r from-blue-100 to-yellow-200 via-pink-200 w-[80vw] xl:w-[60vw] rounded-xl;
+}
+
+.process__header {
+  @apply xl:w-[525px] lg:w-[400px] md:w-[300px] sm:w-[200px] mx-auto flex flex-col lg:gap-8 gap-4 items-center justify-center lg:pt-32 pt-24 lg:pb-16 pb-10 text-center;
+}
+
+.process__header_title {
+  @apply xl:text-[40px] lg:text-[32px] md:text-[28px] text-[24px] lg:leading-[44.2px] leading-7 font-semibold;
+}
+
+.process__header_paragraph {
+  @apply uppercase text-[#292930] lg:text-[15px] text-sm lg:mb-3 mb-1;
+}
+
+.process__steps_card {
+  @apply w-full flex flex-col justify-center items-center mb-10 px-5;
+}
+
+.process__card {
+  @apply flex justify-between  items-center;
+}
+
+.process__card__step {
+  @apply flex flex-col justify-center items-center md:h-full h-[200px];
+}
+
+.process__card_step_icon {
+  @apply lg:w-20 lg:h-20 h-14 w-14 bg-white rounded-full flex items-center
+   justify-center border-[9px] border-[#FFD1C8] text-2xl;
+}
+
+.process__card_step__line {
+  @apply hidden md:block border-l-[1.5px] border-dashed border-[#E38676] lg:h-24 md:h-[75px] h-[72px];
+}
+
+.process__card_title {
+  @apply lg:text-[25px] md:text-[20px] text-[18px] font-semibold;
+}
+
+.process__card_description {
+  @apply lg:text-[16px] md:text-[14px] text-[12px] lg:leading-6 md:leading-4 leading-3 text-[#555];
+}

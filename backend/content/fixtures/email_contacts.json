@@ -1,0 +1,10 @@
+[
+    {
+        "model": "content.EmailContact",
+        "pk": 1,
+        "fields": {
+            "email": "myticketll@gmail.com",
+            "is_visible": "True"
+        }
+    }
+]

@@ -1,22 +1,31 @@
 from rest_framework import serializers
-
-from .models import Contact, Project, Employee
-
-
-class ContactSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Contact
-        fields = '__all__'
-
+from content.models import Project, Employee, EmailContact, PhoneContact, AddressContact
 
 class ProjectSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ('id', 'name', 'description', 'customer',)
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = '__all__'
+        fields = ('id', 'first_name', 'last_name', 'position',)
+
+
+class EmailContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmailContact
+        fields = ('id', 'email',)
+
+
+class PhoneContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhoneContact
+        fields = ('id', 'phone',)
+
+
+class AddressContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AddressContact
+        fields = ('id', 'address',)

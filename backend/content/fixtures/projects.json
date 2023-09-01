@@ -3,6 +3,11 @@
         "model": "content.project",
         "pk": 1,
         "fields": {
+            "name": "Технический осмотр",
+            "description": "Аналитическая информационная система технического осмотра автотранспортных средств",
+            "customer": "Министерство экономики КР",
+            "is_visible": "True",
+
             "name_ru": "Технический осмотр",
             "description_ru": "Аналитическая информационная система технического осмотра автотранспортных средств",
             "customer_ru": "Министерство экономики КР",
@@ -11,9 +16,9 @@
             "description_en": "Analytical information system for the technical inspection of vehicles",
             "customer_en": "Ministry of Economy of the Kyrgyz Republic",
 
-            "name_kg": "Техникалык кароо",
-            "description_kg": "Автотранспорт каражаттарын техникалык кароодон өткөрүү үчүн аналитикалык маалымат системасы",
-            "customer_kg": "Кыргыз Республикасынын Экономика министрлиги"
+            "name_ky": "Техникалык кароо",
+            "description_ky": "Автотранспорт каражаттарын техникалык кароодон өткөрүү үчүн аналитикалык маалымат системасы",
+            "customer_ky": "Кыргыз Республикасынын Экономика министрлиги"
         }
     },
 
@@ -21,6 +26,11 @@
         "model": "content.project",
         "pk": 2,
         "fields": {
+            "name": "Эталонная база данных",
+            "description": "АИС 'Эталонная база данных' Таможенной Службы КР",
+            "customer": "UNODC",
+            "is_visible": "True",
+
             "name_ru": "Эталонная база данных",
             "description_ru": "АИС 'Эталонная база данных' Таможенной Службы КР",
             "customer_ru": "UNODC",
@@ -29,9 +39,9 @@
             "description_en": "AIS 'Reference database' of the Customs Service of the Kyrgyz Republic",
             "customer_en": "UNODC",
 
-            "name_kg": "Маалымат базасы",
-            "description_kg": "Кыргыз Республикасынын Бажы кызматынын АИС «Маалымат базасы».",
-            "customer_kg": "UNODC"
+            "name_ky": "Маалымат базасы",
+            "description_ky": "Кыргыз Республикасынын Бажы кызматынын АИС «Маалымат базасы».",
+            "customer_ky": "UNODC"
         }
     },
 
@@ -39,6 +49,11 @@
         "model": "content.project",
         "pk": 3,
         "fields": {
+            "name": "FinMarket",
+            "description": "Цифровая финансовая платформа",
+            "customer": "ОЮЛ 'Союз Банков Кыргызстана'",
+            "is_visible": "True",
+            
             "name_ru": "FinMarket",
             "description_ru": "Цифровая финансовая платформа",
             "customer_ru": "ОЮЛ 'Союз Банков Кыргызстана'",
@@ -47,9 +62,9 @@
             "description_en": "Digital financial platform",
             "customer_en": "ALE 'Union of Banks of Kyrgyzstan'",
 
-            "name_kg": "FinMarket",
-            "description_kg": "Санарип каржы платформасы",
-            "customer_kg": "'Кыргызстан банктар союзу' АЛЕ."
+            "name_ky": "FinMarket",
+            "description_ky": "Санарип каржы платформасы",
+            "customer_ky": "'Кыргызстан банктар союзу' АЛЕ."
         }
     }
 ]

@@ -1,0 +1,10 @@
+[
+    {
+        "model": "content.PhoneContact",
+        "pk": 1,
+        "fields": {
+            "phone": "+996 708 746 049",
+            "is_visible": "True"
+        }
+    }
+]

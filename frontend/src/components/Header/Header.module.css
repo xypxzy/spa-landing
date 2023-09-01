@@ -1,29 +1,34 @@
 .header {
-  @apply text-gray-600;
+  @apply text-gray-600 relative container z-10;
 }
 
 .header__wrapper {
-  @apply container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center;
+  @apply fixed mx-auto md:px-40 px-10 w-full flex flex-wrap p-5 md:flex-row items-center justify-between;
+  z-index: 1;
 }
 
 .header__logo {
-  @apply flex font-medium items-center text-gray-900 mb-4 md:mb-0;
+  @apply flex font-medium items-center text-gray-900;
 }
 
 .header__logo_title {
-  @apply ml-5 text-3xl uppercase font-bold;
+  @apply ml-5 lg:text-xl xl:text-3xl text-xl hidden md:block uppercase font-bold;
 }
 
 .header__nav {
-  @apply md:ml-auto md:mr-auto flex flex-wrap gap-10 items-center text-base justify-center;
+  @apply md:mx-auto lg:flex hidden flex-wrap xl:gap-10 gap-5 items-center text-base justify-center;
 }
 
 .header__nav_item {
-  @apply text-black hover:text-gray-900 text-xl;
+  @apply text-black hover:text-gray-900 xl:text-xl lg:text-lg;
 }
 
 .header__lang {
-  @apply inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0;
+  @apply inline-flex items-center border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-base;
+}
+
+.header__modal_button {
+  @apply inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none;
 }
 
 .link-underline {

@@ -1,8 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 
-from . import views
-
+from content.views import (ProjectListAPIView, EmployeeListAPIView, EmailContacttListAPIView,
+PhoneContactListAPIView, AddressContactListAPIView)
 
 urlpatterns = [
-    path('<slug:slug>', views.MainPageAPIView.as_view(), name='main_page'),
+    path('projects/', ProjectListAPIView.as_view()),
+    path('employees/', EmployeeListAPIView.as_view()),
+    path('emails/', EmailContacttListAPIView.as_view()),
+    path('phones/', PhoneContactListAPIView.as_view()),
+    path('addresses/', AddressContactListAPIView.as_view()),
 ]
