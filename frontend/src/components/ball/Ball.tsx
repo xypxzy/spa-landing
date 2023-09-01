@@ -7,7 +7,7 @@ const Ball = () => {
     const [rotateValue, setRotateValue] = useState<number>(0)
     useEffect(() => {
         const interval = setInterval(() => {
-            setRotateValue(rotateValue + 10)
+            setRotateValue(rotateValue + 5)
         }, 100)
         return () => {
             clearInterval(interval); // Clear interval when component unmounts
