@@ -22,13 +22,13 @@ const ProcessSection = () => {
           <div className={cls.process__steps_card}>
 
             <div className={cls.process__card}>
-              <ProcessSection3 className='w-[40%] h-[200px]'/>
+              <ProcessSection3 className='w-[40%] h-[200px] hidden sm:block'/>
               <div className={cls.process__card__step}>
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
                 <div className={cls.process__card_step_icon}>1</div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <div className='w-[40%]'>
+              <div className='w-[40%] '>
                 <h2 className={cls.process__card_title}>Marketing Plan</h2>
                 <p className={cls.process__card_description}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm </p>
               </div>
@@ -46,11 +46,11 @@ const ProcessSection = () => {
                 </div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <ProcessSection2 className='w-[40%] h-[200px]'/>
+              <ProcessSection2 className='hidden sm:block w-[40%] h-[200px]'/>
             </div>
 
-            <div className='flex justify-between  items-center'>
-              <ProcessSection1 className='w-[40%] h-[200px]'/>
+            <div className='flex justify-between items-center'>
+              <ProcessSection1 className='w-[40%] h-[200px] sm:block hidden'/>
               <div className={cls.process__card__step}>
                 <div className={cls.process__card_step__line}></div>
                 <div className={cls.process__card_step_icon}>
