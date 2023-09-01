@@ -33,8 +33,6 @@ const Services: React.FC = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 sollicitudinbibendum senectus scelerisque non. Turpis matis
                 morbi vivera ipsum adipiscing Mauris volutpat sagittis, sit
-                nulla. Velit et augues vitae Mattis at nibh nullas placerat
-                imperdiet cursus viverra justo amet. Ipsum duis tempor.
               </p>
               <ul className={styles.marketing__list}>
                 <li className={styles.marketing__item}>
