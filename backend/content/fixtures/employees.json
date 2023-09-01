@@ -1,11 +1,12 @@
 [
     {
         "model": "content.employee",
-        "pk": 4,
+        "pk": 1,
         "fields": {
             "first_name": "Андрей",
             "last_name": "Кошкин",
             "position": "backend-разработчик",
+            "is_visible": "True",
 
             "first_name_ru": "Андрей",
             "last_name_ru": "Кошкин",
@@ -18,7 +19,7 @@
             "first_name_ky": "Андрей",
             "last_name_ky": "Кошкин",
             "position_ky": "backend иштеп чыгуучу",
-            "image": "/AK.jpeg"
+            "image": "employee_images/AK.jpg"
         }
     },
 
@@ -29,6 +30,7 @@
             "first_name": "Василиса",
             "last_name": "Морозова",
             "position": "frontend-разработчик",
+            "is_visible": "True",
 
             "first_name_ru": "Василиса",
             "last_name_ru": "Морозова",
@@ -41,7 +43,7 @@
             "first_name_ky": "Василиса",
             "last_name_ky": "Морозова",
             "position_ky": "backend иштеп чыгуучу",
-            "image": "/VM.jpeg"
+            "image": "employee_images/VM.jpg"
         }
     },
 
@@ -52,6 +54,7 @@
             "first_name": "Талант",
             "last_name": "Беков",
             "position": "Дизайнер",
+            "is_visible": "True",
 
             "first_name_ru": "Талант",
             "last_name_ru": "Беков",
@@ -64,7 +67,7 @@
             "first_name_ky": "Талант",
             "last_name_ky": "Беков",
             "position_ky": "backend иштеп чыгуучу",
-            "image": "/TB.jpeg"
+            "image": "employee_images/TB.jpg"
         }
     }
 ]
