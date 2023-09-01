@@ -19,7 +19,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 # Application definition
 THIRD_PARTY_APPS = [
-    # 'rest_framework',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
