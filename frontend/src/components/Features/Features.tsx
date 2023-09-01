@@ -11,7 +11,7 @@ const Features: React.FC = () => {
       <div className={styles.features__container}>
         <div className={styles.features__header}>
           <div className={styles.features__left}>
-            <ServicesIcon />
+            <ServicesIcon className=" h-20 w-20 mb-10" />
             <h2>
               High-impact services to take your business to the next level
             </h2>
