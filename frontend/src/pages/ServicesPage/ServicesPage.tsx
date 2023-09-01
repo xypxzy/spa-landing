@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Services.module.css';
 import Features from '../../components/Features/Features';
-import getInTouch from '../../assets/get-in-touch.svg';
 
 const Services: React.FC = () => {
   return (

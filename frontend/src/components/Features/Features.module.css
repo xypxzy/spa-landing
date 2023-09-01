@@ -47,6 +47,20 @@
 .features__btn {
   @apply flex gap-10 text-black  bg-white;
   padding: 17px 24px 18px 24px;
-
   border-radius: 7px;
+}
+
+.arrow__down {
+  transform: rotate(90deg);
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.arrow__down__rotated {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transform: rotate(-90deg);
 }
