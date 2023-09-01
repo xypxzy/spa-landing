@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import {ReactComponent as Logo} from '../../assets/logo.svg'
-import cls from './Header.module.css';
 import { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import cls from './Header.module.css';
 
 interface LinkProps {
   title: string,
@@ -9,12 +9,14 @@ interface LinkProps {
   onClick?: () => void;
 }
 
+
 function Header() {
   const [scrollY, setScrollY] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // При скролле навешивается bg-color для хедера
   const handleScroll = () => setScrollY(window.scrollY);
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -110,7 +112,10 @@ function Header() {
               </div>
             </div>
           ) : (
-            <button className={`relative group ${cls.header__modal_button}`} onClick={openModal}>
+              <button
+                className={`relative group ${cls.header__modal_button}`}
+                onClick={openModal}
+              >             
               <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
                 <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
                   <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
