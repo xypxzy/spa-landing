@@ -1,6 +1,6 @@
 from modeltranslation.translator import translator, TranslationOptions
 
-from .models import AddressContact, Project, Employee, SummaryNumericData, OurValues
+from .models import AddressContact, Project, Employee, SummaryNumericData, OurValues, BigTextualContent
 
 
 class AddressContactTranslationOptions(TranslationOptions):
@@ -36,3 +36,10 @@ class OurValuesTranslationOptions(TranslationOptions):
 
 
 translator.register(OurValues, OurValuesTranslationOptions)
+
+
+class BigTextualContentTranslationOptions:
+    fields = ('title', 'description', 'tags')
+
+
+translator.register(BigTextualContent, BigTextualContentTranslationOptions)

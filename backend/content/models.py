@@ -108,3 +108,25 @@ class OurValues(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def textual_content(instance, filename):
+    return f'textual_content/{filename}'
+
+
+class BigTextualContent(models.Model):
+    """
+    This class will have big content with some text in it.
+    tags are short text that describes the characteristics
+    """
+    image = models.ImageField(upload_to=textual_content)
+    title = models.CharField(max_length=255, default="No title provided", blank=True)
+    description = models.TextField()
+    tags = models.CharField(max_length=100, )
+
+    class Meta:
+        verbose_name = 'Текстовый контент'
+        verbose_name_plural = 'Текстовый контент'
+
+    def __str__(self):
+        return self.title
