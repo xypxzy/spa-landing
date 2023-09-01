@@ -21,7 +21,10 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const bgColor = scrollY > 0 ? 'bg-white' : 'bg-none';
+  const bgColor =
+    scrollY > 0
+      ? 'bg-white transition-color duration-100 ease-in-out'
+      : 'bg-none';
 
   // Для открытие и закрытие модального окна
   const openModal = () => {
@@ -35,18 +38,16 @@ function Header() {
   // Рендер навигационной меню
   const navLink: LinkProps[] = [
     { title: 'Home', path: '/' },
-    { title: 'About', path: '/' },
+    { title: 'About', path: '/aboutUs' },
     { title: 'Team', path: '/' },
-    { title: 'Services', path: '/services' },
-    { title: 'Contact', path: '/' }
+    { title: 'Services', path: '/services' }
   ];
 
   const navLinkMobile: LinkProps[] = [
     { title: 'Home', path: '/', onClick: closeModal },
-    { title: 'About', path: '/', onClick: closeModal },
+    { title: 'About', path: '/aboutUs', onClick: closeModal },
     { title: 'Team', path: '/', onClick: closeModal },
-    { title: 'Services', path: '/services', onClick: closeModal },
-    { title: 'Contact', path: '/', onClick: closeModal }
+    { title: 'Services', path: '/services', onClick: closeModal }
   ];
 
   const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
@@ -80,41 +81,11 @@ function Header() {
           <span className={cls.header__logo_title}>My Ticket</span>
         </Link>
         <nav className={cls.header__nav}>
-          <Link
-            to={'/'}
-            className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          >
-            Home
-          </Link>
-          <Link
-            to={'aboutUs'}
-            className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          >
-            About
-          </Link>
-          <Link
-            to={'/'}
-            className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          >
-            Team
-          </Link>
-          <Link
-            to={'/services'}
-            className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          >
-            Services
-          </Link>
-          <Link
-            to={'/'}
-            className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          >
-            Contact
-          </Link>
           {renderNavMenu({ links: navLink })}
         </nav>
         {isModalOpen ? (
           <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
-            <div className="bg-white  rounded shadow-md w-screen h-screen overflow-y-hidden">
+            <div className="bg-white rounded shadow-md w-screen h-screen overflow-y-hidden">
               <span
                 className="absolute top-4 right-9 m-4 cursor-pointer text-3xl"
                 onClick={closeModal}
@@ -129,22 +100,16 @@ function Header() {
           </div>
         ) : (
           <button
-            type="button"
-            className={cls.header__modal_button}
+            className={`relative group ${cls.header__modal_button}`}
             onClick={openModal}
-            aria-controls="mega-menu-full"
-            aria-expanded="false"
           >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
+            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+              <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
+                <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
+                <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+              </div>
+            </div>
           </button>
         )}
         <div className="hidden lg:block">{renderLangButton()}</div>
