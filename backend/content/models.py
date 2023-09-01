@@ -79,8 +79,8 @@ class SummaryNumericData(models.Model):
     data_description is the small text near the numbers explaining what the numbers are for
     """
     is_active = models.BooleanField(default=True)
-    data_description = models.CharField(max_length=255)
-    number = models.IntegerField()
+    data_description = models.CharField(max_length=255, )
+    number = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = 'Суммарные данные'
@@ -88,3 +88,23 @@ class SummaryNumericData(models.Model):
 
     def __str__(self):
         return self.data_description
+
+
+def values_photos(instance, filename):
+    return f'values/{filename}'
+
+
+class OurValues(models.Model):
+    """
+    Class that adds the model and makes 'Our values' part of the page customizable.
+    """
+    image = models.ImageField(upload_to=values_photos)
+    name = models.CharField(max_length=255, )
+    description = models.TextField(blank=True, default='No description provided')
+
+    class Meta:
+        verbose_name = 'Ценность'
+        verbose_name_plural = 'Ценности'
+
+    def __str__(self):
+        return self.name
