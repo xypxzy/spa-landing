@@ -1,5 +1,3 @@
-import styles from '../../components/marketing/Marketind.module.css';
-
 export const featureAnimation = {
   hidden: {
     y: 100,
