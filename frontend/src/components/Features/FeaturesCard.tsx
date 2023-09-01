@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Features.module.css';
-import { ReactComponent as CardIcon } from '../../assets/Icon-1.svg';
+import CardIcon from '../../assets/Icon.png';
 import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-left.svg';
 
 const FeaturesCard: React.FC = () => {
@@ -18,7 +18,7 @@ const FeaturesCard: React.FC = () => {
   return (
     <div className={styles.features__card}>
       <div className={styles.features__card__img}>
-        <CardIcon className="w-22 h-22" />
+        <img src={CardIcon} alt="" className="w-22 h-22" />
       </div>
       <h3 className={styles.features__card__title}>Social Media Marketing</h3>
       <p className={styles.features__card__desc}>{cardText}</p>
