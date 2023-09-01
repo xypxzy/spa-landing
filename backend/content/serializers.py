@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from content.models import Project, Employee, EmailContact, PhoneContact, AddressContact
+from .models import Project, Employee, EmailContact, PhoneContact, AddressContact
+
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:

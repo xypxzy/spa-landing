@@ -1,8 +1,8 @@
 from rest_framework.generics import ListAPIView
 
-from content.models import Project, Employee, EmailContact, PhoneContact, AddressContact
-from content.serializers import (ProjectSerializer, EmployeeSerializer, EmailContactSerializer,
-PhoneContactSerializer, AddressContactSerializer)
+from .models import Project, Employee, EmailContact, PhoneContact, AddressContact
+from .serializers import (ProjectSerializer, EmployeeSerializer, EmailContactSerializer,
+                          PhoneContactSerializer, AddressContactSerializer)
 
 
 class ProjectListAPIView(ListAPIView):
@@ -15,7 +15,7 @@ class EmployeeListAPIView(ListAPIView):
     serializer_class = EmployeeSerializer
 
 
-class EmailContacttListAPIView(ListAPIView):
+class EmailContactListAPIView(ListAPIView):
     queryset = EmailContact.objects.filter(is_visible=True)
     serializer_class = EmailContactSerializer
 

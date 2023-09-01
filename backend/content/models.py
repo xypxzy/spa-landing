@@ -36,6 +36,7 @@ class EmailContact(models.Model):
     def __str__(self):
         return f'{self.email}'
 
+
 class Project(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
@@ -48,6 +49,7 @@ class Project(models.Model):
 
     def __str__(self):
         return f'{self.name} | {self.customer}'
+
 
 class Employee(models.Model):
     first_name = models.CharField(max_length=255)
@@ -66,3 +68,23 @@ class Employee(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} | {self.position}'
+
+
+class SummaryNumericData(models.Model):
+    """
+    Class keeps the data from a panel with summary data, such as:
+    the total amount of clients, projects, team members, revenue generated etc.
+
+    is_active attribute allows the data to be displayed
+    data_description is the small text near the numbers explaining what the numbers are for
+    """
+    is_active = models.BooleanField(default=True)
+    data_description = models.CharField(max_length=255)
+    number = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'Суммарные данные'
+        verbose_name_plural = 'Суммарные данные'
+
+    def __str__(self):
+        return self.data_description
