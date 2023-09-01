@@ -131,3 +131,11 @@ class BigTextualContent(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserSubscription(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email

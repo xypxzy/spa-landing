@@ -1,10 +1,10 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Project, Employee, EmailContact, PhoneContact, AddressContact
+from .models import Project, Employee, EmailContact, PhoneContact, AddressContact, UserSubscription
 from .serializers import (ProjectSerializer, EmployeeSerializer, EmailContactSerializer,
-                          PhoneContactSerializer, AddressContactSerializer)
+                          PhoneContactSerializer, AddressContactSerializer, UserSubscriptionSerializer)
 
 
 class ProjectListAPIView(ListAPIView):
@@ -52,3 +52,8 @@ class ContactsListAPIView(APIView):
             "phones": phones_serializer,
             "emails": emails_serializer
         })
+
+
+class UserSubscriptionCreateAPIView(CreateAPIView):
+    queryset = UserSubscription.objects.all()
+    serializer_class = UserSubscriptionSerializer

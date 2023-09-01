@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Employee, EmailContact, PhoneContact, AddressContact
+from .models import Project, Employee, EmailContact, PhoneContact, AddressContact, UserSubscription
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -30,3 +30,9 @@ class AddressContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddressContact
         fields = ('id', 'address',)
+
+
+class UserSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSubscription
+        fields = ('id', 'name', 'email')
