@@ -7,6 +7,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Features: React.FC = () => {
+  const [expandedCards, setExpandedCards] = React.useState<number[]>([]);
+  const toggleCards = (id: number) => {
+    if (expandedCards.includes(id)) {
+      setExpandedCards(expandedCards.filter((itemId) => itemId !== id));
+    } else {
+      setExpandedCards([...expandedCards, id]);
+    }
+  };
+
   const featureAnimation = {
     hidden: {
       y: 100,
@@ -30,6 +39,30 @@ const Features: React.FC = () => {
       transition: { delay: custom * 0.2 }
     })
   };
+
+  type Card = {
+    id: number;
+    title: string;
+    text: string;
+  };
+
+  const cardContent: Card[] = [
+    {
+      id: 1,
+      title: 'Media Marketing',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+    },
+    {
+      id: 2,
+      title: 'Media Marketing',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+    },
+    {
+      id: 3,
+      title: 'Media Marketing',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+    }
+  ];
 
   return (
     <motion.section
@@ -58,9 +91,14 @@ const Features: React.FC = () => {
           viewport={{ amount: 0.2 }}
           className={styles.features__cards}
         >
-          <FeaturesCard />
-          <FeaturesCard />
-          <FeaturesCard />
+          {cardContent.map((item) => (
+            <FeaturesCard
+              isExpanded={expandedCards.includes(item.id)}
+              onToggle={() => toggleCards(item.id)}
+              key={item.id}
+              {...item}
+            ></FeaturesCard>
+          ))}
         </motion.div>
       </div>
     </motion.section>

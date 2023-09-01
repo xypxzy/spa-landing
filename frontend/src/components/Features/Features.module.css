@@ -42,8 +42,10 @@
 .features__card {
   padding: 40px;
   border-radius: 30px;
+  height: auto;
   border: 1px solid #424245;
   background: linear-gradient(180deg, #36363e 0%, #292930 100%);
+  transition: height 0.3s ease;
 }
 .features__img {
   @apply flex justify-center items-center mb-4 w-auto h-36 rounded-full  lg:h-12 lg:w-12;
