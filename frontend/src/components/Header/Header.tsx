@@ -1,7 +1,7 @@
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import cls from './Header.module.css';
-import { FC, useEffect, useState } from 'react';
 
 interface LinkProps {
   title: string;

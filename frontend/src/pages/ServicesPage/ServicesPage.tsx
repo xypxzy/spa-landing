@@ -5,30 +5,9 @@ import serviceImg from '../../assets/serviceImg.png';
 import marketingLogo from '../../assets/marketing-logo.png';
 import { ReactComponent as DoneIcon } from '../../assets/marketing-icon.svg';
 import { motion } from 'framer-motion';
+import { featureAnimationProps, textAnimationProps } from './animation';
 
 const Services: React.FC = () => {
-  const featureAnimation = {
-    hidden: {
-      y: 100,
-      opacity: 0
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: { delay: custom * 0.2, ease: 'easeInOut' }
-    })
-  };
-  const animateText = {
-    hidden: {
-      y: 100,
-      opacity: 0
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: { delay: custom * 0.2 }
-    })
-  };
   return (
     <motion.div
       initial="hidden"
@@ -55,16 +34,12 @@ const Services: React.FC = () => {
             <div className={styles.marketing__right}>
               <div className={styles.marketing__top}>
                 <motion.img
-                  variants={featureAnimation}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ amount: 0.2 }}
+                  {...featureAnimationProps}
                   src={marketingLogo}
                   alt="marketing logo"
                 />
                 <motion.h3
-                  custom={1}
-                  variants={animateText}
+                  {...textAnimationProps}
                   className={styles.marketing__title}
                 >
                   We take your business reach from thousands to millions
@@ -73,8 +48,7 @@ const Services: React.FC = () => {
               <hr className={styles.hr} />
               <div className={styles.marketing__middle}>
                 <motion.p
-                  custom={1}
-                  variants={animateText}
+                  {...textAnimationProps}
                   className={styles.marketing__desc}
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -83,8 +57,7 @@ const Services: React.FC = () => {
                 </motion.p>
                 <ul className={styles.marketing__list}>
                   <motion.li
-                    custom={1}
-                    variants={animateText}
+                    {...textAnimationProps}
                     className={styles.marketing__item}
                   >
                     <span>
@@ -93,8 +66,7 @@ const Services: React.FC = () => {
                     Dolor duis lorem enim eu turpis potenti nulla semper
                   </motion.li>
                   <motion.li
-                    custom={1}
-                    variants={animateText}
+                    {...textAnimationProps}
                     className={styles.marketing__item}
                   >
                     <span>
@@ -103,8 +75,7 @@ const Services: React.FC = () => {
                     Dolor duis lorem enim eu turpis potenti nulla semper
                   </motion.li>
                   <motion.li
-                    custom={1}
-                    variants={animateText}
+                    {...textAnimationProps}
                     className={styles.marketing__item}
                   >
                     <span>

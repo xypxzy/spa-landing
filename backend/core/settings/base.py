@@ -135,16 +135,39 @@ JAZZMIN_SETTINGS = {
     "copyright": "Sanarip Dolboor 2023",
     "topmenu_links": [
 
-        # Url that gets reversed (Permissions can be added)
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
-        # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"name": "Открыть сайт", "url":""},
 
-        # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
-
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
+        {"app": "content"},
     ],
+
+        # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to aut expand the menu
+    "navigation_expanded": True,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": ["auth", "groups",],
+
+    # Hide these models when generating side menu (e.g auth.user)
+    "hide_models": [],
+
+    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
+    "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",],
+
+    #############
+    # UI Tweaks #
+    #############
+    # Relative paths to custom CSS/JS scripts (must be present in static files)
+    "custom_css": None,
+    "custom_js": None,
+    # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
+    "use_google_fonts_cdn": True,
+    # Whether to show the UI customizer on the sidebar
+    "show_ui_builder": False,
+    
+
+    # "language_chooser": True
 }

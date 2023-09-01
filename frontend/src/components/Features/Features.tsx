@@ -5,6 +5,10 @@ import { ReactComponent as ServicesIcon } from '../../assets/services-icon.svg';
 import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import {
+  featureAnimation,
+  textAnimationProps
+} from '../../pages/ServicesPage/animation';
 
 const Features: React.FC = () => {
   const [expandedCards, setExpandedCards] = React.useState<number[]>([]);
@@ -14,30 +18,6 @@ const Features: React.FC = () => {
     } else {
       setExpandedCards([...expandedCards, id]);
     }
-  };
-
-  const featureAnimation = {
-    hidden: {
-      y: 100,
-      opacity: 0
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: { delay: custom * 0.2, ease: 'easeInOut' }
-    })
-  };
-
-  const animateText = {
-    hidden: {
-      y: 100,
-      opacity: 0
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: { delay: custom * 0.2 }
-    })
   };
 
   type Card = {
@@ -60,7 +40,7 @@ const Features: React.FC = () => {
     {
       id: 3,
       title: 'Media Marketing',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+      text: 'Lorem ipsum dolor uia asperiores ea facere'
     }
   ];
 
@@ -75,7 +55,7 @@ const Features: React.FC = () => {
         <div className={styles.features__header}>
           <div className={styles.features__left}>
             <ServicesIcon className=" h-20 w-20 mb-10" />
-            <motion.h2 custom={1} variants={animateText}>
+            <motion.h2 {...textAnimationProps}>
               High-impact services to take your business to the next level
             </motion.h2>
           </div>

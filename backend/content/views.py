@@ -6,25 +6,25 @@ PhoneContactSerializer, AddressContactSerializer)
 
 
 class ProjectListAPIView(ListAPIView):
-    queryset = Project.objects.all()
+    queryset = Project.objects.filter(is_visible=True)
     serializer_class = ProjectSerializer
 
 
 class EmployeeListAPIView(ListAPIView):
-    queryset = Employee.objects.all()
+    queryset = Employee.objects.filter(is_visible=True)
     serializer_class = EmployeeSerializer
 
 
 class EmailContacttListAPIView(ListAPIView):
-    queryset = EmailContact.objects.all()
+    queryset = EmailContact.objects.filter(is_visible=True)
     serializer_class = EmailContactSerializer
 
 
 class PhoneContactListAPIView(ListAPIView):
-    queryset = PhoneContact.objects.all()
+    queryset = PhoneContact.objects.filter(is_visible=True)
     serializer_class = PhoneContactSerializer
 
 
 class AddressContactListAPIView(ListAPIView):
-    queryset = AddressContact.objects.all()
+    queryset = AddressContact.objects.filter(is_visible=True)
     serializer_class = AddressContactSerializer

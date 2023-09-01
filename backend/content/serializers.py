@@ -4,28 +4,28 @@ from content.models import Project, Employee, EmailContact, PhoneContact, Addres
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('name', 'description', 'customer',)
+        fields = ('id', 'name', 'description', 'customer',)
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ('first_name', 'last_name', 'position',)
+        fields = ('id', 'first_name', 'last_name', 'position',)
 
 
 class EmailContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmailContact
-        fields = '__all__'
+        fields = ('id', 'email',)
 
 
 class PhoneContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhoneContact
-        fields = '__all__'
+        fields = ('id', 'phone',)
 
 
 class AddressContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddressContact
-        fields = ('address',)
+        fields = ('id', 'address',)
