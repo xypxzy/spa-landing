@@ -38,11 +38,11 @@
 
             "first_name_en": "Vasilisa",
             "last_name_en": "Morozova",
-            "position_en": "backend developer",
+            "position_en": "frontend developer",
 
             "first_name_ky": "Василиса",
             "last_name_ky": "Морозова",
-            "position_ky": "backend иштеп чыгуучу",
+            "position_ky": "frontend иштеп чыгуучу",
             "image": "employee_images/VM.jpg"
         }
     },
@@ -62,11 +62,11 @@
 
             "first_name_en": "Talant",
             "last_name_en": "Bekov",
-            "position_en": "backend developer",
+            "position_en": "Designer",
 
             "first_name_ky": "Талант",
             "last_name_ky": "Беков",
-            "position_ky": "backend иштеп чыгуучу",
+            "position_ky": "Дизайнерджан",
             "image": "employee_images/TB.jpg"
         }
     }
