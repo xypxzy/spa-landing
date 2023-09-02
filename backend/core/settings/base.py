@@ -3,6 +3,8 @@ from pathlib import Path
 from decouple import config
 from django.utils.translation import gettext_lazy
 
+from .cors import *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -21,6 +23,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 # Application definition
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'corsheaders',
 ]
 
 LOCAL_APPS = [
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -92,6 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
@@ -147,6 +152,8 @@ JAZZMIN_SETTINGS = {
         {"app": "content", "name": "Контент"},
     ],
 
+    # Whether to display the side menu
+
     "show_sidebar": True,
 
     "navigation_expanded": True,
@@ -159,3 +166,5 @@ JAZZMIN_SETTINGS = {
     
     # "show_ui_builder": True,
 }
+
+from .production import DATABASES

@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './Services.module.css';
 import Features from '../../components/Features/Features';
-import serviceImg from '../../assets/serviceImg.jpg';
-import marketingLogo from '../../assets/marketing-logo.jpg';
+import serviceImg from '../../assets/serviceImg.png';
+import marketingLogo from '../../assets/marketing-logo.png';
 import { ReactComponent as DoneIcon } from '../../assets/marketing-icon.svg';
+import { motion } from 'framer-motion';
+import { featureAnimationProps, textAnimationProps } from './animation';
 
 const Services: React.FC = () => {
   return (
-    <>
+    <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
@@ -16,51 +18,69 @@ const Services: React.FC = () => {
         </div>
       </section>
       <Features />
-      <section className={styles.marketing}>
+      <motion.section className={styles.marketing} {...featureAnimationProps}>
         <div className={styles.marketing__container}>
-          <img src={serviceImg} alt="PC" className={styles.marketing__img} />
-          <div className={styles.marketing__right}>
-            <div className={styles.marketing__top}>
-              <div>
-                <img src={marketingLogo} alt="marketing logo" />
+          <div className={styles.marketing__content}>
+            <img src={serviceImg} alt="PC" className={styles.marketing__img} />
+            <div className={styles.marketing__right}>
+              <div className={styles.marketing__top}>
+                <motion.img
+                  {...featureAnimationProps}
+                  src={marketingLogo}
+                  alt="marketing logo"
+                />
+                <motion.h3
+                  {...textAnimationProps}
+                  className={styles.marketing__title}
+                >
+                  We take your business reach from thousands to millions
+                </motion.h3>
               </div>
-              <h3 className={styles.marketing__title}>
-                We take your business reach from thousands to millions
-              </h3>
-            </div>
-            <div className={styles.marketing__middle}>
-              <p className={styles.marketing__desc}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                sollicitudinbibendum senectus scelerisque non. Turpis matis
-                morbi vivera ipsum adipiscing Mauris volutpat sagittis, sit
-              </p>
-              <ul className={styles.marketing__list}>
-                <li className={styles.marketing__item}>
-                  <span>
-                    <DoneIcon />
-                  </span>
-                  Dolor duis lorem enim eu turpis potenti nulla semper
-                </li>
-
-                <li className={styles.marketing__item}>
-                  <span>
-                    <DoneIcon />
-                  </span>
-                  Dolor duis lorem enim eu turpis potenti nulla semper
-                </li>
-
-                <li className={styles.marketing__item}>
-                  <span>
-                    <DoneIcon />
-                  </span>
-                  Dolor duis lorem enim eu turpis potenti nulla semper
-                </li>
-              </ul>
+              <hr className={styles.hr} />
+              <div className={styles.marketing__middle}>
+                <motion.p
+                  {...textAnimationProps}
+                  className={styles.marketing__desc}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                  sollicitudinbibendum senectus scelerisque non. Turpis matis
+                  morbi vivera ipsum adipiscing Mauris volutpat sagittis, sit
+                </motion.p>
+                <ul className={styles.marketing__list}>
+                  <motion.li
+                    {...textAnimationProps}
+                    className={styles.marketing__item}
+                  >
+                    <span>
+                      <DoneIcon />
+                    </span>
+                    Dolor duis lorem enim eu turpis potenti nulla semper
+                  </motion.li>
+                  <motion.li
+                    {...textAnimationProps}
+                    className={styles.marketing__item}
+                  >
+                    <span>
+                      <DoneIcon />
+                    </span>
+                    Dolor duis lorem enim eu turpis potenti nulla semper
+                  </motion.li>
+                  <motion.li
+                    {...textAnimationProps}
+                    className={styles.marketing__item}
+                  >
+                    <span>
+                      <DoneIcon />
+                    </span>
+                    Dolor duis lorem enim eu turpis potenti nulla semper
+                  </motion.li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </motion.section>
+    </motion.div>
   );
 };
 
