@@ -24,57 +24,94 @@ body {
   letter-spacing: 0;
   line-height: 110.5%;
 }
-
-.marketing {
-  @apply flex justify-center items-center overflow-hidden;
-}
-
 .marketing__container {
-  @apply flex flex-wrap justify-center items-center mx-auto max-w-screen-xl my-36;
+  @apply flex justify-center items-center my-36;
 }
 
-.marketing__img {
-  width: 470px;
-  height: 450px;
-  margin-bottom: 50px;
-  margin-right: 30px;
-}
 .marketing__title {
-  @apply text-2xl;
+  @apply text-3xl font-semibold;
+  color: #292930;
   line-height: 110.5%;
-  color: 292930;
-}
-.marketing__right {
-  @apply flex flex-col items-start gap-8 shrink-0;
-  max-width: 400px;
-}
-.marketing__top {
-  @apply flex items-start gap-10;
 }
 
 .marketing__desc {
-  margin-block: 30px;
-  font-size: 16px;
+  @apply text-lg mb-8;
+  color: #555;
+  line-height: 156.5%;
 }
 
-.marketing__list {
-  display: flex;
-  width: 559px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 25px;
+.marketing__content {
+  @apply mx-auto max-w-screen-xl flex flex-row items-center;
 }
+
+.marketing__top {
+  @apply flex  my-8 gap-10;
+}
+
+.marketing__top img {
+  height: 80px;
+  width: 80px;
+}
+
+.marketing__img {
+  height: 450px;
+  width: auto;
+  margin-right: 30px;
+}
+
 .marketing__item {
-  display: flex;
+  @apply flex text-sm mb-7;
   color: #555;
-  font-family: Noto Sans;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 32px */
+  line-height: 160%;
   text-transform: capitalize;
 }
 
 .marketing__item span {
   margin-right: 10px;
+}
+@media (max-width: 1024px) {
+  .marketing__right {
+    max-width: 700px;
+  }
+  .marketing__img {
+    height: 300px;
+  }
+
+  .marketing__content {
+    flex-direction: column;
+  }
+  .marketing__img {
+    margin-bottom: 20px;
+  }
+}
+
+.marketing__right {
+  width: 100%;
+  padding: 30px;
+  max-width: 300px;
+  max-width: 400px;
+  max-width: 500px;
+}
+
+.hr {
+  margin-bottom: 30px;
+  height: 1px;
+  background: #cfcfcf;
+}
+
+@media screen and (max-width: 930px) {
+  .marketing__top {
+    @apply flex-wrap;
+  }
+  .marketing__title {
+    font-size: 25px;
+  }
+
+  .marketing__top {
+    justify-content: center;
+    text-align: center;
+  }
+  .marketing__middle {
+    text-align: center;
+  }
 }

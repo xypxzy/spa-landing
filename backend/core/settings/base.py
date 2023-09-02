@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'django_cleanup',
 
     *THIRD_PARTY_APPS,
     *LOCAL_APPS,
@@ -142,32 +144,29 @@ JAZZMIN_SETTINGS = {
         {"app": "content"},
     ],
 
-        # Whether to display the side menu
     "show_sidebar": True,
 
-    # Whether to aut expand the menu
     "navigation_expanded": True,
 
-    # Hide these apps when generating side menu e.g (auth)
     "hide_apps": ["auth", "groups",],
 
     # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [],
 
-    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",],
 
     #############
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css": None,
-    "custom_js": None,
+    # "custom_css": None,
+    # "custom_js": None,
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
-    "use_google_fonts_cdn": True,
+    # "use_google_fonts_cdn": True,
     # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": False,
+    # "show_ui_builder": False,
     
+    # "changeform_format": "horizontal_tabs",
 
     # "language_chooser": True
 }
