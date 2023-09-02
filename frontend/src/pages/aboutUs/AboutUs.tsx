@@ -14,7 +14,11 @@ const AboutUs = () => {
         {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'},
         {skale: '325', text: 'Clients Worldwide',  color: 'red', plus:'+'},
         {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'}, 
-
+        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'}, 
+        {skale: '325', text: 'Clients Worldwide', color: 'red', plus:'+'},
+        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'},
+        {skale: '325', text: 'Clients Worldwide',  color: 'red', plus:'+'},
+    
     ]
 
     const numAnimatio ={ 
