@@ -1,17 +1,18 @@
-import Hero from '../../components/Hero/Hero'
-import AboutUsSection from '../../components/AboutUsSection/AboutUsSection'
-import ProcessSection from '../../components/ProcessSection/ProcessSection'
-import BenefitsSection from '../../components/BenefitsSection/BenefitsSection'
+import AboutUsSection from '../../components/AboutUsSection/AboutUsSection';
+import BenefitsSection from '../../components/BenefitsSection/BenefitsSection';
+import Hero from '../../components/Hero/Hero';
+import ProcessSection from '../../components/ProcessSection/ProcessSection';
 
 const Home = () => {
+
   return (
     <div>
       <Hero />
       <AboutUsSection />
       <ProcessSection />
-      <BenefitsSection />
+      {/* <BenefitsSection /> */}
     </div>
   )
 }
 
-export default Home
+export default Home;

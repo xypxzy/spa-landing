@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
-import {ReactComponent as Logo} from '../../assets/logo.svg'
-import cls from './Header.module.css';
 import { FC, useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import cls from './Header.module.css';
 
 interface LinkProps {
-  title: string,
-  path: string,
+  title: string;
+  path: string;
   onClick?: () => void;
 }
 
@@ -22,7 +21,10 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const bgColor = scrollY > 0 ? 'bg-white' : 'bg-none';
+  const bgColor =
+    scrollY > 0
+      ? 'bg-white transition-color duration-100 ease-in-out'
+      : 'bg-none';
 
   // Для открытие и закрытие модального окна
   const openModal = () => {
@@ -43,46 +45,36 @@ function Header() {
     {title: 'Contact', path: '/', onClick: closeModal},
   ]
 
-  const renderNavMenu: FC<{links: LinkProps[]}> = ({links}) => (
+
+  const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
     <>
-      {links.map(link => (
+      {links.map((link) => (
         <Link
           key={link.title}
           to={link.path}
-          className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
           onClick={link.onClick && link.onClick}
         >
           {link.title}
         </Link>
       ))}
     </>
-  )
+  );
 
   // Рендер кнопок для смены языка
   const renderLangButton = () => (
     <>
-      <button className={cls.header__lang}>
-        RU
-      </button>
-      <button className={cls.header__lang}>
-        EN
-      </button>
+      <button className={cls.header__lang}>RU</button>
+      <button className={cls.header__lang}>EN</button>
     </>
-  )
+  );
 
   return (
     <header className={cls.header}>
       <div className={`${cls.header__wrapper} ${bgColor}`}>
-        <Link 
-          to={'/'}
-          className={cls.header__logo}
-        >
-          <Logo className='w-14 h-14'/>
-          <span
-           className={cls.header__logo_title}
-           >
-            My Ticket
-          </span>
+        <Link to={'/'} className={cls.header__logo}>
+          <Logo className="w-14 h-14" />
+          <span className={cls.header__logo_title}>My Ticket</span>
         </Link>
         <nav className={cls.header__nav}>
           <Link
@@ -151,6 +143,7 @@ function Header() {
         <div className='hidden lg:block'>
           {renderLangButton()}
         </div>
+
       </div>
     </header>
   );
