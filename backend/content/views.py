@@ -2,9 +2,16 @@ from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Project, Employee, EmailContact, PhoneContact, AddressContact, UserSubscription
-from .serializers import (ProjectSerializer, EmployeeSerializer, EmailContactSerializer,
-                          PhoneContactSerializer, AddressContactSerializer, UserSubscriptionSerializer)
+from .models import (
+    Project, Employee, EmailContact,
+    PhoneContact, AddressContact, UserSubscription,
+    BigTextualContent, OurValues, SummaryNumericData
+)
+from .serializers import (
+    ProjectSerializer, EmployeeSerializer, EmailContactSerializer,
+    PhoneContactSerializer, AddressContactSerializer, UserSubscriptionSerializer,
+    OurValuesSerializer, BigTextualContentSerializer, SummaryNumericDataSerializer
+)
 
 
 class ProjectListAPIView(ListAPIView):
@@ -57,3 +64,18 @@ class ContactsListAPIView(APIView):
 class UserSubscriptionCreateAPIView(CreateAPIView):
     queryset = UserSubscription.objects.all()
     serializer_class = UserSubscriptionSerializer
+
+
+class OurValuesListAPIView(ListAPIView):
+    queryset = OurValues.objects.all()
+    serializer_class = OurValuesSerializer
+
+
+class SummaryNumericDataListAPIView(ListAPIView):
+    queryset = SummaryNumericData.objects.all()
+    serializer_class = SummaryNumericDataSerializer
+
+
+class BigTextualContentListAPIView(ListAPIView):
+    queryset = BigTextualContent.objects.all()
+    serializer_class = BigTextualContentSerializer
