@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import {ReactComponent as Logo} from '../../assets/logo.svg'
-import cls from './Header.module.css';
 import { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import cls from './Header.module.css';
 
 interface LinkProps {
-  title: string,
-  path: string,
+  title: string;
+  path: string;
   onClick?: () => void;
 }
 
@@ -21,7 +21,10 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const bgColor = scrollY > 0 ? 'bg-white transition-color duration-100 ease-in-out' : 'bg-none';
+  const bgColor =
+    scrollY > 0
+      ? 'bg-white transition-color duration-100 ease-in-out'
+      : 'bg-none';
 
   // Для открытие и закрытие модального окна
   const openModal = () => {
@@ -33,63 +36,77 @@ function Header() {
   };
 
   // Рендер навигационной меню
-  const navLink: LinkProps[] = [
-    {title: 'Home', path: '/'},
-    {title: 'About', path: '/aboutUs'},
-    {title: 'Team', path: '/'},
-    {title: 'Services', path: '/services'},
-  ]
 
   const navLinkMobile: LinkProps[] = [
     {title: 'Home', path: '/', onClick: closeModal},
     {title: 'About', path: '/aboutUs', onClick: closeModal },
-    {title: 'Team', path: '/', onClick: closeModal},
+    {title: 'Team', path: '/team', onClick: closeModal},
     {title: 'Services', path: '/services', onClick: closeModal},
+    {title: 'Contact', path: '/', onClick: closeModal},
   ]
 
-  const renderNavMenu: FC<{links: LinkProps[]}> = ({links}) => (
+
+  const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
     <>
-      {links.map(link => (
+      {links.map((link) => (
         <Link
           key={link.title}
           to={link.path}
-          className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
           onClick={link.onClick && link.onClick}
         >
           {link.title}
         </Link>
       ))}
     </>
-  )
+  );
 
   // Рендер кнопок для смены языка
   const renderLangButton = () => (
     <>
-      <button className={cls.header__lang}>
-        RU
-      </button>
-      <button className={cls.header__lang}>
-        EN
-      </button>
+      <button className={cls.header__lang}>RU</button>
+      <button className={cls.header__lang}>EN</button>
     </>
-  )
+  );
 
   return (
     <header className={cls.header}>
       <div className={`${cls.header__wrapper} ${bgColor}`}>
-        <Link 
-          to={'/'}
-          className={cls.header__logo}
-        >
-          <Logo className='w-14 h-14'/>
-          <span
-           className={cls.header__logo_title}
-           >
-            My Ticket
-          </span>
+        <Link to={'/'} className={cls.header__logo}>
+          <Logo className="w-14 h-14" />
+          <span className={cls.header__logo_title}>My Ticket</span>
         </Link>
         <nav className={cls.header__nav}>
-          {renderNavMenu({links: navLink})}
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Home
+          </Link>
+          <Link
+            to={"aboutUs"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            About
+          </Link>
+          <Link
+            to={"team"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Team
+          </Link>
+          <Link
+            to={"/services"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Services
+          </Link>
+          <Link
+            to={"/"}
+            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+          >
+            Contact
+          </Link>
         </nav>
         {
           isModalOpen ? (
@@ -110,20 +127,23 @@ function Header() {
               </div>
             </div>
           ) : (
-            <button className={`relative group ${cls.header__modal_button}`} onClick={openModal}>
-              <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-                <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
-                  <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-                  <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
-                  <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-                </div>
-              </div>
+            <button type="button" 
+              className={cls.header__modal_button}         
+              onClick={openModal}
+              aria-controls="mega-menu-full" 
+              aria-expanded="false"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                  <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                </svg>
+                
             </button>
           )
         }
         <div className='hidden lg:block'>
           {renderLangButton()}
         </div>
+
       </div>
     </header>
   );

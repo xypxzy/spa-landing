@@ -15,8 +15,8 @@ class AddressContact(models.Model):
 
 
 class PhoneContact(models.Model):
-    phone = models.CharField(max_length=20)
-    is_visible = models.BooleanField(default=False)
+    phone = models.CharField(max_length=20, verbose_name='Номер телефона')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
         verbose_name = 'Телефон'
@@ -28,7 +28,7 @@ class PhoneContact(models.Model):
 
 class EmailContact(models.Model):
     email = models.EmailField()
-    is_visible = models.BooleanField(default=False)
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
         verbose_name = 'Email контакт'
@@ -39,10 +39,10 @@ class EmailContact(models.Model):
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    customer = models.CharField(max_length=255, blank=True)
-    is_visible = models.BooleanField(default=False)
+    name = models.CharField(max_length=255, verbose_name='Название')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    customer = models.CharField(max_length=255, blank=True, verbose_name='Заказчик')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
         verbose_name = 'Проект'
@@ -53,15 +53,17 @@ class Project(models.Model):
 
 
 class Employee(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    position = models.CharField(max_length=255)
-    image = models.ImageField(blank=True, null=True, default='/default_employee.jpg', upload_to='employee_images')
+    first_name = models.CharField(max_length=255, verbose_name='Имя')
+    last_name = models.CharField(max_length=255, verbose_name='Фамилия')
+    position = models.CharField(max_length=255, verbose_name='Должность')
+    
+    image = models.ImageField(blank=True, null=True, default='/default_employee.jpg', upload_to='employee_images', verbose_name='Фото')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
-    is_visible = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    is_active = models.BooleanField(default=True, verbose_name='Действующий сотрудник')
 
     class Meta:
         verbose_name = 'Сотрудник'

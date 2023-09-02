@@ -7,7 +7,7 @@
 }
 
 .process__wrapper {
-  @apply bg-gradient-to-r from-blue-100 to-yellow-200 via-pink-200 w-[80vw] xl:w-[60vw] rounded-xl;
+  @apply bg-gradient-to-r from-blue-100 to-yellow-200 via-pink-200 w-[350px] sm:w-[520px] md:w-[620px] lg:w-[820px] xl:w-[1100px] rounded-xl;
 }
 
 .process__header {
@@ -31,7 +31,7 @@
 }
 
 .process__card__step {
-  @apply flex flex-col justify-center items-center md:h-full h-[200px];
+  @apply flex flex-col justify-center items-center md:h-full h-[100px] sm:h-[200px];
 }
 
 .process__card_step_icon {
