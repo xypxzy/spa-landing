@@ -4,7 +4,7 @@ import {ReactComponent as PhoneIcon}  from '../../assets/phoneIcon.svg'
 import {ReactComponent as PageIcon} from '../../assets/PagesIcon.svg'
 import {ReactComponent as UtilityPageIcon} from '../../assets/utilityPages.svg'
 import {ReactComponent as FollowIcon} from '../../assets/Follow.svg'
-import {ReactComponent as CardBehind} from '../../assets/CardBehind.svg'
+import bgCardImg from '../../assets/homePage/footer-card.png';
 import {ReactComponent as Logo} from '../../assets/logo.svg'
 import cls from './Footer.module.css'
 
@@ -33,7 +33,7 @@ function Footer() {
                   My Ticket
                 </span>
                 </div>
-                <CardBehind className='md:w-[260px] md:h-[210px] w-[180px] h-[160px]'/>
+                <img src={bgCardImg}  alt="bg img" />
                 <div>
                   <h1>Subscribe now</h1>
                   <p className='text-sm text-[#D0D0D0]'>Industry's standard from dummy and make a type book.</p>
@@ -43,7 +43,7 @@ function Footer() {
                       placeholder='Enter you email'
                       className={cls.footer__card_block__input}
                     />
-                    <button type="submit" className={cls.footer__card_block__button}>Submit</button>
+                    <button className={cls.footer__card_block__button}>Submit</button>
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@ function Footer() {
                 </span>
                 <p>nextlevel@marketing.com</p>
               </span>
-              <span className='md:w-1/2 h-full flex flex-col gap-3'>
+              <span className='lg:w-1/2 h-full flex flex-col gap-3'>
                 <span className='flex items-center gap-1'>
                   <LocationIcon className='w-5 h-5'/>
                   <h2 className='font-semi text-lg'>Location</h2>
@@ -88,11 +88,12 @@ function Footer() {
                 ))
               }
             </div>
-            <p className="mt-8 text-sm">
-              Copyright © 2023 My Ticket
-            </p>
+            
           </div>
         </div>
+        <p className="mt-8 text-sm flex justify-center">
+              Copyright © 2023 My Ticket
+        </p>
       </div>
     </footer>
   )

@@ -31,11 +31,11 @@
 }
 
 .footer__navigation_block {
-  @apply inline-block md:flex md:items-center md:justify-between gap-y-5 border-b pb-3;
+  @apply inline-block lg:flex md:items-center md:justify-between gap-y-5 border-b pb-3;
 }
 
 .footer__navigation_contact {
-  @apply md:w-1/2 h-full flex flex-col gap-3 md:mb-0 mb-4;
+  @apply lg:w-1/2 h-full flex flex-col gap-3 lg:mb-0 mb-5;
 }
 
 .footer__navigation_phone {
