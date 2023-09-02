@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './Features.module.css';
 import FeaturesCard from './FeaturesCard';
 import { ReactComponent as ServicesIcon } from '../../assets/services-icon.svg';
-import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  featureAnimation,
+  featureAnimationProps,
   textAnimationProps
 } from '../../pages/ServicesPage/animation';
 
@@ -45,12 +43,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <motion.section
-      className={styles.features}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ amount: 0.2 }}
-    >
+    <motion.section className={styles.features}>
       <div className={styles.features__container}>
         <div className={styles.features__header}>
           <div className={styles.features__left}>
@@ -59,16 +52,9 @@ const Features: React.FC = () => {
               High-impact services to take your business to the next level
             </motion.h2>
           </div>
-          <Link className={styles.features__btn} to="servies">
-            <p>Our services</p>
-            <ArrowLeft />
-          </Link>
         </div>
         <motion.div
-          variants={featureAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ amount: 0.2 }}
+          {...featureAnimationProps}
           className={styles.features__cards}
         >
           {cardContent.map((item) => (

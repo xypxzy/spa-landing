@@ -9,11 +9,7 @@ import { featureAnimationProps, textAnimationProps } from './animation';
 
 const Services: React.FC = () => {
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ amount: 0.2 }}
-    >
+    <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
@@ -22,12 +18,7 @@ const Services: React.FC = () => {
         </div>
       </section>
       <Features />
-      <motion.section
-        className={styles.marketing}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ amount: 0.2 }}
-      >
+      <motion.section className={styles.marketing} {...featureAnimationProps}>
         <div className={styles.marketing__container}>
           <div className={styles.marketing__content}>
             <img src={serviceImg} alt="PC" className={styles.marketing__img} />

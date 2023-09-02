@@ -6,7 +6,7 @@ export const featureAnimation = {
   visible: (custom: number) => ({
     y: 0,
     opacity: 1,
-    transition: { delay: custom * 0.2, ease: 'easeInOut' }
+    transition: { delay: custom * 0.3, ease: 'easeInOut' }
   })
 };
 
@@ -18,7 +18,7 @@ export const animateText = {
   visible: (custom: number) => ({
     y: 0,
     opacity: 1,
-    transition: { delay: custom * 0.2 }
+    transition: { delay: custom * 0.3, ease: 'easeInOut' }
   })
 };
 
@@ -31,5 +31,5 @@ export const featureAnimationProps = {
   variants: featureAnimation,
   initial: 'hidden',
   whileInView: 'visible',
-  viewport: { amount: 0.2 }
+  viewport: { amount: 0.2, once: true }
 };
