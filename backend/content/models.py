@@ -53,10 +53,12 @@ class Employee(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
+    
     image = models.ImageField(blank=True, null=True, default='/default_employee.jpg', upload_to='employee_images')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
+
     is_visible = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
