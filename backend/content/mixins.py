@@ -1,13 +1,13 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 
 class ContentAdminMixin:
 
     @admin.action(description="Отобразить на сайте")
     def make_visible(self, request, queryset):
         updated = queryset.update(is_visible=True)
-        self.message_user(request, f'Обновлено записей: {updated}.')
+        self.message_user(request, f'Обновлено записей: {updated}.', level=messages.SUCCESS)
 
     @admin.action(description="Скрыть на сайте")
     def make_invisible(self, request, queryset):
         updated = queryset.update(is_visible=False)
-        self.message_user(request, f'Обновлено записей: {updated}.')
+        self.message_user(request, f'Обновлено записей: {updated}.', level=messages.SUCCESS)

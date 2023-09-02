@@ -1,4 +1,7 @@
+from typing import Any, Tuple
 from django.contrib import admin
+from django.db.models.query import QuerySet
+from django.http.request import HttpRequest
 from modeltranslation.admin import TranslationAdmin
 
 from content.models import AddressContact, PhoneContact, EmailContact, Employee, Project
@@ -15,14 +18,20 @@ class AddressContactAdmin(ContentAdminMixin, admin.ModelAdmin):
     search_fields = ('address_ru', 'address_en', 'address_ky',)
 
     fieldsets = (
-        ('Russsian', {
-            'fields': ('address_ru',)
+        ('Ru', {
+            'fields': ('address_ru',),
+            'description': 'Поля на русском языке обязательны (*).',
         }),
-        ('English', {
-            'fields': ('address_en',)
+        ('En', {
+            'fields': ('address_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
         }),
-        ('Kyrgyz', {
-            'fields': ('address_ky',)
+        ('Ky', {
+            'fields': ('address_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+        ('Статус', {
+            'fields': ('is_visible',),
         }),
     )
     
@@ -40,6 +49,15 @@ class PhoneContactAdmin(ContentAdminMixin, admin.ModelAdmin):
     ordering = ('-is_visible', 'id',)
     search_fields = ('phone',)
     
+    fieldsets = (
+        ('Телефон', {
+            'fields': ('phone',)
+        }),
+        ('Статус', {
+            'fields': ('is_visible',)
+        }),
+    )
+    
     list_filter = ('is_visible',)
 
     actions = ('make_visible', 'make_invisible',)
@@ -53,6 +71,15 @@ class EmailContactAdmin(ContentAdminMixin, admin.ModelAdmin):
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
     search_fields = ('email',)
+    
+    fieldsets = (
+        ('Email', {
+            'fields': ('email',)
+        }),
+        ('Статус', {
+            'fields': ('is_visible',)
+        }),
+    )
     
     list_filter = ('is_visible',)
 
@@ -68,14 +95,20 @@ class ProjectAdmin(ContentAdminMixin, TranslationAdmin):
     ordering = ('-is_visible', 'id',)
 
     fieldsets = (
-        ('Russsian', {
-            'fields': ('name_ru', 'description_ru', 'customer_ru',)
+        ('Ru', {
+            'fields': ('name_ru', 'description_ru', 'customer_ru',),
+            'description': 'Поля на русском языке обязательны (*).',
         }),
-        ('English', {
-            'fields': ('name_en', 'description_en', 'customer_en',)
+        ('En', {
+            'fields': ('name_en', 'description_en', 'customer_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
         }),
-        ('Kyrgyz', {
-            'fields': ('name_ky', 'description_ky', 'customer_ky',)
+        ('Ky', {
+            'fields': ('name_ky', 'description_ky', 'customer_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+        ('Статус', {
+            'fields': ('is_visible',),
         }),
     )
 
@@ -94,19 +127,28 @@ class EmployeeAdmin(ContentAdminMixin, TranslationAdmin):
     list_display_links = ('first_name', 'last_name', 'position',)
     list_editable = ('is_visible',)
     ordering = ('-is_visible', '-is_active', 'id',)
-
+    
     fieldsets = (
         # ('default', {
         #     'fields': ('first_name', 'last_name', 'position',)
         # }),
-        ('Russsian', {
-            'fields': ('first_name_ru', 'last_name_ru', 'position_ru',)
+        ('Ru', {
+            'fields': ('first_name_ru', 'last_name_ru', 'position_ru', 'image',),
+            'description': 'Поля на русском языке обязательны (*).',
         }),
-        ('English', {
-            'fields': ('first_name_en', 'last_name_en', 'position_en',)
+        ('En', {
+            'fields': ('first_name_en', 'last_name_en', 'position_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
         }),
-        ('Kyrgyz', {
-            'fields': ('first_name_ky', 'last_name_ky', 'position_ky',)
+        ('Ky', {
+            'fields': ('first_name_ky', 'last_name_ky', 'position_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+        ('Соц. сети', {
+            'fields': ('facebook', 'whatsapp', 'instagram',),
+        }),
+        ('Статус', {
+            'fields': ('is_active', 'is_visible',),
         }),
     )
 
