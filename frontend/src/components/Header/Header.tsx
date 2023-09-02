@@ -108,42 +108,35 @@ function Header() {
             Contact
           </Link>
         </nav>
-        {
-          isModalOpen ? (
-            <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
-              <div className="bg-white rounded shadow-md w-screen h-screen overflow-y-hidden">
-                <span
-                  className="absolute top-4 right-9 m-4 cursor-pointer text-3xl"
-                  onClick={closeModal}
-                >
-                  &times;
-                </span>
-                <nav className='flex flex-col h-screen justify-center items-center text-xl gap-6' >
-                  {renderNavMenu({links: navLinkMobile})}
-                </nav>
-                <div>
-                  {renderLangButton()}
-                </div>
-              </div>
+        {isModalOpen ? (
+          <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
+            <div className="bg-white rounded shadow-md w-screen h-screen overflow-y-hidden">
+              <span
+                className="absolute top-4 right-9 m-4 cursor-pointer text-3xl"
+                onClick={closeModal}
+              >
+                &times;
+              </span>
+              <nav className="flex flex-col h-screen justify-center items-center text-xl gap-6">
+                {renderNavMenu({ links: navLinkMobile })}
+              </nav>
+              <div>{renderLangButton()}</div>
             </div>
+          </div>
           ) : (
-            <button type="button" 
-              className={cls.header__modal_button}         
-              onClick={openModal}
-              aria-controls="mega-menu-full" 
-              aria-expanded="false"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                  <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
-                </svg>
-                
-            </button>
-          )
-        }
-        <div className='hidden lg:block'>
-          {renderLangButton()}
-        </div>
-
+              <button
+                className={`relative group ${cls.header__modal_button}`}
+                onClick={openModal}
+              >             
+                <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200">
+                  <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
+                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                    <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
+                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                  </div>
+                </div>
+              </button>)}
+        <div className="hidden lg:block">{renderLangButton()}</div>
       </div>
     </header>
   );
