@@ -34,18 +34,11 @@ function Header() {
   };
 
   // Рендер навигационной меню
-  const navLink: LinkProps[] = [
-    {title: 'Home', path: '/'},
-    {title: 'About', path: '/'},
-    {title: 'Team', path: '/'},
-    {title: 'Services', path: '/services'},
-    {title: 'Contact', path: '/'},
-  ]
 
   const navLinkMobile: LinkProps[] = [
     {title: 'Home', path: '/', onClick: closeModal},
-    {title: 'About', path: '/', onClick: closeModal },
-    {title: 'Team', path: '/', onClick: closeModal},
+    {title: 'About', path: '/aboutUs', onClick: closeModal },
+    {title: 'Team', path: '/team', onClick: closeModal},
     {title: 'Services', path: '/services', onClick: closeModal},
     {title: 'Contact', path: '/', onClick: closeModal},
   ]
@@ -105,7 +98,7 @@ function Header() {
             About
           </Link>
           <Link
-            to={"/"}
+            to={"team"}
             className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
           >
             Team
@@ -122,12 +115,11 @@ function Header() {
           >
             Contact
           </Link>
-          {renderNavMenu({links: navLink})}
         </nav>
         {
           isModalOpen ? (
             <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
-              <div className="bg-white  rounded shadow-md w-screen h-screen overflow-y-hidden">
+              <div className="bg-white rounded shadow-md w-screen h-screen overflow-y-hidden">
                 <span
                   className="absolute top-4 right-9 m-4 cursor-pointer text-3xl"
                   onClick={closeModal}
@@ -149,10 +141,10 @@ function Header() {
               aria-controls="mega-menu-full" 
               aria-expanded="false"
             >
-                <span className="sr-only">Open main menu</span>
-                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path  d="M1 1h15M1 7h15M1 13h15"/>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                  <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
                 </svg>
+                
             </button>
           )
         }
