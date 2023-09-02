@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from content.models import Project, Employee, EmailContact, PhoneContact, AddressContact
+from .models import Project, Employee, EmailContact, PhoneContact, \
+    AddressContact, UserSubscription, \
+    BigTextualContent, SummaryNumericData, OurValues
+
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,3 +32,27 @@ class AddressContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddressContact
         fields = ('id', 'address',)
+
+
+class UserSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSubscription
+        fields = ('id', 'name', 'email')
+
+
+class OurValuesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurValues
+        fields = "__all__"
+
+
+class BigTextualContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BigTextualContent
+        fields = "__all__"
+
+
+class SummaryNumericDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SummaryNumericData
+        fields = "__all__"
