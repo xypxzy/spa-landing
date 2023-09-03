@@ -1,9 +1,12 @@
 from django.db import models
 
 
+def address_images(instance, filename):
+    return f'adresses/{filename}'
+
 class AddressContact(models.Model):
-    flag = models.ImageField()
     address = models.CharField(max_length=255, verbose_name='Адрес')
+    image = models.ImageField(blank=True, null=True, upload_to=address_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
@@ -51,13 +54,15 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.name} | {self.customer}'
 
+def employee_images(instance, filename):
+    return f'employees/{filename}'
 
 class Employee(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Имя')
     last_name = models.CharField(max_length=255, verbose_name='Фамилия')
     position = models.CharField(max_length=255, verbose_name='Должность')
     
-    image = models.ImageField(blank=True, null=True, default='/default_employee.jpg', upload_to='employee_images', verbose_name='Фото')
+    image = models.ImageField(blank=True, null=True, upload_to=employee_images, verbose_name='Фото')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
@@ -81,10 +86,10 @@ class SummaryNumericData(models.Model):
     is_visible attribute allows the data to be displayed
     data_description is the small text near the numbers explaining what the numbers are for
     """
-    is_visible = models.BooleanField(default=True, verbose_name='Виден на сайте')
     data_description = models.CharField(max_length=255, verbose_name='Описание данных')
     number = models.IntegerField(default=0, verbose_name='Число')
-
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    
     class Meta:
         verbose_name = 'Суммарные данные'
         verbose_name_plural = 'Суммарные данные'
@@ -104,6 +109,7 @@ class OurValues(models.Model):
     image = models.ImageField(upload_to=values_photos, verbose_name='Картинка')
     name = models.CharField(max_length=255, verbose_name='Ценность')
     description = models.TextField(blank=True, default='No description provided', verbose_name='Описание')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
         verbose_name = 'Ценность'
@@ -122,11 +128,12 @@ class BigTextualContent(models.Model):
     This class will have big content with some text in it.
     tags are short text that describes the characteristics
     """
-    image = models.ImageField(upload_to=textual_content, verbose_name='Картинка')
     title = models.CharField(max_length=255, default="No title provided", blank=True, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
     tags = models.CharField(max_length=100, verbose_name='Теги')
-
+    image = models.ImageField(upload_to=textual_content, verbose_name='Картинка')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    
     class Meta:
         verbose_name = 'Текстовый контент'
         verbose_name_plural = 'Текстовый контент'
