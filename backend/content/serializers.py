@@ -13,7 +13,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ('id', 'first_name', 'last_name', 'position',)
+        fields = ('id', 'first_name', 'last_name', 'position', 'image',
+                  'facebook', 'whatsapp', 'instagram',)
 
 
 class EmailContactSerializer(serializers.ModelSerializer):
@@ -43,16 +44,16 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
 class OurValuesSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurValues
-        fields = "__all__"
+        fields = ('id', 'name', 'description', 'image',)
 
 
 class BigTextualContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = BigTextualContent
-        fields = "__all__"
+        fields = ('id', 'title', 'description', 'tags', 'image',)
 
 
 class SummaryNumericDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SummaryNumericData
-        fields = "__all__"
+        fields = ('id', 'data_description', 'number',)
