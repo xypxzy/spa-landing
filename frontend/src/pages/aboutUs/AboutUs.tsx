@@ -5,21 +5,15 @@ import Carousel from '../../components/carousel/Carousel'
 import BestT from '../../components/bestTeam/BestT'
 import {motion} from 'framer-motion'
 import Address from '../../components/adresses/Adress'
+import { useState, useEffect } from 'react'
+
+interface summeryProps {
+    number: number;
+    data_description: string;
+}
 
 
 const AboutUs = () => {
-
-    const number = [
-        {skale: '325', text: 'Clients Worldwide', color: 'red', plus:'+'},
-        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'},
-        {skale: '325', text: 'Clients Worldwide',  color: 'red', plus:'+'},
-        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'}, 
-        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'}, 
-        {skale: '325', text: 'Clients Worldwide', color: 'red', plus:'+'},
-        {skale: '325', text: 'Clients Worldwide',  color: 'blue', plus:'+'},
-        {skale: '325', text: 'Clients Worldwide',  color: 'red', plus:'+'},
-    
-    ]
 
     const numAnimatio ={ 
         hidden:{
@@ -31,6 +25,19 @@ const AboutUs = () => {
             opacity: 1,
         }
     }
+    const [summery, setSummery] = useState<summeryProps[]>([])
+
+    useEffect(() => {
+        const api = async () => {
+            const data = await fetch("http://localhost:8002/content/summary/", {
+              method: "GET"
+            })
+            .then((response) => response.json());
+            setSummery(data)
+          };
+        api();
+    },[])
+
     return(
         <main>
             <section className={style.top_a}>
@@ -44,7 +51,7 @@ const AboutUs = () => {
                     whileInView='visible'
                     viewport={{amount: 0.5, once: true}}
                 >
-                    {number.map((el) => (
+                    {summery.map((el) => (
                         <>
                             <motion.div className={style.num_lk} variants={numAnimatio}   initial={{ scale: 0 }}
                             animate={{ rotate: 360, scale: 1 }}
@@ -53,8 +60,8 @@ const AboutUs = () => {
                                 stiffness: 260,
                                 damping: 20
                             }}>
-                                <p>{el.skale} <p style={{color:`${el.color}`}}>{el.plus}</p></p>
-                                <p>{el.text}</p>
+                                <p>{el.number}<p>+</p></p>
+                                <p>{el.data_description}</p>
                             </motion.div>
                         </>
                     ))}

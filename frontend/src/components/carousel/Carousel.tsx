@@ -1,13 +1,13 @@
 import style from './Carousel.module.css'
 import icon from '../../assets/aboutAs/IconOr.png'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {motion} from 'framer-motion'
 import { ContentM } from '../carouselCard/CarouselC'
+import { CarouselProps } from '../../const/about'
 
 const Carousel = () => {
     const [translateValue, setTranslateValue] = useState<number>(0);
-    console.log(translateValue)
-
+    const [carouselReq, setCarouselReq] = useState<CarouselProps[]>([])
     const textAnim = {
         hidden:{
             x: -500,
@@ -26,11 +26,11 @@ const Carousel = () => {
         setTranslateValue(translateValue + scrollAmount);
 
          // Decrease by 10px
-        if (translateValue <= -1000) {
+        if (translateValue <= carouselReq.length * -360) {
             const newTranslateValue = translateValue + 20
             setTranslateValue(newTranslateValue);
         }
-        if (translateValue >= 0) {
+        if (translateValue >= 100) {
             const newTranslateValueBack = translateValue - 20
             setTranslateValue(newTranslateValueBack);
         }
@@ -38,7 +38,7 @@ const Carousel = () => {
     const handleCliclNextScroll = () => {
         setTranslateValue(translateValue - 400);
 
-        if (translateValue <= -1600) {
+        if (translateValue <= carouselReq.length * -360) {
           setTranslateValue(translateValue + 400);
         }
     };
@@ -46,10 +46,21 @@ const Carousel = () => {
 
         setTranslateValue(translateValue + 400);
 
-        if (translateValue >= 0) {
+        if (translateValue >= 100) {
           setTranslateValue(translateValue - 400);
         }
     };
+
+    useEffect(() => {
+        const api = async () => {
+            const data = await fetch("http://localhost:8002/content/values/", {
+              method: "GET"
+            })
+            .then((response) => response.json());
+            setCarouselReq(data)
+          };
+        api();
+    },[])
 
 
     return(
@@ -74,10 +85,11 @@ const Carousel = () => {
                     }}
                     onWheel={handleScroll}
                 >
-                    <ContentM custom={2} variants={textAnim}/>
-                    <ContentM custom={3} variants={textAnim}/>
-                    <ContentM custom={4} variants={textAnim}/>
-                    <ContentM custom={5} variants={textAnim}/>
+                    {carouselReq.map((car) => (
+                        <>
+                            <ContentM carousel={car} custom={2} variants={textAnim}/>
+                        </>
+                    ))}
                 </div>
             </section>
             <div className={style.carus_button}>

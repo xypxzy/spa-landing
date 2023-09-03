@@ -20,7 +20,7 @@ const Team = () => {
     }
 
     return(
-        <section className={cls.team_a}>
+        <section className={style.team_aa}>
              <div className={cls.img}>
                     <Ball/>
                     <div className={cls.text_position}><p className={cls.text_about}><span className={cls.fg_bn}>Team</span></p></div>  
@@ -36,9 +36,9 @@ const Team = () => {
                     <p className={style.text_trans}>High-impact services to take your business to the next level</p>
                 </div>
                 <div className={style.team_card}>
-                    {[1,2,3,4,5,1,1,1,1].map((el, i) => (
+                    {[1,2,3,4,5,1,1,1,1].map(() => (
                         <>
-                            <TeamM variants={textAnim} custom={i}/>
+                            <TeamM variants={textAnim}/>
                         </>
                     ))}
                 </div>
