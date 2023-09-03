@@ -15,6 +15,9 @@
     line-height: 156.5%;
     margin-top: 10px;
 }
+.svg{
+    margin-right: 10px;
+}
 .ad_card{
     width: 400px;
     padding: 30px;
@@ -29,7 +32,7 @@
 .phone, .email{
     display: flex;
     margin-top: 10px;
-    align-items: first baseline;
+    align-items: baseline;
 }
 .phone img, .email img{
     margin-right: 5px;

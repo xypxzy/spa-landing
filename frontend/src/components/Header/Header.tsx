@@ -36,25 +36,27 @@ function Header() {
   };
 
   // Рендер навигационной меню
+
   const navLink: LinkProps[] = [
-    { title: 'Home', path: '/' },
-    { title: 'About', path: '/aboutUs' },
-    { title: 'Team', path: '/' },
-    { title: 'Services', path: '/services' }
-  ];
+    {title: 'Home', path: '/'},
+    {title: 'About', path: '/aboutUs'},
+    {title: 'Team', path: '/team'},
+    {title: 'Services', path: '/services'},
+  ]
 
   const navLinkMobile: LinkProps[] = [
-    { title: 'Home', path: '/', onClick: closeModal },
-    { title: 'About', path: '/aboutUs', onClick: closeModal },
-    { title: 'Team', path: '/', onClick: closeModal },
-    { title: 'Services', path: '/services', onClick: closeModal }
-  ];
+    {title: 'Home', path: '/', onClick: closeModal},
+    {title: 'About', path: '/aboutUs', onClick: closeModal },
+    {title: 'Team', path: '/team', onClick: closeModal},
+    {title: 'Services', path: '/services', onClick: closeModal},
+  ]
+
 
   const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
     <>
-      {links.map((link) => (
+      {links.map((link, id) => (
         <Link
-          key={link.title}
+          key={id}
           to={link.path}
           className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
           onClick={link.onClick && link.onClick}
@@ -81,7 +83,15 @@ function Header() {
           <span className={cls.header__logo_title}>My Ticket</span>
         </Link>
         <nav className={cls.header__nav}>
-          {renderNavMenu({ links: navLink })}
+          {navLink.map((link, id) => (
+            <Link
+              key={id}
+              to={link.path}
+              className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+            >
+              {link.title}
+            </Link>
+          ))}
         </nav>
         {isModalOpen ? (
           <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
@@ -98,20 +108,19 @@ function Header() {
               <div>{renderLangButton()}</div>
             </div>
           </div>
-        ) : (
-          <button
-            className={`relative group ${cls.header__modal_button}`}
-            onClick={openModal}
-          >
-            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-              <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
-                <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-                <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
-                <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-              </div>
-            </div>
-          </button>
-        )}
+          ) : (
+              <button
+                className={`relative group ${cls.header__modal_button}`}
+                onClick={openModal}
+              >             
+                <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200">
+                  <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
+                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                    <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
+                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                  </div>
+                </div>
+              </button>)}
         <div className="hidden lg:block">{renderLangButton()}</div>
       </div>
     </header>

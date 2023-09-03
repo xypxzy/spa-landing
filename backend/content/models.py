@@ -1,8 +1,12 @@
 from django.db import models
 
 
+def address_images(instance, filename):
+    return f'adresses/{filename}'
+
 class AddressContact(models.Model):
     address = models.CharField(max_length=255, verbose_name='Адрес')
+    image = models.ImageField(blank=True, null=True, upload_to=address_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
@@ -36,6 +40,7 @@ class EmailContact(models.Model):
     def __str__(self):
         return f'{self.email}'
 
+
 class Project(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
@@ -49,12 +54,15 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.name} | {self.customer}'
 
+def employee_images(instance, filename):
+    return f'employees/{filename}'
+
 class Employee(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Имя')
     last_name = models.CharField(max_length=255, verbose_name='Фамилия')
     position = models.CharField(max_length=255, verbose_name='Должность')
     
-    image = models.ImageField(blank=True, null=True, default='/default_employee.jpg', upload_to='employee_images', verbose_name='Фото')
+    image = models.ImageField(blank=True, null=True, upload_to=employee_images, verbose_name='Фото')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
@@ -68,3 +76,79 @@ class Employee(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} | {self.position}'
+
+
+class SummaryNumericData(models.Model):
+    """
+    Class keeps the data from a panel with summary data, such as:
+    the total amount of clients, projects, team members, revenue generated etc.
+
+    is_visible attribute allows the data to be displayed
+    data_description is the small text near the numbers explaining what the numbers are for
+    """
+    data_description = models.CharField(max_length=255, verbose_name='Описание данных')
+    number = models.IntegerField(default=0, verbose_name='Число')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    
+    class Meta:
+        verbose_name = 'Суммарные данные'
+        verbose_name_plural = 'Суммарные данные'
+
+    def __str__(self):
+        return self.data_description
+
+
+def values_photos(instance, filename):
+    return f'values/{filename}'
+
+
+class OurValues(models.Model):
+    """
+    Class that adds the model and makes 'Our values' part of the page customizable.
+    """
+    image = models.ImageField(upload_to=values_photos, verbose_name='Картинка')
+    name = models.CharField(max_length=255, verbose_name='Ценность')
+    description = models.TextField(blank=True, default='No description provided', verbose_name='Описание')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+
+    class Meta:
+        verbose_name = 'Ценность'
+        verbose_name_plural = 'Ценности'
+
+    def __str__(self):
+        return self.name
+
+
+def textual_content(instance, filename):
+    return f'textual_content/{filename}'
+
+
+class BigTextualContent(models.Model):
+    """
+    This class will have big content with some text in it.
+    tags are short text that describes the characteristics
+    """
+    title = models.CharField(max_length=255, default="No title provided", blank=True, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание')
+    tags = models.CharField(max_length=100, verbose_name='Теги')
+    image = models.ImageField(upload_to=textual_content, verbose_name='Картинка')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    
+    class Meta:
+        verbose_name = 'Текстовый контент'
+        verbose_name_plural = 'Текстовый контент'
+
+    def __str__(self):
+        return self.title
+
+
+class UserSubscription(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+
+    def __str__(self):
+        return self.email
