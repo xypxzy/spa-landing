@@ -1,12 +1,14 @@
-import { FunctionComponent, SVGProps } from 'react'
+import { FunctionComponent, HTMLAttributes, SVGProps, useEffect, useState } from 'react'
 import {ReactComponent as LocationIcon}  from '../../assets/locationIcon.svg'
 import {ReactComponent as PhoneIcon}  from '../../assets/phoneIcon.svg'
 import {ReactComponent as PageIcon} from '../../assets/PagesIcon.svg'
 import {ReactComponent as UtilityPageIcon} from '../../assets/utilityPages.svg'
 import {ReactComponent as FollowIcon} from '../../assets/Follow.svg'
-import bgCardImg from '../../assets/homePage/footer-card.png';
-import {ReactComponent as Logo} from '../../assets/logo.svg'
+
 import cls from './Footer.module.css'
+import axios from 'axios'
+import { DEFAULT_URL } from '../../consts/const'
+import SendEmailCard from '../SendEmailCard/SendEmailCard'
 
 interface MenuPageProps {
   title: string,
@@ -14,40 +16,63 @@ interface MenuPageProps {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>
 }
 
+interface AddressProps {
+  id: number,
+  address: string
+}
+interface PhoneProps {
+  id: number,
+  phone: string
+}
+interface EmailProps {
+  id: number,
+  email: string
+}
+
+
 function Footer() {
-  const menuPages: MenuPageProps[] = [
-    {title: 'Pages1', menus: ['About','History','Careers'], icon: PageIcon},
-    {title: 'Pages2', menus: ['About','History','Careers'], icon: UtilityPageIcon},
-    {title: 'Pages3', menus: ['About','History','Careers'], icon: FollowIcon},
-  ]
+  const [address, setAddress] = useState<AddressProps[]>([]);
+  const [phone, setPhone] = useState<PhoneProps[]>([]);
+  const [emails, setEmails] = useState<EmailProps[]>([]);
+
+  useEffect(() => {
+    // Создайте функцию для выполнения запроса к серверу
+    const fetchAddress = async () => {
+      try {
+        const response = await axios.get<AddressProps[]>(`${DEFAULT_URL}/content/addresses/`); 
+        setAddress(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
+
+    const fetchPhone = async () => {
+      try {
+        const response = await axios.get<PhoneProps[]>(`${DEFAULT_URL}/content/phones/`);
+        setPhone(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
+
+    const fetchEmails = async () => {
+      try {
+        const response = await axios.get<EmailProps[]>(`${DEFAULT_URL}/content/emails/`);
+        setEmails(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
+    fetchAddress();
+    fetchPhone();
+    fetchEmails();
+  }, []);
 
   return (
     <footer className={cls.footer}>
       <div className={cls.footer__container}>
         <div className={cls.footer__wrapper}>
-          <div className={cls.footer__card_block}>
-            <div className={cls.footer__card_block__wrapper}>
-                <div className='flex items-center'>
-                <Logo className='w-10 h-10'/>
-                <span className={cls.footer__card_block__title}>
-                  My Ticket
-                </span>
-                </div>
-                <img src={bgCardImg}  alt="bg img" />
-                <div>
-                  <h1>Subscribe now</h1>
-                  <p className='text-sm text-[#D0D0D0]'>Industry's standard from dummy and make a type book.</p>
-                  <div className="mb-6">
-                    <input 
-                      type="text"
-                      placeholder='Enter you email'
-                      className={cls.footer__card_block__input}
-                    />
-                    <button className={cls.footer__card_block__button}>Submit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <SendEmailCard />
           <div className='md:w-1/2'>
             <div className={cls.footer__navigation_block}>
               <span className={cls.footer__navigation_contact}>
@@ -56,39 +81,37 @@ function Footer() {
                   <h2 className='font-semi text-lg'>Get in touch with</h2>  
                 </span>
                 <span className='my-5'>
-                  <a href="#" className={cls.footer__navigation_phone}>+1 917 000 1212</a>
+                  {phone.length > 0 && 
+                    <a 
+                      href={`tel:${phone[0].phone.replace(/ /g, '')}`}                   
+                      target='_blank'
+                      className={cls.footer__navigation_phone}
+                    >
+                      {phone[0].phone}
+                    </a>
+                  }
                 </span>
-                <p>nextlevel@marketing.com</p>
+                {
+                  emails.length > 0 && (
+                    <a href={`mailto:${emails[0].email}`}>{emails[0].email}</a>
+                  )
+                }
               </span>
               <span className='lg:w-1/2 h-full flex flex-col gap-3'>
                 <span className='flex items-center gap-1'>
                   <LocationIcon className='w-5 h-5'/>
                   <h2 className='font-semi text-lg'>Location</h2>
                 </span>
-                <p className='py-2'>10 Suna House 65 Rivington Street London EC2A 3QQ</p>
-                <a href="#" className='text-yellow-400 hover:text-yellow-100 underline'>location</a>
+                <p className='py-2'>{address.length > 0 ? address[0].address : null}</p>
+                <a 
+                  href={`https://www.google.com/maps?q=${address.length > 0 && address[0].address}`}
+                  className='text-yellow-400 hover:text-yellow-100 underline'
+                  target='_blank'
+                >
+                  location
+                </a>
               </span>
             </div>
-            <div className={cls.footer__navigation_links}>
-              {
-                menuPages.map(item => (
-                  <div key={item.title}>
-                    <span className='flex items'>
-                      <item.icon className='w-5 h-5 mr-2'/>
-                      <p className="font-medium">
-                        {item.title}
-                      </p>
-                    </span>
-                    <nav className={cls.footer__navigation_item}>
-                      {item.menus.map(menu => (
-                        <a key={menu} className="hover:opacity-75">{menu}</a>
-                      ))}
-                    </nav>
-                  </div>
-                ))
-              }
-            </div>
-            
           </div>
         </div>
         <p className="mt-8 text-sm flex justify-center">

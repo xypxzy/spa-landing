@@ -1,0 +1,19 @@
+.footer__card_block {
+  @apply md:w-1/2 flex md:justify-end justify-center md:mr-8;
+}
+
+.footer__card_block__wrapper {
+  @apply bg-[#3C3C45] border border-[#3C3C40] rounded-lg shadow flex items-center flex-col p-10;
+}
+
+.footer__card_block__title {
+  @apply ml-5 md:text-3xl text-xl uppercase font-bold;
+}
+
+.footer__card_block__input {
+  @apply my-2 bg-[#5B5B61] border border-[#5B5B40] text-white text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5;
+}
+
+.footer__card_block__button {
+  @apply w-full mt-3   focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2;
+}

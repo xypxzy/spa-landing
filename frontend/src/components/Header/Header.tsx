@@ -37,20 +37,26 @@ function Header() {
 
   // Рендер навигационной меню
 
+  const navLink: LinkProps[] = [
+    {title: 'Home', path: '/'},
+    {title: 'About', path: '/aboutUs'},
+    {title: 'Team', path: '/team'},
+    {title: 'Services', path: '/services'},
+  ]
+
   const navLinkMobile: LinkProps[] = [
     {title: 'Home', path: '/', onClick: closeModal},
     {title: 'About', path: '/aboutUs', onClick: closeModal },
     {title: 'Team', path: '/team', onClick: closeModal},
     {title: 'Services', path: '/services', onClick: closeModal},
-    {title: 'Contact', path: '/', onClick: closeModal},
   ]
 
 
   const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
     <>
-      {links.map((link) => (
+      {links.map((link, id) => (
         <Link
-          key={link.title}
+          key={id}
           to={link.path}
           className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
           onClick={link.onClick && link.onClick}
@@ -77,36 +83,15 @@ function Header() {
           <span className={cls.header__logo_title}>My Ticket</span>
         </Link>
         <nav className={cls.header__nav}>
-          <Link
-            to={"/"}
-            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
-          >
-            Home
-          </Link>
-          <Link
-            to={"aboutUs"}
-            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
-          >
-            About
-          </Link>
-          <Link
-            to={"team"}
-            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
-          >
-            Team
-          </Link>
-          <Link
-            to={"/services"}
-            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
-          >
-            Services
-          </Link>
-          <Link
-            to={"/"}
-            className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
-          >
-            Contact
-          </Link>
+          {navLink.map((link, id) => (
+            <Link
+              key={id}
+              to={link.path}
+              className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+            >
+              {link.title}
+            </Link>
+          ))}
         </nav>
         {isModalOpen ? (
           <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
