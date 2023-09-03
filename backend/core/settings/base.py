@@ -24,6 +24,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
+    'django_cleanup',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [
@@ -40,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'django_cleanup',
 
     *THIRD_PARTY_APPS,
     *LOCAL_APPS,
