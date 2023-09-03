@@ -2,11 +2,12 @@ import style from './Adress.module.css'
 import phone from '../../assets/aboutAs/Vector.svg'
 import email from '../../assets/aboutAs/Icon(4).svg'
 import flag from '../../assets/aboutAs/image 55.png'
+import KGflag from '../../assets/aboutAs/Flag_of_Kyrgyzstan.svg(1).png'
 
 const AdressC = () => {
     return(
         <section className={style.ad_card}>
-            <img src={flag} alt="" className={style.imagesd} width='70px'/>
+            <img src={KGflag} alt="" className={style.imagesd} width='70px'/>
             <p className={style.md_fff}>San Francisco, USA</p>
             <p className={style.mf_ppp}> 1650 Page. San Francisco, California(CA), 94117</p>
             <div className={style.phone}>

@@ -5,6 +5,11 @@
     align-items: center;
     z-index: 1;
     flex-direction: column;
+    position: relative;
+    top: -100px;
+}
+.team_aa{
+    background-color: #292930;
 }
 .team_card{
     display: flex;

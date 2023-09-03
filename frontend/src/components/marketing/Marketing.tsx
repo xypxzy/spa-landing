@@ -1,9 +1,17 @@
-import icon from '../../assets/aboutAs/Icon.svg'
-import pc from '../../assets/aboutAs/Image(2)(1)(2).png'
 import goal from '../../assets/aboutAs/013. Goals.png'
 import megaphone from '../../assets/aboutAs/017. Megaphone.png'
 import style from './Marketind.module.css'
 import {motion} from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+interface AboutProps{
+    image: string;
+    title: string;
+    description: string;
+    tags: string
+}
+
+
 
 const Marketing: React.FC = () => {
     const numAnimatio ={ 
@@ -28,13 +36,27 @@ const Marketing: React.FC = () => {
             transition: {delay: custom * 0.2}
         })
     }
+
+    const [aboutSet, setAboutSet] = useState<AboutProps>()
+
+    useEffect(() => {
+        const api = async () => {
+            const data = await fetch("http://localhost:8002/content/content/", {
+              method: "GET"
+            })
+            .then((response) => response.json());
+            setAboutSet(data[0])
+          };
+        api();
+    },[])
+
     return(
     <motion.section 
         className={style.marketing_a}
         initial='hidden'
         whileInView='visible'
         viewport={{amount: 0.5, once: true}}>
-        <motion.img src={pc} alt="PC" className={style.ps} custom={1} variants={imgAnimatio} width='600px'/>
+        <motion.img src={aboutSet?.image} alt="PC" className={style.ps} custom={1} variants={imgAnimatio} width='600px'/>
         <motion.div className={style.text_mar} custom={2} variants={numAnimatio}>
             <div className={style.kd_jj}>
                 <div>
@@ -47,17 +69,16 @@ const Marketing: React.FC = () => {
                     </svg>
                 </div>
                 <div className={style.top}>
-                    <div className={style.jjddd}><span style={{color: 'yellow'}}>//<span style={{color: 'black'}}> 01 . About Us</span></span></div>
+                    <div className={style.jjddd}><span style={{color: 'yellow'}}>//<span style={{color: 'black'}}> 01 . {aboutSet?.title}</span></span></div>
                     
-                    <p>The #1 digital marketing services company</p>
+                    <p>{aboutSet?.tags}</p>
                 </div>
             </div>
             <div className={style.strategy}>
                 <button><img src={goal} alt="goal" className={style.imaaage} width='30px'/><p>Development Scale</p></button>
                 <button><img src={megaphone} alt="megaphone" className={style.imaaage} width='30px'/><p>Research & Strategy</p></button>
             </div>
-            <p className={style.text_down}>Lorem ipsum dolors sit non amet consectetur adipiscing elit fringilla aliquam 
-            Aliquam vestibulum libero morbi blandit cursus risus. Laoreet non curabitur gravida arcu ac tortor semper vivera nam libero justo laoreet mollis aliquam ut porttitor leo a diam.</p>
+            <p className={style.text_down}>{aboutSet?.description}</p>
         </motion.div>
     </motion.section>
     )
