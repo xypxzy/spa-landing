@@ -3,6 +3,7 @@
         "model": "content.EmailContact",
         "pk": 1,
         "fields": {
+            "address": 1,
             "email": "myticketll@gmail.com",
             "is_visible": "True"
         }
