@@ -78,7 +78,7 @@ class SummaryNumericData(models.Model):
     Class keeps the data from a panel with summary data, such as:
     the total amount of clients, projects, team members, revenue generated etc.
 
-    is_active attribute allows the data to be displayed
+    is_visible attribute allows the data to be displayed
     data_description is the small text near the numbers explaining what the numbers are for
     """
     is_visible = models.BooleanField(default=True, verbose_name='Виден на сайте')
@@ -122,10 +122,10 @@ class BigTextualContent(models.Model):
     This class will have big content with some text in it.
     tags are short text that describes the characteristics
     """
-    image = models.ImageField(upload_to=textual_content)
-    title = models.CharField(max_length=255, default="No title provided", blank=True)
-    description = models.TextField()
-    tags = models.CharField(max_length=100, )
+    image = models.ImageField(upload_to=textual_content, verbose_name='Картинка')
+    title = models.CharField(max_length=255, default="No title provided", blank=True, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание')
+    tags = models.CharField(max_length=100, verbose_name='Теги')
 
     class Meta:
         verbose_name = 'Текстовый контент'
@@ -138,6 +138,10 @@ class BigTextualContent(models.Model):
 class UserSubscription(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
 
     def __str__(self):
         return self.email
