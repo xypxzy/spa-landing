@@ -3,8 +3,8 @@ from django.db import models
 
 class AddressContact(models.Model):
     flag = models.ImageField()
-    address = models.CharField(max_length=255)
-    is_visible = models.BooleanField(default=False)
+    address = models.CharField(max_length=255, verbose_name='Адрес')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
         verbose_name = 'Адрес'
@@ -81,9 +81,9 @@ class SummaryNumericData(models.Model):
     is_active attribute allows the data to be displayed
     data_description is the small text near the numbers explaining what the numbers are for
     """
-    is_active = models.BooleanField(default=True)
-    data_description = models.CharField(max_length=255, )
-    number = models.IntegerField(default=0)
+    is_visible = models.BooleanField(default=True, verbose_name='Виден на сайте')
+    data_description = models.CharField(max_length=255, verbose_name='Описание данных')
+    number = models.IntegerField(default=0, verbose_name='Число')
 
     class Meta:
         verbose_name = 'Суммарные данные'
@@ -101,9 +101,9 @@ class OurValues(models.Model):
     """
     Class that adds the model and makes 'Our values' part of the page customizable.
     """
-    image = models.ImageField(upload_to=values_photos)
-    name = models.CharField(max_length=255, )
-    description = models.TextField(blank=True, default='No description provided')
+    image = models.ImageField(upload_to=values_photos, verbose_name='Картинка')
+    name = models.CharField(max_length=255, verbose_name='Ценность')
+    description = models.TextField(blank=True, default='No description provided', verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Ценность'

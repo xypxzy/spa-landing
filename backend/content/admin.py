@@ -1,10 +1,9 @@
-from typing import Any, Tuple
 from django.contrib import admin
-from django.db.models.query import QuerySet
-from django.http.request import HttpRequest
+from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 
-from content.models import AddressContact, PhoneContact, EmailContact, Employee, Project
+from content.models import (AddressContact, PhoneContact, EmailContact, Employee, Project,
+SummaryNumericData, OurValues, BigTextualContent, UserSubscription)
 from content.mixins import ContentAdminMixin
 
 admin.site.site_header = "Myticket"
@@ -161,3 +160,80 @@ class EmployeeAdmin(ContentAdminMixin, TranslationAdmin):
     actions = ('make_visible', 'make_invisible',)
    
 admin.site.register(Employee, EmployeeAdmin)
+
+
+class SummaryNumericDataAdmin(ContentAdminMixin, TranslationAdmin):
+    list_display = ('id', 'data_description', 'number', 'is_visible',)
+    list_display_links = ('data_description',)
+    list_editable = ('is_visible',)
+    ordering = ('-is_visible', 'id',)
+    search_fields = ('data_description_ru', 'data_description_en', 'data_description_ky',)
+    
+    fieldsets = (
+        ('Ru', {
+            'fields': ('data_description_ru', 'number',),
+            'description': 'Поля на русском языке обязательны (*).',
+        }),
+        ('En', {
+            'fields': ('data_description_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
+        }),
+        ('Ky', {
+            'fields': ('data_description_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+        ('Статус', {
+            'fields': ('is_visible',)
+        }),
+    )
+    
+    list_filter = ('is_visible',)
+
+    actions = ('make_visible', 'make_invisible',)
+
+admin.site.register(SummaryNumericData, SummaryNumericDataAdmin)
+
+
+class OurValuesAdmin(TranslationAdmin):
+    list_display = ('id', 'name', 'description', 'get_little_image',)
+    list_display_links = ('name', 'description',)
+    # list_editable = ('image',)
+    ordering = ('id',)
+    search_fields = ('name_ru', 'description_ru',
+                     'name_en', 'description_en',
+                     'name_ky', 'description_ky',)
+    
+    fieldsets = (
+        ('Ru', {
+            'fields': ('name_ru', 'description_ru', 'image',),
+            'description': 'Поля на русском языке обязательны (*).',
+        }),
+        ('En', {
+            'fields': ('name_en', 'description_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
+        }),
+        ('Ky', {
+            'fields': ('name_ky', 'description_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+    )
+    
+    def get_little_image(self, object):
+        if object.image:
+            return mark_safe(f"<img src='{object.image.url}' width=50>")
+    
+    get_little_image.short_description = "Картинка"
+
+admin.site.register(OurValues, OurValuesAdmin)
+
+
+class BigTextualContentAdmin(ContentAdminMixin, TranslationAdmin):
+    pass
+
+admin.site.register(BigTextualContent, BigTextualContentAdmin)
+
+
+class UserSubscriptionAdmin(ContentAdminMixin, admin.ModelAdmin):
+    pass
+
+admin.site.register(UserSubscription, UserSubscriptionAdmin)

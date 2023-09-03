@@ -3,7 +3,7 @@
     "model": "content.SummaryNumericData",
     "pk": 1,
     "fields": {
-      "is_active": "True",
+      "is_visible": "True",
       "number": "100",
 
       "data_description": "Проектов запущено",
@@ -17,7 +17,7 @@
     "model": "content.SummaryNumericData",
     "pk": 2,
     "fields": {
-      "is_active": "True",
+      "is_visible": "True",
       "number": "50",
 
       "data_description": "Компаний-клиентов",
@@ -31,7 +31,7 @@
     "model": "content.SummaryNumericData",
     "pk": 3,
     "fields": {
-      "is_active": "True",
+      "is_visible": "True",
       "number": "500",
 
       "data_description": "Прибыль",
@@ -45,7 +45,7 @@
     "model": "content.SummaryNumericData",
     "pk": 4,
     "fields": {
-      "is_active": "True",
+      "is_visible": "True",
       "number": "60",
 
       "data_description": "Членов команды",

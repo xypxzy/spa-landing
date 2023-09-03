@@ -24,6 +24,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
+    'django_cleanup',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [
@@ -40,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'django_cleanup',
 
     *THIRD_PARTY_APPS,
     *LOCAL_APPS,
@@ -139,14 +139,17 @@ else:
 
 JAZZMIN_SETTINGS = {
     "site_title": "MyTicket Admin",
+    
+    # "site_logo": 'img/mt_logo.png',
+    
     "copyright": "Sanarip Dolboor 2023",
     "topmenu_links": [
 
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Главная",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
         {"name": "Открыть сайт", "url":""},
 
-        {"app": "content"},
+        {"app": "content", "name": "Контент"},
     ],
 
     # Whether to display the side menu
@@ -157,25 +160,11 @@ JAZZMIN_SETTINGS = {
 
     "hide_apps": ["auth", "groups",],
 
-    # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [],
 
     "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",],
-
-    #############
-    # UI Tweaks #
-    #############
-    # Relative paths to custom CSS/JS scripts (must be present in static files)
-    # "custom_css": None,
-    # "custom_js": None,
-    # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
-    # "use_google_fonts_cdn": True,
-    # Whether to show the UI customizer on the sidebar
-    # "show_ui_builder": False,
     
-    # "changeform_format": "horizontal_tabs",
-
-    # "language_chooser": True
+    # "show_ui_builder": True,
 }
 
 from .production import DATABASES
