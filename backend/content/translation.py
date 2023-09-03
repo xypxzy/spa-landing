@@ -4,7 +4,7 @@ from .models import AddressContact, Project, Employee, SummaryNumericData, OurVa
 
 
 class AddressContactTranslationOptions(TranslationOptions):
-    fields = ('address',)
+    fields = ('city', 'address')
 
 
 translator.register(AddressContact, AddressContactTranslationOptions)
