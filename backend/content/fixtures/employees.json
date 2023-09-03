@@ -19,7 +19,11 @@
             "first_name_ky": "Андрей",
             "last_name_ky": "Кошкин",
             "position_ky": "backend иштеп чыгуучу",
-            "image": "employee_images/AK.jpg"
+
+            "image": "employee_images/AK.jpg",
+            "facebook": "https://www.facebook.com/llbean",
+            "whatsapp": "https://api.whatsapp.com/send?phone=+996557674791",
+            "instagram": "https://www.instagram.com/abacompany/"
         }
     },
 
@@ -43,7 +47,11 @@
             "first_name_ky": "Василиса",
             "last_name_ky": "Морозова",
             "position_ky": "frontend иштеп чыгуучу",
-            "image": "employee_images/VM.jpg"
+
+            "image": "employee_images/VM.jpg",
+            "facebook": "https://www.facebook.com/intrepidtravel",
+            "whatsapp": "https://wa.me/+996770551021",
+            "instagram": "https://www.instagram.com/stroykomplekt.kg/"
         }
     },
 
@@ -67,7 +75,11 @@
             "first_name_ky": "Талант",
             "last_name_ky": "Беков",
             "position_ky": "Дизайнерджан",
-            "image": "employee_images/TB.jpg"
+
+            "image": "employee_images/TB.jpg",
+            "facebook": "https://www.facebook.com/shopify/",
+            "whatsapp": "https://api.whatsapp.com/send?phone=996559506999",
+            "instagram": "https://www.instagram.com/bassein_deniz/"
         }
     }
 ]

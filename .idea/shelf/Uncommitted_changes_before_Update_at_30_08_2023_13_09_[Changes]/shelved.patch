@@ -1,0 +1,145 @@
+Index: backend/core/asgi.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nASGI config for core project.\r\n\r\nIt exposes the ASGI callable as a module-level variable named ``application``.\r\n\r\nFor more information on this file, see\r\nhttps://docs.djangoproject.com/en/4.2/howto/deployment/asgi/\r\n\"\"\"\r\n\r\nimport os\r\n\r\nfrom django.core.asgi import get_asgi_application\r\n\r\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')\r\n\r\napplication = get_asgi_application()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/asgi.py b/backend/core/asgi.py
+--- a/backend/core/asgi.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/asgi.py	(date 1693379179717)
+@@ -11,6 +11,6 @@
+ 
+ from django.core.asgi import get_asgi_application
+ 
+-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.base')
+ 
+ application = get_asgi_application()
+Index: backend/core/settings/base.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\r\nfrom pathlib import Path\r\nfrom decouple import config\r\n\r\n# Build paths inside the project like this: BASE_DIR / 'subdir'.\r\nBASE_DIR = Path(__file__).resolve().parent.parent.parent\r\n\r\n# SECRET_KEY\r\nSECRET_KEY = config('SECRET_KEY')\r\n\r\n# DEBUG\r\nDEBUG = config('DEBUG', default=False, cast=bool)\r\n\r\n# DEFINING THE VERSION\r\nPRODUCTION = config(\"PRODUCTION\")\r\n\r\nALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')\r\n\r\n\r\n# Application definition\r\nTHIRD_PARTY_APPS = [\r\n    # 'rest_framework',\r\n]\r\n\r\nLOCAL_APPS = [\r\n    'content.apps.ContentConfig',\r\n]\r\n\r\nINSTALLED_APPS = [\r\n    'django.contrib.admin',\r\n    'django.contrib.auth',\r\n    'django.contrib.contenttypes',\r\n    'django.contrib.sessions',\r\n    'django.contrib.messages',\r\n    'django.contrib.staticfiles',\r\n\r\n    *THIRD_PARTY_APPS,\r\n    *LOCAL_APPS,\r\n]\r\n\r\nMIDDLEWARE = [\r\n    'django.middleware.security.SecurityMiddleware',\r\n    'django.contrib.sessions.middleware.SessionMiddleware',\r\n    'django.middleware.common.CommonMiddleware',\r\n    'django.middleware.csrf.CsrfViewMiddleware',\r\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\r\n    'django.contrib.messages.middleware.MessageMiddleware',\r\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\r\n]\r\n\r\nROOT_URLCONF = 'core.urls'\r\n\r\nTEMPLATES = [\r\n    {\r\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\r\n        'DIRS': [],\r\n        'APP_DIRS': True,\r\n        'OPTIONS': {\r\n            'context_processors': [\r\n                'django.template.context_processors.debug',\r\n                'django.template.context_processors.request',\r\n                'django.contrib.auth.context_processors.auth',\r\n                'django.contrib.messages.context_processors.messages',\r\n            ],\r\n        },\r\n    },\r\n]\r\n\r\nWSGI_APPLICATION = 'core.wsgi.application'\r\n\r\n# Password validation\r\n# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators\r\n\r\nAUTH_PASSWORD_VALIDATORS = [\r\n    {\r\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\r\n    },\r\n    {\r\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\r\n    },\r\n    {\r\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\r\n    },\r\n    {\r\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\r\n    },\r\n]\r\n\r\n\r\n# Internationalization\r\n# https://docs.djangoproject.com/en/4.2/topics/i18n/\r\n\r\nLANGUAGE_CODE = 'ru-RU'\r\n\r\nTIME_ZONE = 'Asia/Bishkek'\r\n\r\nUSE_I18N = True\r\n\r\nUSE_TZ = True\r\n\r\n\r\n# Static files (CSS, JavaScript, Images)\r\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\r\n\r\nSTATIC_URL = 'static/'\r\nSTATIC_ROOT = os.path.join(BASE_DIR, 'static')\r\n\r\nMEDIA_URL = 'media/'\r\nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\r\n\r\n# Default primary key field type\r\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\r\n\r\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\r\n\r\nif not PRODUCTION:\r\n    from .development import *\r\nelse:\r\n    from .production import *\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/settings/base.py b/backend/core/settings/base.py
+--- a/backend/core/settings/base.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/settings/base.py	(date 1693377476520)
+@@ -11,8 +11,8 @@
+ # DEBUG
+ DEBUG = config('DEBUG', default=False, cast=bool)
+ 
+-# DEFINING THE VERSION
+-PRODUCTION = config("PRODUCTION")
++# defining the project state
++PRODUCTION = config("PRODUCTION", default=False, cast=bool)
+ 
+ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+ 
+@@ -91,8 +91,7 @@
+ # https://docs.djangoproject.com/en/4.2/topics/i18n/
+ 
+ LANGUAGE_CODE = 'ru-RU'
+-
+-TIME_ZONE = 'Asia/Bishkek'
++TIME_ZONE = "Asia/Bishkek"
+ 
+ USE_I18N = True
+ 
+@@ -114,6 +113,6 @@
+ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ 
+ if not PRODUCTION:
+-    from .development import *
++    from .local import *
+ else:
+     from .production import *
+Index: backend/core/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nURL configuration for core project.\r\n\r\nThe `urlpatterns` list routes URLs to views. For more information please see:\r\n    https://docs.djangoproject.com/en/4.2/topics/http/urls/\r\nExamples:\r\nFunction views\r\n    1. Add an import:  from my_app import views\r\n    2. Add a URL to urlpatterns:  path('', views.home, name='home')\r\nClass-based views\r\n    1. Add an import:  from other_app.views import Home\r\n    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')\r\nIncluding another URLconf\r\n    1. Import the include() function: from django.urls import include, path\r\n    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))\r\n\"\"\"\r\nfrom django.contrib import admin\r\nfrom django.urls import path\r\n\r\nurlpatterns = [\r\n    path('admin/', admin.site.urls),\r\n]\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/urls.py b/backend/core/urls.py
+--- a/backend/core/urls.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/urls.py	(date 1693378910775)
+@@ -1,19 +1,3 @@
+-"""
+-URL configuration for core project.
+-
+-The `urlpatterns` list routes URLs to views. For more information please see:
+-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+-Examples:
+-Function views
+-    1. Add an import:  from my_app import views
+-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+-Class-based views
+-    1. Add an import:  from other_app.views import Home
+-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+-Including another URLconf
+-    1. Import the include() function: from django.urls import include, path
+-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+-"""
+ from django.contrib import admin
+ from django.urls import path
+ 
+Index: backend/core/wsgi.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nWSGI config for core project.\r\n\r\nIt exposes the WSGI callable as a module-level variable named ``application``.\r\n\r\nFor more information on this file, see\r\nhttps://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/\r\n\"\"\"\r\n\r\nimport os\r\n\r\nfrom django.core.wsgi import get_wsgi_application\r\n\r\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')\r\n\r\napplication = get_wsgi_application()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/wsgi.py b/backend/core/wsgi.py
+--- a/backend/core/wsgi.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/wsgi.py	(date 1693378910934)
+@@ -11,6 +11,6 @@
+ 
+ from django.core.wsgi import get_wsgi_application
+ 
+-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
++os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.base')
+ 
+ application = get_wsgi_application()
+Index: backend/core/settings/development.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/settings/development.py b/backend/core/settings/local.py
+rename from backend/core/settings/development.py
+rename to backend/core/settings/local.py
+--- a/backend/core/settings/development.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/settings/local.py	(date 1693377212469)
+@@ -1,8 +1,10 @@
+-from .base import BASE_DIR
++from .base import BASE_DIR, config
+ 
+ # DEBUG
+ DEBUG = True
+ 
++ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
++
+ # Database
+ DATABASES = {
+     "default": {
+Index: backend/core/settings/production.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from decouple import config\r\n\r\n# DEBUG\r\nDEBUG = False\r\n\r\n# Database\r\nDATABASES = {\r\n    'default': {\r\n        'ENGINE': 'django.db.backends.postgresql_psycopg2',\r\n        'NAME': config('DB_NAME'),\r\n        'USER': config('DB_USER'),\r\n        'PASSWORD': config('DB_PASSWORD'),\r\n        'HOST': config('DB_HOST'),\r\n        'PORT': config('DB_PORT')\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/core/settings/production.py b/backend/core/settings/production.py
+--- a/backend/core/settings/production.py	(revision 75990dd3d477612f2c59b9bf23403c5188301f00)
++++ b/backend/core/settings/production.py	(date 1693377898657)
+@@ -2,6 +2,7 @@
+ 
+ # DEBUG
+ DEBUG = False
++ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+ 
+ # Database
+ DATABASES = {

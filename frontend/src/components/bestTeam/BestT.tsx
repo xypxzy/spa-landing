@@ -2,8 +2,11 @@ import style from './BestT.module.css'
 import icon from '../../assets/aboutAs/Icon(1).svg'
 import {motion} from 'framer-motion'
 import { TeamM } from '../teamCard/TeamC'
+import { useState, useEffect } from 'react'
+import { TeamProps } from '../../const/about'
 
 const BestT = () => {
+    const [teamReq, setTeamReq] = useState<TeamProps[]>([])
 
     const container = {
         hidden: { opacity: 1, scale: 0 },
@@ -26,6 +29,17 @@ const BestT = () => {
         })
     };
 
+    useEffect(() => {
+        const api = async () => {
+            const data = await fetch("http://localhost:8002/content/employees/", {
+              method: "GET"
+            })
+            .then((response) => response.json());
+            setTeamReq(data)
+          };
+        api();
+    },[])
+
     return(
         <motion.section className={style.mainsinteam_a}
         initial="hidden"
@@ -46,9 +60,11 @@ const BestT = () => {
                 </div>
             </motion.div>
             <div className={style.teamMar}>
-                <TeamM variants={item} custom={1}/>
-                <TeamM variants={item} custom={2}/>
-                <TeamM variants={item} custom={3}/>
+                {teamReq.map((team) => (
+                    <>
+                        <TeamM team={team} variants={item} custom={1}/>
+                    </>
+                ))}
             </div>
         </motion.section>
     )

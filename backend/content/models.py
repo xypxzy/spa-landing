@@ -4,7 +4,9 @@ from django.db import models
 def address_images(instance, filename):
     return f'adresses/{filename}'
 
+
 class AddressContact(models.Model):
+    city = models.CharField(max_length=255, verbose_name='Город')
     address = models.CharField(max_length=255, verbose_name='Адрес')
     image = models.ImageField(blank=True, null=True, upload_to=address_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
@@ -18,6 +20,7 @@ class AddressContact(models.Model):
 
 
 class PhoneContact(models.Model):
+    address = models.ForeignKey(AddressContact, on_delete=models.SET_NULL, null=True)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
@@ -30,6 +33,7 @@ class PhoneContact(models.Model):
 
 
 class EmailContact(models.Model):
+    address = models.ForeignKey(AddressContact, on_delete=models.SET_NULL, null=True)
     email = models.EmailField()
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
@@ -54,8 +58,10 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.name} | {self.customer}'
 
+
 def employee_images(instance, filename):
     return f'employees/{filename}'
+
 
 class Employee(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Имя')

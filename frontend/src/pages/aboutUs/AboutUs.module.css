@@ -19,9 +19,9 @@
     display: flex;
     padding: 70px 220px;
     justify-content: center;
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 508px;
+    top: -100px;
     flex-wrap: wrap;
 }
 .num_lk p:nth-child(1){
@@ -67,7 +67,6 @@
 @media (max-width: 920px) {
     .num{
         padding: 20px 100px;
-        top: 564px;
     }
     .num_lk p:nth-child(1){
         font-size: 25px;
@@ -80,9 +79,7 @@
     }
 }
 @media (max-width: 718px) {
-    .num{
-        position:static;
-    }
+
     .img{
         padding: 15px;
     }
@@ -91,6 +88,9 @@
 @media (max-width: 660px) {
     .num{
         padding: 15px;
+    }
+    .text_position{
+        top: 175px;
     }
     
 }

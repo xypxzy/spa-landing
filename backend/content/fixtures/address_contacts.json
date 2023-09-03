@@ -3,10 +3,16 @@
         "model": "content.AddressContact",
         "pk": 1,
         "fields": {
-            "address": "Кыргызская республика, г. Бишкек, ул. Акиева, д. 100, кв. 18",
+            "image": "media/kyrgyzstan.png",
+            "city": "г. Бишкек",
+            "address": "ул. Акиева, д. 100, кв. 18",
             "is_visible": "True",
-            
-            "address_ru": "Кыргызская республика, г. Бишкек, ул. Акиева, д. 100, кв. 18",
+
+            "city_ru": "г. Бишкек",
+            "city_en": "Бишкек ш.",
+            "city_ky": "Bishkek",
+
+            "address_ru": "г. Бишкек, ул. Акиева, д. 100, кв. 18",
             "address_en": "Kyrgyz Republic, Bishkek, st. Akiev, 100, apt. 18",
             "address_ky": "Кыргыз Республикасы, Бишкек ш., көч. Акиев, д. 100, кв. 18"
         }
