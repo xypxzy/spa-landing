@@ -137,6 +137,8 @@ if not PRODUCTION:
 else:
     from .production import *
 
+FRONTEND_HOME = config('FRONTEND_HOME', default='')
+
 JAZZMIN_SETTINGS = {
     "site_title": "MyTicket Admin",
     
@@ -147,7 +149,7 @@ JAZZMIN_SETTINGS = {
 
         {"name": "Главная",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
-        {"name": "Открыть сайт", "url":""},
+        {"name": "Открыть сайт", "url":FRONTEND_HOME},
 
         {"app": "content", "name": "Контент"},
     ],

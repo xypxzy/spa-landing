@@ -165,7 +165,7 @@ admin.site.register(Employee, EmployeeAdmin)
 class SummaryNumericDataAdmin(ContentAdminMixin, TranslationAdmin):
     list_display = ('id', 'data_description', 'number', 'is_visible',)
     list_display_links = ('data_description',)
-    list_editable = ('is_visible',)
+    list_editable = ('number', 'is_visible',)
     ordering = ('-is_visible', 'id',)
     search_fields = ('data_description_ru', 'data_description_en', 'data_description_ky',)
     
@@ -195,9 +195,9 @@ admin.site.register(SummaryNumericData, SummaryNumericDataAdmin)
 
 
 class OurValuesAdmin(TranslationAdmin):
-    list_display = ('id', 'name', 'description', 'get_little_image',)
+    list_display = ('id', 'name', 'description', 'image',)
     list_display_links = ('name', 'description',)
-    # list_editable = ('image',)
+    list_editable = ('image',)
     ordering = ('id',)
     search_fields = ('name_ru', 'description_ru',
                      'name_en', 'description_en',
@@ -218,17 +218,38 @@ class OurValuesAdmin(TranslationAdmin):
         }),
     )
     
-    def get_little_image(self, object):
-        if object.image:
-            return mark_safe(f"<img src='{object.image.url}' width=50>")
+    # def get_little_image(self, object):
+    #     if object.image:
+    #         return mark_safe(f"<img src='{object.image.url}' width=50>")
     
-    get_little_image.short_description = "Картинка"
+    # get_little_image.short_description = "Картинка"
 
 admin.site.register(OurValues, OurValuesAdmin)
 
 
 class BigTextualContentAdmin(ContentAdminMixin, TranslationAdmin):
-    pass
+    list_display = ('id', 'title', 'description', 'tags', 'image',)
+    list_display_links = ('title', 'description', 'tags',)
+    list_editable = ('image',)
+    ordering = ('id',)
+    search_fields = ('title_ru', 'description_ru', 'tags_ru',
+                     'title_en', 'description_en', 'tags_en',
+                     'title_ky', 'description_ky', 'tags_ky',)
+    
+    fieldsets = (
+        ('Ru', {
+            'fields': ('title_ru', 'description_ru', 'tags_ru', 'image',),
+            'description': 'Поля на русском языке обязательны (*).',
+        }),
+        ('En', {
+            'fields': ('title_en', 'description_en', 'tags_en',),
+            'description': 'Укажите перевод для англоязычной версии сайта.',
+        }),
+        ('Ky', {
+            'fields': ('title_ky', 'description_ky', 'tags_ky',),
+            'description': 'Укажите перевод для кыргызской версии сайта.',
+        }),
+    )
 
 admin.site.register(BigTextualContent, BigTextualContentAdmin)
 
