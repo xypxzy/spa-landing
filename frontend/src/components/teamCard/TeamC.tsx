@@ -14,7 +14,7 @@ interface TeamInt{
 const TeamC = forwardRef<HTMLDivElement, TeamInt>(({team},ref: Ref<HTMLDivElement>) => {
  return(
     <section className={style.card} ref={ref} style={team.id % 2 === 0 ? {background: 'linear-gradient(111deg, #E9F7FF 9.66%, #FFDBD4 57.52%, #FFF3CA 103.42%)'} : {background: '#FFF'}}>
-    <img src={emp} alt="" className={style.photo} width='300px'/>
+    <img src={team.image} alt="employee image" className={style.photo} width='300px'/>
         <div className={style.team_text}>
             <div className={style.lone}>
                 <svg width="84" height="4" viewBox="0 0 84 4" fill="none" xmlns="http://www.w3.org/2000/svg">

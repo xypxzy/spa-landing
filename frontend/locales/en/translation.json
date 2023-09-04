@@ -1,7 +1,6 @@
 {
   "Home": "Home",
-  "About": "About",
-  "Us":"Us",
+  "About us": "About us",
   "Services": "Services",
   "Russian": "Russian",
   "English": "English",
@@ -18,5 +17,9 @@
   "Enter your email": "Enter your email",
   "Enter your name": "Enter your name",
   "project_description": "In this section, we present our key projects that demonstrate our experience and expertise in various fields. From software innovations to successful implementations of business process automation and specification development, learn more about our work and how we help clients achieve their goals.",
-  "Our Projects": "Our Projects"
+  "Our Projects": "Our Projects",
+  "The core values behind our work": "The core values behind our work",
+  "OUR TEAM": "OUR TEAM",
+  "OUR VALUES": "OUR VALUES",
+  "Our team of expert": "Our team of expert marketers"
 }
