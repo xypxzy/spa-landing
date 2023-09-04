@@ -28,14 +28,19 @@ const AboutUs = () => {
     const [summery, setSummery] = useState<summeryProps[]>([])
 
     useEffect(() => {
-        const api = async () => {
-            const data = await fetch("http://localhost:8002/content/summary/", {
-              method: "GET"
-            })
-            .then((response) => response.json());
-            setSummery(data)
-          };
-        api();
+        try {
+            const api = async () => {
+                const data = await fetch("http://localhost:8002/content/summary/", {
+                  method: "GET"
+                })
+                .then((response) => response.json());
+                setSummery(data)
+              };
+            api();
+        } catch (error) {
+            console.log(error)
+        }
+       
     },[])
 
     return(

@@ -52,14 +52,19 @@ const Carousel = () => {
     };
 
     useEffect(() => {
-        const api = async () => {
-            const data = await fetch("http://localhost:8002/content/values/", {
-              method: "GET"
-            })
-            .then((response) => response.json());
-            setCarouselReq(data)
-          };
-        api();
+        try {
+            const api = async () => {
+                const data = await fetch("http://localhost:8002/content/values/", {
+                  method: "GET"
+                })
+                .then((response) => response.json());
+                setCarouselReq(data)
+              };
+            api();
+        } catch (error) {
+            console.log(error)
+        }
+        
     },[])
 
 
@@ -85,9 +90,9 @@ const Carousel = () => {
                     }}
                     onWheel={handleScroll}
                 >
-                    {carouselReq.map((car) => (
+                    {carouselReq.map((car, i) => (
                         <>
-                            <ContentM carousel={car} custom={2} variants={textAnim}/>
+                            <ContentM carousel={car} custom={i} variants={textAnim}/>
                         </>
                     ))}
                 </div>
