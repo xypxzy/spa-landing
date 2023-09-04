@@ -3,6 +3,7 @@ import megaphone from '../../assets/aboutAs/017. Megaphone.png'
 import style from './Marketind.module.css'
 import {motion} from 'framer-motion'
 import { useEffect, useState } from 'react'
+import pc from '../../assets/aboutAs/Image(2)(1)(2).png'
 
 interface AboutProps{
     image: string;
@@ -40,14 +41,19 @@ const Marketing: React.FC = () => {
     const [aboutSet, setAboutSet] = useState<AboutProps>()
 
     useEffect(() => {
-        const api = async () => {
-            const data = await fetch("http://localhost:8002/content/content/", {
-              method: "GET"
-            })
-            .then((response) => response.json());
-            setAboutSet(data[0])
-          };
-        api();
+        try {
+            const api = async () => {
+                const data = await fetch("http://localhost:8002/content/content/", {
+                  method: "GET"
+                })
+                .then((response) => response.json());
+                setAboutSet(data[0])
+              };
+            api();
+        } catch (error) {
+            console.log(error)
+        }
+        
     },[])
 
     return(
@@ -56,7 +62,7 @@ const Marketing: React.FC = () => {
         initial='hidden'
         whileInView='visible'
         viewport={{amount: 0.5, once: true}}>
-        <motion.img src={aboutSet?.image} alt="PC" className={style.ps} custom={1} variants={imgAnimatio} width='600px'/>
+        <motion.img src={pc} alt="PC" className={style.ps} custom={1} variants={imgAnimatio} width='600px'/>
         <motion.div className={style.text_mar} custom={2} variants={numAnimatio}>
             <div className={style.kd_jj}>
                 <div>
@@ -74,10 +80,10 @@ const Marketing: React.FC = () => {
                     <p>{aboutSet?.tags}</p>
                 </div>
             </div>
-            <div className={style.strategy}>
+            {/* <div className={style.strategy}>
                 <button><img src={goal} alt="goal" className={style.imaaage} width='30px'/><p>Development Scale</p></button>
                 <button><img src={megaphone} alt="megaphone" className={style.imaaage} width='30px'/><p>Research & Strategy</p></button>
-            </div>
+            </div> */}
             <p className={style.text_down}>{aboutSet?.description}</p>
         </motion.div>
     </motion.section>

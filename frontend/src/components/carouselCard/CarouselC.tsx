@@ -11,7 +11,7 @@ interface CarouselInt{
 const Content = forwardRef<HTMLDivElement, CarouselInt>(({carousel} ,ref: Ref<HTMLDivElement>) => {
     return(
         <section className={style.block} ref={ref}>
-             <img src={carousel.image} alt="" width='153px'/>
+             <img src={imageIc} alt="" width='153px'/>
              <p className={style.tx_car}>{carousel.name}</p>
              <p className={style.txnext_car}>{carousel.description}</p>
              <div className={style.line_car}>
