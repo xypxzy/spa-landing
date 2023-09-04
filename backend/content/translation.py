@@ -1,6 +1,7 @@
 from modeltranslation.translator import translator, TranslationOptions
 
-from .models import AddressContact, Project, Employee, SummaryNumericData, OurValues, BigTextualContent
+from .models import (AddressContact, Project, Employee, SummaryNumericData,
+                     OurValues, BigTextualContent, Tag)
 
 
 class AddressContactTranslationOptions(TranslationOptions):
@@ -39,7 +40,14 @@ translator.register(OurValues, OurValuesTranslationOptions)
 
 
 class BigTextualContentTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'tags')
+    fields = ('pre_title', 'title', 'description',)
 
 
 translator.register(BigTextualContent, BigTextualContentTranslationOptions)
+
+
+class TagTranslationOptions(TranslationOptions):
+    fields = ('title', 'description',)
+
+
+translator.register(Tag, TagTranslationOptions)

@@ -1,9 +1,9 @@
-import { FC, useEffect, useState, useTransition } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import cls from './Header.module.css';
 import LanguagesSwitcher from '../LanguagesSwitcher/LanguagesSwitcher';
-import { useTranslation } from 'react-i18next';
+import cls from './Header.module.css';
 
 interface LinkProps {
   title: string;
@@ -100,8 +100,8 @@ function Header() {
               </span>
               <nav className="flex flex-col h-screen justify-center items-center text-xl gap-6">
                 {renderNavMenu({ links: navLinkMobile })}
+                <LanguagesSwitcher />
               </nav>
-              <LanguagesSwitcher />
             </div>
           </div>
           ) : (

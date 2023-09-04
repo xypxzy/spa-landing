@@ -15,12 +15,15 @@ const Services: React.FC = () => {
 
   const text = t('Services');
   const words = text.split(" "); 
+
+const Services: React.FC = () => {
+  const { t } = useTranslation()
+
   return (
     <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
-            
             <h1 className={styles.services__title}>{words}</h1>
           </div>
         </div>

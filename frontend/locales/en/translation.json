@@ -1,10 +1,22 @@
 {
   "Home": "Home",
   "About": "About",
+  "Us":"Us",
   "Services": "Services",
   "Russian": "Russian",
   "English": "English",
   "Kyrgyz": "Kyrgyz",
-  "Lang": "Lang",
-  "homeTitle": "We know the code. We know the business. We know how to help you achieve your goals."
+  "Lang": "Eng",
+  "homeTitle": "We know the code. We know the business. We know how to help you achieve your goals.",
+  "Copyright © 2023 My Ticket": "Copyright © 2023 My Ticket",
+  "Location": "Location",
+  "Get in touch with": "Get in touch with",
+  "emailTitle": "Learn More About Our Product",
+  "emailDesc": "If you're interested in our product, please don't hesitate to get in touch with us.",
+  "Invalid email": "Invalid email",
+  "Submit": "Submit",
+  "Enter your email": "Enter your email",
+  "Enter your name": "Enter your name",
+  "project_description": "In this section, we present our key projects that demonstrate our experience and expertise in various fields. From software innovations to successful implementations of business process automation and specification development, learn more about our work and how we help clients achieve their goals.",
+  "Our Projects": "Our Projects"
 }

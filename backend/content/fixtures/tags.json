@@ -1,0 +1,107 @@
+[
+  {
+    "model": "content.tag",
+    "pk": 1,
+    "fields": {
+      "title": "Гарантированный резуьтат",
+      "description": "Результат точно будет. Обещаем.",
+
+      "related_content": 1,
+      "image": "guarantee.png",
+      "is_visible": "True",
+
+      "title_ru": "Гарантированный резуьтат",
+      "description_ru": "Результат точно будет. Обещаем.",
+
+      "title_en": "Guaranteed Results",
+      "description_en": "The result will definitely be. We promise.",
+
+      "title_ky": "Кепилденген натыйжа",
+      "description_ky": "Натыйжа сөзсүз болот. убада беребиз."
+    }
+  },
+  {
+    "model": "content.tag",
+    "pk": 2,
+    "fields": {
+      "title": "Команда лидеров отрасли",
+      "description": "Наши специалисты имеют огромный опыт. С Вашими данными работают профессионалы.",
+
+      "related_content": 1,
+      "image": "team.png",
+      "is_visible": "True",
+
+      "title_ru": "Команда лидеров отрасли",
+      "description_ru": "Наши специалисты имеют огромный опыт. С Вашими данными работают профессионалы.",
+
+      "title_en": "Team of Industry Experts",
+      "description_en": "The result will definitely be. We promise.",
+
+      "title_ky": "Өнөр жайдын жетекчилигинин командасы",
+      "description_ky": "Биздин адистердин чоң тажрыйбасы бар. Адистер маалыматыңыз менен иштешет."
+    }
+  },
+  {
+    "model": "content.tag",
+    "pk": 3,
+    "fields": {
+      "title": "Составления маркетингового плана",
+      "description": "Это стратегический документ, который определяет ключевые шаги и тактики для продвижения продуктов или услуг на рынке. В нём описываются цели, целевая аудитория, маркетинговые стратегии, бюджет и временные рамки, чтобы обеспечить успешное внедрение продукции и достижение поставленных маркетинговых целей",
+
+      "related_content": 2,
+      "image": "team.png",
+      "is_visible": "True",
+
+      "title_ru": "Составления маркетингового плана",
+      "description_ru": "Это стратегический документ, который определяет ключевые шаги и тактики для продвижения продуктов или услуг на рынке. В нём описываются цели, целевая аудитория, маркетинговые стратегии, бюджет и временные рамки, чтобы обеспечить успешное внедрение продукции и достижение поставленных маркетинговых целей",
+
+      "title_en": "Drawing up a marketing plan",
+      "description_en": " It is a strategic document that defines the key steps and tactics for promoting products or services in the market. It describes the goals, target audience, marketing strategies, budget and timeframe to ensure successful product introduction and achievement of the marketing objectives.",
+
+      "title_ky": "Маркетинг планын түзүү",
+      "description_ky": "Бул рынокто өнүмдөрдү же кызматтарды алдыга жылдыруунун негизги кадамдарын жана тактикасын аныктаган стратегиялык документ. Ал максаттарды, максаттуу аудиторияны, маркетинг стратегияларын, өнүмдөрдү ийгиликтүү киргизүүнү жана маркетинг максаттарына жетишүүнү камсыз кылуу үчүн бюджетти жана мөөнөттөрдү сүрөттөйт."
+    }
+  },
+  {
+    "model": "content.tag",
+    "pk": 4,
+    "fields": {
+      "title": "Осуществление работ",
+      "description": "Эта фаза включает в себя координацию, коммуникацию и мониторинг с целью достижения успешных результатов, что делает ее ключевой частью любого проекта или инициативы.",
+
+      "related_content": 2,
+      "image": "team.png",
+      "is_visible": "True",
+
+      "title_ru": "Осуществление работ",
+      "description_ru": "Эта фаза включает в себя координацию, коммуникацию и мониторинг с целью достижения успешных результатов, что делает ее ключевой частью любого проекта или инициативы.",
+
+      "title_en": "Work Execution",
+      "description_en": "This phase involves coordination, communication, and monitoring to achieve successful outcomes, making it a pivotal part of any project or initiative.",
+
+      "title_ky": "Жумушту аткаруу",
+      "description_ky": "Бул фаза ийгиликтүү натыйжаларга жетүү үчүн координациялоону, байланышты жана мониторингди камтыйт жана аны кандайдыр бир долбоордун же демилгенин негизги бөлүгүнө айландырат."
+    }
+  },
+  {
+    "model": "content.tag",
+    "pk": 5,
+    "fields": {
+      "title": "Рост и масштабирования",
+      "description": "это секция, посвященная стратегии роста и масштабирования. Здесь вы найдете информацию о том, как расширить ваш бизнес, оптимизировать ресурсы и разработать долгосрочные планы для достижения высокой эффективности и устойчивого успеха вашей компании. Эта секция поможет вам исследовать рынок, разработать стратегии роста и определить необходимые ресурсы и инвестиции для успешного масштабирования вашего бизнеса",
+
+      "related_content": 2,
+      "image": "team.png",
+      "is_visible": "True",
+
+      "title_ru": "Рост и масштабирования",
+      "description_ru": "это секция, посвященная стратегии роста и масштабирования. Здесь вы найдете информацию о том, как расширить ваш бизнес, оптимизировать ресурсы и разработать долгосрочные планы для достижения высокой эффективности и устойчивого успеха вашей компании. Эта секция поможет вам исследовать рынок, разработать стратегии роста и определить необходимые ресурсы и инвестиции для успешного масштабирования вашего бизнеса",
+
+      "title_en": "Growth & Scale",
+      "description_en": "is a section dedicated to the strategy of expansion and scalability. Here you will find information on how to grow your business, optimize resources, and develop long-term plans to achieve high efficiency and sustainable success for your company. This section will help you explore the market, formulate growth strategies, and identify the necessary resources and investments for successful business scaling.",
+
+      "title_ky": "Өсүү жана масштабдоо",
+      "description_ky": "Кеңейүү жана масштабдоо стратегиясына арналган бөлүм болуп саналат. Бул жерден сиз бизнесиңизди кантип өнүктүрүү, ресурстарды оптималдаштыруу жана компанияңыз үчүн жогорку натыйжалуулукка жана туруктуу ийгиликке жетүү үчүн узак мөөнөттүү пландарды иштеп чыгуу боюнча маалыматты таба аласыз. Бул бөлүм сизге рынокту изилдөөгө, өсүү стратегияларын иштеп чыгууга жана бизнести ийгиликтүү масштабдоо үчүн керектүү ресурстарды жана инвестицияларды аныктоого жардам берет."
+    }
+  }
+]
