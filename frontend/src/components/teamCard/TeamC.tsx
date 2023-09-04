@@ -18,14 +18,14 @@ const TeamC = forwardRef<HTMLDivElement, TeamInt>(({team},ref: Ref<HTMLDivElemen
         <div className={style.team_text}>
             <div className={style.lone}>
                 <svg width="84" height="4" viewBox="0 0 84 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 1.96094H82" stroke="#5956E8" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M2 1.96094H82" stroke="#5956E8" strokeWidth="2.5" strokeLinecap="round"/>
                 </svg> 
             </div>
             <p className={style.text_name}>{team.first_name} {team.last_name}</p>
             <p className={style.hhggg}>{team.position}</p>
             <div className={style.nerwork}>
                 {team.facebook && <a href={team.facebook}><div><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_4_3204)">
+                    <g clipPath="url(#clip0_4_3204)">
                     <rect x="0.541992" y="0.960938" width="26.9717" height="26.9717" rx="13.4859" fill="#1877F2"/>
                     <path d="M19.2769 18.345L19.8748 14.4467H16.1346V11.9181C16.1346 10.8514 16.6561 9.81094 18.3313 9.81094H20.0328V6.49216C20.0328 6.49216 18.4893 6.22876 17.0143 6.22876C13.9326 6.22876 11.9202 8.09624 11.9202 11.4756V14.4467H8.49609V18.345H11.9202V27.7693C12.6077 27.8773 13.311 27.9326 14.0274 27.9326C14.7438 27.9326 15.4471 27.8773 16.1346 27.7693V18.345H19.2769Z" fill="white"/>
                     </g>
@@ -43,9 +43,9 @@ const TeamC = forwardRef<HTMLDivElement, TeamInt>(({team},ref: Ref<HTMLDivElemen
                     <path d="M18.2954 11.0972C18.8312 11.0972 19.2656 10.6628 19.2656 10.127C19.2656 9.59112 18.8312 9.15674 18.2954 9.15674C17.7596 9.15674 17.3252 9.59112 17.3252 10.127C17.3252 10.6628 17.7596 11.0972 18.2954 11.0972Z" fill="white"/>
                     <defs>
                     <linearGradient id="paint0_linear_4_3206" x1="13.9722" y1="0.960937" x2="13.9722" y2="27.9327" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F9D801"/>
-                    <stop offset="0.484375" stop-color="#EE0B1F"/>
-                    <stop offset="1" stop-color="#7A39AD"/>
+                    <stop stopColor="#F9D801"/>
+                    <stop offset="0.484375" stopColor="#EE0B1F"/>
+                    <stop offset="1" stopColor="#7A39AD"/>
                     </linearGradient>
                     </defs>
                     </svg>  </div>
