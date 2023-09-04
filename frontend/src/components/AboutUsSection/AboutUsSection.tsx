@@ -3,6 +3,8 @@ import aboutUsImg from '../../assets/homePage/aboutUs.png'
 import aboutUsBadge from '../../assets/homePage/aboutUsBadge.png'
 import aboutUsIcon from '../../assets/homePage/aboutUsIcon.png'
 import aboutUsIcon2 from '../../assets/homePage/aboutUsIcon2.png'
+import { DataProps, TagsProps } from '../../pages/HomePage/Home'
+import { FC } from 'react'
 
 const headerAnimation = {
   hidden: {
@@ -40,7 +42,13 @@ const textAnimation = {
   }),
 }
 
-const AboutUsSection = () => {
+interface AboutUsSectionProps {
+  data: DataProps;
+}
+
+const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
+  
+
   return (
       <motion.section
         initial='hidden'
@@ -51,16 +59,16 @@ const AboutUsSection = () => {
         <div className="container mx-auto flex px-5 md:flex-row flex-col items-center justify-center h-screen">
           <motion.div
             className="hidden md:inline-block lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0"
-            initial={{ opacity: 0, x: -50 }} // Начальное смещение изображения влево
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{opacity:1, x: 0}}
-            animate={{ opacity: 1, x: 0 }} // Конечное смещение и непрозрачность
+            animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.5,
               ease: [0, 0.71, 0.2, 1.01],
               x: {
-                type: "spring", // Использовать пружинный тип анимации для смещения
-                damping: 10, // Коэффициент затухания (уменьшьте или увеличьте по желанию)
-                stiffness: 100, // Жесткость пружины (уменьшьте или увеличьте по желанию)
+                type: "spring", 
+                damping: 10, 
+                stiffness: 100, 
               },
             }}
           >
@@ -85,13 +93,13 @@ const AboutUsSection = () => {
             <div className='flex items-start gap-5 text-left'>
               <img src={aboutUsBadge} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
               <span>
-                <motion.p custom={1} variants={headerAnimation}>// 01 . About Us</motion.p>
+                <motion.p custom={1} variants={headerAnimation}>{data?.pre_title}</motion.p>
                 <motion.h1 
                   custom={2}
                   variants={headerAnimation} 
                   className='text-black text-xl xl:text-4xl lg:text-3xl md:text-2xl'
                 >
-                    The #1 digital marketing services company
+                    {data?.title}
                 </motion.h1>
               </span>
             </div>
@@ -100,34 +108,20 @@ const AboutUsSection = () => {
               variants={textAnimation}
               className='md:ml-20 ml-0 xl:text-xl lg:text-lg md:text-medium text-sm'
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry
-              ftyuu Ipsum has been the industry's standard book. It has survived not only
-              five centuries, but also the leap into electronic typesetting.
+              {data?.description}
             </motion.p>
             <div className='md:ml-20 ml-0 flex flex-col gap-5'>
-              <span className='flex gap-4'>
-                <motion.img custom={5} variants={textAnimation} src={aboutUsIcon} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
-                <span>
-                  <motion.h1 
-                    custom={5}
-                    variants={textAnimation}
-                    className='text-black xl:text-2xl lg:text-xl text-lg'
-                  >
-                      Guaranteed Results
-                  </motion.h1>
-                  <motion.p
-                    custom={6}
-                    variants={textAnimation} 
-                  >Lorem Ipsum is simply dummy text of the printing and typesetting industry.</motion.p>
-                </span>
-              </span>
-              <span className='flex gap-4'>
-                <motion.img custom={7} variants={textAnimation} src={aboutUsIcon2} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
-                <span>
-                  <motion.h1 custom={7} variants={textAnimation} className='text-black xl:text-2xl lg:text-xl text-lg'>Team of Industry Experts</motion.h1>
-                  <motion.p custom={8} variants={textAnimation}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm leoinsion duycoqun consemleint lorem.</motion.p>
-                </span>
-              </span>
+              {data?.tags.length > 0 && (
+                data.tags.map((tag: TagsProps) => (
+                  <span key={tag.id} className='flex gap-4'>
+                    <motion.img custom={7} variants={textAnimation} src={aboutUsIcon2} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
+                    <span>
+                      <motion.h1 custom={7} variants={textAnimation} className='text-black xl:text-2xl lg:text-xl text-lg'>{tag.title}</motion.h1>
+                      <motion.p custom={8} variants={textAnimation}>{tag.description}</motion.p>
+                    </span>
+                  </span>
+                ))
+              )}
             </div>
           </div>
         </div>

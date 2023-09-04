@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DEFAULT_URL } from '../../consts/const';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectProps {
   id: number,
@@ -11,11 +12,17 @@ interface ProjectProps {
 
 const ProjectSection = () => {
   const [projects, setProjects] = useState<ProjectProps[]>([]);
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;  
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get<ProjectProps[]>(`${DEFAULT_URL}/content/projects/`); 
+        const response = await axios.get<ProjectProps[]>(`${DEFAULT_URL}/content/projects/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        }); 
         setProjects(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -23,7 +30,7 @@ const ProjectSection = () => {
     };
 
     fetchProjects();
-  }, []);
+  }, [currentLang]);
 
 
   return (
@@ -39,7 +46,7 @@ const ProjectSection = () => {
               <div className="lg:w-1/3 sm:w-1/2 p-4 h-[250px]" key={id}>
                 <div className="flex relative">
                   <img alt="gallery" className="absolute inset-0 w-full h-full object-cover object-center" src="https://dummyimage.com/600x360" />
-                  <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <div className="px-8 py-10 relative z-5 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                     <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">{project.customer}</h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{project.name}</h1>
                     <p className="leading-relaxed">{project.description}</p>
