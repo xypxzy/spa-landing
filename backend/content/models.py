@@ -91,8 +91,20 @@ class SummaryNumericData(models.Model):
 
     is_visible attribute allows the data to be displayed
     data_description is the small text near the numbers explaining what the numbers are for
+    
     """
+    
+    COLORS = (
+        ('38E55E', 'Зеленый'),
+        ('FFDC60', 'Желтый'),
+        ('5956E8', 'Синий'),
+        ('F96A4B', 'Оранжевый'),
+        ('F5B7FF', 'Розовый'),
+        ('CA87FF', 'Фиолетовый'),
+    )
+    
     data_description = models.CharField(max_length=255, verbose_name='Описание данных')
+    color = models.SlugField(verbose_name='Цвет', choices= COLORS, default='38E55E')
     number = models.IntegerField(default=0, verbose_name='Число')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
     
