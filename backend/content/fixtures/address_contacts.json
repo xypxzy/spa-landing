@@ -3,7 +3,7 @@
         "model": "content.AddressContact",
         "pk": 1,
         "fields": {
-            "image": "media/kyrgyzstan.png",
+            "image": "addresses/flag_of_kyrgyzstan.png",
             "city": "г. Бишкек",
             "address": "ул. Акиева, д. 100, кв. 18",
             "is_visible": "True",
