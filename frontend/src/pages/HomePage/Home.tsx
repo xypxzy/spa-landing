@@ -6,28 +6,6 @@ import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
 import { DEFAULT_URL } from '../../consts/const';
-
-/* "id": 1,
-        "pre_title": "//01.О нас",
-        "pre_title_image": "http://localhost:8002/media/pre_about_us.png",
-        "title": "About us",
-        "description": "My Ticket LLC was founded on February 14, 2017 to provide services to the local market. The company has successfully implemented projects for users throughout the country.",
-        "tags": [
-            {
-                "id": 1,
-                "title": "Guaranteed Results",
-                "description": "The result will definitely be. We promise.",
-                "image": "/media/guarantee.png"
-            },
-            {
-                "id": 2,
-                "title": "Team of Industry Experts",
-                "description": "The result will definitely be. We promise.",
-                "image": "/media/team.png"
-            }
-        ],
-        "image": "http://localhost:8002/media/content/some_image.png"
- */
 export interface TagsProps {
   id: number,
   title: string,

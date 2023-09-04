@@ -47,6 +47,7 @@ interface AboutUsSectionProps {
 }
 
 const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
+  console.log(data);
   
 
   return (
