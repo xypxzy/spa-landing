@@ -1,30 +1,71 @@
 import React from 'react';
 import styles from './Services.module.css';
 import Features from '../../components/Features/Features';
+import axios from 'axios';
 import serviceImg from '../../assets/serviceImg.png';
 import marketingLogo from '../../assets/marketing-logo.png';
 import { ReactComponent as DoneIcon } from '../../assets/marketing-icon.svg';
 import { motion } from 'framer-motion';
 import { featureAnimationProps, textAnimationProps } from './animation';
 import { useTranslation } from 'react-i18next';
+import { DEFAULT_URL } from '../../consts/const';
 
+
+interface NameProps {
+  id: number,
+  name: string,
+}
+
+interface DescrProps {
+  id: number,
+  description: string,
+}
 
 const Services: React.FC = () => {
-  
-  const { t } = useTranslation(['translation', 'services']);
+ const [name, setName] = React.useState<NameProps[]>([]);
+ const [descr, setDescr] = React.useState<DescrProps[]>([]);
+  const { t,i18n } = useTranslation();
+  const currentLang = i18n.language;  
 
-  const text = t('Services');
-  const words = text.split(" "); 
+  React.useEffect(() => {
+    const fetchName = async () => {
+      try {
+        const response = await axios.get<DataProps[]>(`${DEFAULT_URL}/content/content/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        }); 
+        setName(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
 
-const Services: React.FC = () => {
-  const { t } = useTranslation()
+    fetchName();
+  }, [currentLang]);
 
+  React.useEffect(() => {
+    const fetchDescr = async () => {
+      try {
+        const response = await axios.get<DataProps[]>(`${DEFAULT_URL}/content/content/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        }); 
+        setDescr(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
+
+    fetchDescr();
+  }, [currentLang]);
   return (
     <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
-            <h1 className={styles.services__title}>{words}</h1>
+            <h1 className={styles.services__title}>{t('Services')}</h1>
           </div>
         </div>
       </section>
@@ -39,12 +80,12 @@ const Services: React.FC = () => {
                   {...featureAnimationProps}
                   src={marketingLogo}
                   alt="marketing logo"
-                />
+                /> 
                 <motion.h3
                   {...textAnimationProps}
                   className={styles.marketing__title}
                 >
-                  Принцип работы
+                  {name[0]}
                 </motion.h3>
               </div>
               <hr className={styles.hr} />
@@ -53,8 +94,9 @@ const Services: React.FC = () => {
                   {...textAnimationProps}
                   className={styles.marketing__desc}
                 >
-                Основополагающим принципом работы MyTicket является добросовестное ведение бизнеса
-
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                  sollicitudinbibendum senectus scelerisque non. Turpis matis
+                  morbi vivera ipsum adipiscing Mauris volutpat sagittis, sit
                 </motion.p>
                 <ul className={styles.marketing__list}>
                   <motion.li

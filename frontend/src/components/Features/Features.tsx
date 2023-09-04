@@ -7,16 +7,42 @@ import {
   featureAnimationProps,
   textAnimationProps
 } from '../../pages/ServicesPage/animation';
+import { DEFAULT_URL } from '../../consts/const';
+import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
 
+type Card = {
+  id: number;
+  name: string;
+  descr: string;
+};
+
 const Features: React.FC = () => {
+ const [card, setCard] = React.useState<Card[]>([]);
+  const { i18n, t } = useTranslation();
+  const currentLang = i18n.language;  
+   const text = t('Services');
+  const words = text.split(" "); // Разбиваем текст на отдельные слова
 
-  const { t } = useTranslation(['translation', 'services']);
 
-  const text = t('Services');
-  const words = text.split(" "); 
-  
+  React.useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await axios.get<Card[]>(`${DEFAULT_URL}/content/projects/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        }); 
+        setCard(response.data);
+      } catch (error) {
+        console.error('Ошибка при запросе данных:', error);
+      }
+    };
+
+    fetchCards();
+  }, [currentLang]);
+
   const [expandedCards, setExpandedCards] = React.useState<number[]>([]);
   const toggleCards = (id: number) => {
     if (expandedCards.includes(id)) {
@@ -26,29 +52,6 @@ const Features: React.FC = () => {
     }
   };
 
-  type Card = {
-    id: number;
-    title: string;
-    text: string;
-  };
-
-  const cardContent: Card[] = [
-    {
-      id: 1,
-      title: 'Ответсвенность',
-      text: 'Мы ответственно подходим к выполнению всех наших обязательств перед заказчиками и персоналом.'
-    },
-    {
-      id: 2,
-      title: 'Забота о природе',
-      text: 'Мы ориентируемся на использование технологий и решений, не наносящих вреда природе'
-    },
-    {
-      id: 3,
-      title: 'Репутация',
-      text: 'Мы дорожим своей надежной репутацией'
-    }
-  ];
 
   return (
     <motion.section className={styles.features}>
@@ -65,7 +68,7 @@ const Features: React.FC = () => {
           {...featureAnimationProps}
           className={styles.features__cards}
         >
-          {cardContent.map((item) => (
+          {card.map((item) => (
             <FeaturesCard
               isExpanded={expandedCards.includes(item.id)}
               onToggle={() => toggleCards(item.id)}
