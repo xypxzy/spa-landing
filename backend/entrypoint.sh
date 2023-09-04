@@ -13,5 +13,6 @@ python manage.py loaddata content/fixtures/projects.json
 python manage.py loaddata content/fixtures/our_values.json
 python manage.py loaddata content/fixtures/summary_data.json
 python manage.py loaddata content/fixtures/big_textual_content.json
+python manage.py loaddata content/fixtures/tags.json
 
 exec "$@"
