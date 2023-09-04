@@ -5,8 +5,15 @@ import processSection3 from '../../assets/homePage/proccessSection3.png'
 import processIcon from '../../assets/homePage/processIcon.png'
 
 import cls from './ProcessSection.module.css'
+import { DataProps } from '../../pages/HomePage/Home'
+import { FC } from 'react'
 
-const ProcessSection = () => {
+interface ProcessSectionProps {
+  data: DataProps;
+}
+
+
+const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
 
   const processAnimation = {
     hidden: {
@@ -64,8 +71,8 @@ const headerAnimation = {
           <div className={cls.process__header}>
             <img src={processIcon} alt="" className='xl:w-20 lg:h-20 h-14 w-14' />
             <span>
-              <motion.p custom={1} variants={headerAnimation} className={cls.process__header_paragraph}>// 03 . Process</motion.p>
-              <motion.h1 custom={2} variants={headerAnimation} className={cls.process__header_title}>A simple, yet powerful and  efficient process</motion.h1>
+              <motion.p custom={1} variants={headerAnimation} className={cls.process__header_paragraph}>{data?.pre_title}</motion.p>
+              <motion.h1 custom={2} variants={headerAnimation} className={cls.process__header_title}>{data?.title}</motion.h1>
             </span>
           </div>
 
@@ -81,8 +88,8 @@ const headerAnimation = {
                 <div className={cls.process__card_step__line}></div>
               </div>
               <div className='w-[40%] '>
-                <h2 className={cls.process__card_title}>Marketing Plan</h2>
-                <p className={cls.process__card_description}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm </p>
+                <h2 className={cls.process__card_title}>{data?.tags[0].title}</h2>
+                <p className={cls.process__card_description}>{data?.tags[0].description}</p>
               </div>
             </motion.div>
 
@@ -90,9 +97,9 @@ const headerAnimation = {
               custom={5}
               variants={processAnimation}
               className='flex justify-between items-center'>
-              <div className='w-[40%] text-right lg:ml-0 ml-1'>
-                <h2 className={cls.process__card_title}>Work Execution</h2>
-                <p className={cls.process__card_description}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm </p>
+              <div className='xl:w-[33.7%] w-[40%] text-right lg:ml-0 ml-1'>
+                <h2 className={cls.process__card_title}>{data?.tags[1].title}</h2>
+                <p className={cls.process__card_description}>{data?.tags[1].description}</p>
               </div>
               <div className={cls.process__card__step}>
                 <div className={cls.process__card_step__line}></div>
@@ -101,7 +108,7 @@ const headerAnimation = {
                 </div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <img src={processSection2} alt="" className='xl:ml-20 ml-0 mr-0 lg:mr-14 h-[100px] md:h-[200px] hidden md:block' />
+              <img src={processSection2} alt="" className='xl:ml-28 ml-0 mr-0 lg:mr-14 h-[100px] md:h-[200px] hidden md:block' />
             </motion.div>
 
             <motion.div
@@ -117,8 +124,8 @@ const headerAnimation = {
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
               </div>
               <div className='w-[40%] lg:ml-0 ml-6'>
-                <h2 className={cls.process__card_title}>Growth & Scale</h2>
-                <p className={cls.process__card_description}>consectetur amet dolor sit comeneer ilremsilom dolce issilm acalrm </p>
+                <h2 className={cls.process__card_title}>{data?.tags[2].title}</h2>
+                <p className={cls.process__card_description}>{data?.tags[2].description}</p>
               </div>
             </motion.div>
           </div>

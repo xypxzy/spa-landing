@@ -72,8 +72,8 @@ const Home = () => {
     <div>
       <Hero />
       <AboutUsSection data={data[0]}/>
-      <ProcessSection />
-      <BenefitsSection />
+      <ProcessSection data={data[1]}/>
+      {/* <BenefitsSection /> */}
       <ProjectSection />
     </div>
   )
