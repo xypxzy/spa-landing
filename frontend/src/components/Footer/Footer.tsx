@@ -30,7 +30,6 @@ function Footer() {
   const currentLang = i18n.language;  
 
   useEffect(() => {
-    // Создайте функцию для выполнения запроса к серверу
     const fetchAddress = async () => {
       try {
         const response = await axios.get<AddressProps[]>(`${DEFAULT_URL}/content/addresses/`, {
