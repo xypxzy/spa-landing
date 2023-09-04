@@ -6,6 +6,7 @@ import BestT from '../../components/bestTeam/BestT'
 import {motion} from 'framer-motion'
 import Address from '../../components/adresses/Adress'
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface summeryProps {
     number: number;
@@ -26,14 +27,20 @@ const AboutUs = () => {
         }
     }
     const [summery, setSummery] = useState<summeryProps[]>([])
-
+    const { t } = useTranslation()
+    const { i18n } = useTranslation()
+    const currentLang = i18n.language;
+    
+    
     useEffect(() => {
         try {
             const api = async () => {
                 const data = await fetch("http://localhost:8002/content/summary/", {
-                  method: "GET"
+                  method: "GET",
+                  headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
-                .then((response) => response.json());
+                .then((response) => response.json())
+                .catch((error) => console.log(error))
                 setSummery(data)
               };
             api();
@@ -41,14 +48,15 @@ const AboutUs = () => {
             console.log(error)
         }
        
-    },[])
+    },[currentLang])
+
 
     return(
         <main>
             <section className={style.top_a}>
                 <div className={style.img}>
                     <Ball/>
-                    <div className={style.text_position}><p className={style.text_about}><span className={style.fg_bn}>About</span> <span className={style.fg_mn}>Us</span></p></div>
+                    <div className={style.text_position}><p className={style.text_about}><span className={style.fg_bn}>{t('About')}</span> <span className={style.fg_mn}>{t('Us')}</span></p></div>
                     
                 </div>
                 <motion.div className={style.num}
