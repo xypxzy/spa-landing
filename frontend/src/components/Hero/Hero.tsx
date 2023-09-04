@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import frame1 from '../../assets/homePage/hero-frame.png'
 import frame2 from '../../assets/homePage/hero-frame-2.png'
 import frame3 from '../../assets/homePage/hero-frame-3.png'
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation(['translation', 'home']);
   
   const container = {
     hidden: { opacity: 0 },
@@ -34,7 +36,7 @@ const Hero = () => {
     },
   }
 
-  const text = "Digital technologies in all spheres of life: fast, convenient and efficient.";
+  const text = t('homeTitle');
   const words = text.split(" "); // Разбиваем текст на отдельные слова
 
   return (
@@ -42,7 +44,7 @@ const Hero = () => {
       <section className="text-gray-600 bg-hero-pattern relative lg:bg-center h-screen">
         <div className="container h-screen mx-auto flex px-5 md:py-24 py-40 md:flex-row flex-col justify-center md:justify-start lg:justify-center items-center">
           <div className="md:flex-grow md:flex-row flex-col md:w-1/2 lg:ml-20 flex text-left mb-16 md:mb-0 items-center">
-            <h1 className="xl:text-7xl lg:text-5xl md:text-4xl sm:text-3xl text-3xl mb-4 font-bold  w-[200px] sm:w-[320px] md:w-[400px] lg:w-[500px] xl:w-[720px] text-gray-900">
+            <h1 className="xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-3xl mb-4 font-bold  w-[200px] sm:w-[320px] md:w-[400px] lg:w-[500px] xl:w-[720px] text-gray-900">
               <motion.div
                 style={{  display: "flex", flexWrap: 'wrap' }}
                 variants={container}

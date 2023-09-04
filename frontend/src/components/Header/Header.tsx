@@ -1,7 +1,9 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useTransition } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import cls from './Header.module.css';
+import LanguagesSwitcher from '../LanguagesSwitcher/LanguagesSwitcher';
+import { useTranslation } from 'react-i18next';
 
 interface LinkProps {
   title: string;
@@ -9,10 +11,14 @@ interface LinkProps {
   onClick?: () => void;
 }
 
+
 function Header() {
+  const { t } = useTranslation()
+
   const [scrollY, setScrollY] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  
   // При скролле навешивается bg-color для хедера
   const handleScroll = () => setScrollY(window.scrollY);
 
@@ -38,17 +44,15 @@ function Header() {
   // Рендер навигационной меню
 
   const navLink: LinkProps[] = [
-    {title: 'Home', path: '/'},
-    {title: 'About', path: '/aboutUs'},
-    {title: 'Team', path: '/team'},
-    {title: 'Services', path: '/services'},
+    {title: t("Home"), path: '/'},
+    {title: t('About'), path: '/aboutUs'},
+    {title: t('Services'), path: '/services'},
   ]
 
   const navLinkMobile: LinkProps[] = [
-    {title: 'Home', path: '/', onClick: closeModal},
-    {title: 'About', path: '/aboutUs', onClick: closeModal },
-    {title: 'Team', path: '/team', onClick: closeModal},
-    {title: 'Services', path: '/services', onClick: closeModal},
+    {title: t('Home'), path: '/', onClick: closeModal},
+    {title: t('About'), path: '/aboutUs', onClick: closeModal },
+    {title: t('Services'), path: '/services', onClick: closeModal},
   ]
 
 
@@ -67,20 +71,12 @@ function Header() {
     </>
   );
 
-  // Рендер кнопок для смены языка
-  const renderLangButton = () => (
-    <>
-      <button className={cls.header__lang}>RU</button>
-      <button className={cls.header__lang}>EN</button>
-    </>
-  );
-
   return (
     <header className={cls.header}>
       <div className={`${cls.header__wrapper} ${bgColor}`}>
         <Link to={'/'} className={cls.header__logo}>
           <Logo className="w-14 h-14" />
-          <span className={cls.header__logo_title}>My Ticket</span>
+          <span className={cls.header__logo_title}>{'My Ticket'}</span>
         </Link>
         <nav className={cls.header__nav}>
           {navLink.map((link, id) => (
@@ -105,7 +101,7 @@ function Header() {
               <nav className="flex flex-col h-screen justify-center items-center text-xl gap-6">
                 {renderNavMenu({ links: navLinkMobile })}
               </nav>
-              <div>{renderLangButton()}</div>
+              <LanguagesSwitcher />
             </div>
           </div>
           ) : (
@@ -121,7 +117,9 @@ function Header() {
                   </div>
                 </div>
               </button>)}
-        <div className="hidden lg:block">{renderLangButton()}</div>
+        <div className="hidden lg:inline-block">
+            <LanguagesSwitcher />
+        </div>
       </div>
     </header>
   );

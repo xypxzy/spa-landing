@@ -4,8 +4,6 @@ import ProcessSection from '../../components/ProcessSection/ProcessSection';
 
 const Home = () => {
   
-  
-
   return (
     <div>
       <Hero />
