@@ -1,20 +1,11 @@
-import { FunctionComponent, HTMLAttributes, SVGProps, useEffect, useState } from 'react'
-import {ReactComponent as LocationIcon}  from '../../assets/locationIcon.svg'
-import {ReactComponent as PhoneIcon}  from '../../assets/phoneIcon.svg'
-import {ReactComponent as PageIcon} from '../../assets/PagesIcon.svg'
-import {ReactComponent as UtilityPageIcon} from '../../assets/utilityPages.svg'
-import {ReactComponent as FollowIcon} from '../../assets/Follow.svg'
-
-import cls from './Footer.module.css'
+import { FunctionComponent, SVGProps, useEffect, useState } from 'react'
+import { ReactComponent as LocationIcon } from '../../assets/locationIcon.svg'
+import { ReactComponent as PhoneIcon } from '../../assets/phoneIcon.svg'
 import axios from 'axios'
 import { DEFAULT_URL } from '../../consts/const'
 import SendEmailCard from '../SendEmailCard/SendEmailCard'
-
-interface MenuPageProps {
-  title: string,
-  menus: string[],
-  icon: FunctionComponent<SVGProps<SVGSVGElement>>
-}
+import cls from './Footer.module.css'
+import { useTranslation } from 'react-i18next'
 
 interface AddressProps {
   id: number,
@@ -34,6 +25,8 @@ function Footer() {
   const [address, setAddress] = useState<AddressProps[]>([]);
   const [phone, setPhone] = useState<PhoneProps[]>([]);
   const [emails, setEmails] = useState<EmailProps[]>([]);
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     // Создайте функцию для выполнения запроса к серверу
@@ -78,7 +71,7 @@ function Footer() {
               <span className={cls.footer__navigation_contact}>
                 <span className='flex items-center gap-1'>
                   <PhoneIcon className='w-5 h-5' />
-                  <h2 className='font-semi text-lg'>Get in touch with</h2>  
+                  <h2 className='font-semi text-lg'>{t('Get in touch with')}</h2>  
                 </span>
                 <span className='my-5'>
                   {phone.length > 0 && 
@@ -100,7 +93,7 @@ function Footer() {
               <span className='lg:w-1/2 h-full flex flex-col gap-3'>
                 <span className='flex items-center gap-1'>
                   <LocationIcon className='w-5 h-5'/>
-                  <h2 className='font-semi text-lg'>Location</h2>
+                  <h2 className='font-semi text-lg'>{t('Location')}</h2>
                 </span>
                 <p className='py-2'>{address.length > 0 ? address[0].address : null}</p>
                 <a 
@@ -108,14 +101,14 @@ function Footer() {
                   className='text-yellow-400 hover:text-yellow-100 underline'
                   target='_blank'
                 >
-                  location
+                  {t('Location').toLowerCase()}
                 </a>
               </span>
             </div>
           </div>
         </div>
         <p className="mt-8 text-sm flex justify-center">
-              Copyright © 2023 My Ticket
+              {t('Copyright © 2023 My Ticket')}
         </p>
       </div>
     </footer>

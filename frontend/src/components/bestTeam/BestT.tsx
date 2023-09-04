@@ -4,9 +4,12 @@ import {motion} from 'framer-motion'
 import { TeamM } from '../teamCard/TeamC'
 import { useState, useEffect } from 'react'
 import { TeamProps } from '../../const/about'
+import cls from '../carousel/Carousel.module.css'
 
 const BestT = () => {
     const [teamReq, setTeamReq] = useState<TeamProps[]>([])
+    const [translateValue, setTranslateValue] = useState<number>(40);
+
 
     const container = {
         hidden: { opacity: 1, scale: 0 },
@@ -28,16 +31,36 @@ const BestT = () => {
             transition: {delay: custom * 0.2}
         })
     };
+    const handleCliclNextScroll = () => {
+        setTranslateValue(translateValue - 300);
+
+        if (translateValue <= teamReq.length * -300) {
+          setTranslateValue(translateValue + 300);
+        }
+    };
+    const handleCliclBackScroll = () => {
+
+        setTranslateValue(translateValue + 300);
+
+        if (translateValue >= 100) {
+          setTranslateValue(translateValue - 300);
+        }
+    };
 
     useEffect(() => {
-        const api = async () => {
-            const data = await fetch("http://localhost:8002/content/employees/", {
-              method: "GET"
-            })
-            .then((response) => response.json());
-            setTeamReq(data)
-          };
-        api();
+        try {
+            const api = async () => {
+                const data = await fetch("http://localhost:8002/content/employees/", {
+                  method: "GET"
+                })
+                .then((response) => response.json());
+                setTeamReq(data)
+              };
+            api();
+        } catch (error) {
+            console.log(error)
+        }
+       
     },[])
 
     return(
@@ -59,12 +82,28 @@ const BestT = () => {
                     <p>The core values behind our work</p>
                 </div>
             </motion.div>
-            <div className={style.teamMar}>
+            <div className={style.teamMar} style={{
+                        transform: `translateX(${translateValue}px)`,
+                    }}>
                 {teamReq.map((team) => (
                     <>
                         <TeamM team={team} variants={item} custom={1}/>
                     </>
                 ))}
+            </div>
+             <div className={cls.carus_button}>
+                <button className={cls.button_hover} onClick={handleCliclBackScroll}>
+                    <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="35" cy="35.3477" r="35" transform="rotate(-180 35 35.3477)" fill="#454545"/>
+                    <path d="M38 46.3477L28 35.3477L38 24.3477" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button className={cls.button_hover} onClick={handleCliclNextScroll}>
+                    <svg width="94" height="95" viewBox="0 0 94 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="47" cy="37.3477" r="35" fill="#454545"/> 
+                    <path d="M44 26.3477L54 37.3477L44 48.3477" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </motion.section>
     )
