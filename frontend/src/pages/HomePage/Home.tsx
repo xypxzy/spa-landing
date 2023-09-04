@@ -1,12 +1,11 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection';
-import BenefitsSection from '../../components/BenefitsSection/BenefitsSection';
 import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
-import axios from 'axios';
 import { DEFAULT_URL } from '../../consts/const';
-import { useTranslation } from 'react-i18next';
 
 /* "id": 1,
         "pre_title": "//01.О нас",
@@ -73,7 +72,6 @@ const Home = () => {
       <Hero />
       <AboutUsSection data={data[0]}/>
       <ProcessSection data={data[1]}/>
-      {/* <BenefitsSection /> */}
       <ProjectSection />
     </div>
   )
