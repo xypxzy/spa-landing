@@ -67,15 +67,15 @@ class UserSubscriptionCreateAPIView(CreateAPIView):
 
 
 class OurValuesListAPIView(ListAPIView):
-    queryset = OurValues.objects.all()
+    queryset = OurValues.objects.filter(is_visible=True)
     serializer_class = OurValuesSerializer
 
 
 class SummaryNumericDataListAPIView(ListAPIView):
-    queryset = SummaryNumericData.objects.all()
+    queryset = SummaryNumericData.objects.filter(is_visible=True)
     serializer_class = SummaryNumericDataSerializer
 
 
 class BigTextualContentListAPIView(ListAPIView):
-    queryset = BigTextualContent.objects.all()
+    queryset = BigTextualContent.objects.filter(is_visible=True)
     serializer_class = BigTextualContentSerializer
