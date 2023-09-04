@@ -32,7 +32,7 @@ class PhoneContactSerializer(serializers.ModelSerializer):
 class AddressContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddressContact
-        fields = ('id', 'address',)
+        fields = ('id', 'city', 'address', 'image',)
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
@@ -74,4 +74,4 @@ class BigTextualContentSerializer(serializers.ModelSerializer):
 class SummaryNumericDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SummaryNumericData
-        fields = ('id', 'data_description', 'number',)
+        fields = ('id', 'data_description', 'color', 'number',)
