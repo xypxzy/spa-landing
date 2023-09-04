@@ -6,14 +6,17 @@ import marketingLogo from '../../assets/marketing-logo.png';
 import { ReactComponent as DoneIcon } from '../../assets/marketing-icon.svg';
 import { motion } from 'framer-motion';
 import { featureAnimationProps, textAnimationProps } from './animation';
+import { useTranslation } from 'react-i18next';
 
 const Services: React.FC = () => {
+  const { t } = useTranslation()
+
   return (
     <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
-            <h1 className={styles.services__title}>Services</h1>
+            <h1 className={styles.services__title}>{t('Services')}</h1>
           </div>
         </div>
       </section>

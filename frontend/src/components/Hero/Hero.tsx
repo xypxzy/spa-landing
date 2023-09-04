@@ -5,7 +5,7 @@ import frame3 from '../../assets/homePage/hero-frame-3.png'
 import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
-  const { t } = useTranslation(['translation', 'home']);
+  const { t } = useTranslation();
   
   const container = {
     hidden: { opacity: 0 },

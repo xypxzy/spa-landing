@@ -1,5 +1,4 @@
 import {ReactComponent as BenefitsIcon} from '../../assets/benefitsIcon.svg'
-import {ReactComponent as BenefitsImg} from '../../assets/benefitsImg.svg'
 
 
 const BenefitsSection = () => {
@@ -10,10 +9,14 @@ const BenefitsSection = () => {
           <div className='flex gap-8'>
             <BenefitsIcon className='w-14 h-14' />
             <span className='flex flex-col gap-3'>
-              <p className='text-[15px] text-[#292930] uppercase'>// 07 . Benefits</p>
+              <p className='text-[15px] text-[#292930] uppercase'>// 04 . Benefits</p>
               <h1 className='text-2xl w-[300px]'>Benefit of working with Maruncy</h1>
             </span>
+            
           </div>
+          <span className='w-1/2 h-full bg-slate-400' >
+              das
+          </span>
         </div>
         <div className='w-1/2 flex flex-col gap-5'>
           <div className='w-[500px]'>
