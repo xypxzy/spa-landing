@@ -26,13 +26,18 @@ function Footer() {
   const [phone, setPhone] = useState<PhoneProps[]>([]);
   const [emails, setEmails] = useState<EmailProps[]>([]);
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;  
 
   useEffect(() => {
     // Создайте функцию для выполнения запроса к серверу
     const fetchAddress = async () => {
       try {
-        const response = await axios.get<AddressProps[]>(`${DEFAULT_URL}/content/addresses/`); 
+        const response = await axios.get<AddressProps[]>(`${DEFAULT_URL}/content/addresses/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        }); 
         setAddress(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -41,7 +46,11 @@ function Footer() {
 
     const fetchPhone = async () => {
       try {
-        const response = await axios.get<PhoneProps[]>(`${DEFAULT_URL}/content/phones/`);
+        const response = await axios.get<PhoneProps[]>(`${DEFAULT_URL}/content/phones/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        });
         setPhone(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -50,7 +59,11 @@ function Footer() {
 
     const fetchEmails = async () => {
       try {
-        const response = await axios.get<EmailProps[]>(`${DEFAULT_URL}/content/emails/`);
+        const response = await axios.get<EmailProps[]>(`${DEFAULT_URL}/content/emails/`, {
+          headers: {
+            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
+          },
+        });
         setEmails(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -59,7 +72,7 @@ function Footer() {
     fetchAddress();
     fetchPhone();
     fetchEmails();
-  }, []);
+  }, [currentLang]);
 
   return (
     <footer className={cls.footer}>
