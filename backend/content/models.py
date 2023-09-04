@@ -44,11 +44,15 @@ class EmailContact(models.Model):
     def __str__(self):
         return f'{self.email}'
 
+def project_images(instance, filename):
+    return f'projects/{filename}'
+
 
 class Project(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
     customer = models.CharField(max_length=255, blank=True, verbose_name='Заказчик')
+    image = image = models.ImageField(blank=True, null=True, upload_to=project_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:

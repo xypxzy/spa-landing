@@ -6,6 +6,7 @@
             "name": "Технический осмотр",
             "description": "Аналитическая информационная система технического осмотра автотранспортных средств",
             "customer": "Министерство экономики КР",
+            "image": "projects/projectEconomyImg.jpg",
             "is_visible": "True",
 
             "name_ru": "Технический осмотр",
@@ -29,6 +30,7 @@
             "name": "Эталонная база данных",
             "description": "АИС 'Эталонная база данных' Таможенной Службы КР",
             "customer": "UNODC",
+            "image": "projects/unodc.png",
             "is_visible": "True",
 
             "name_ru": "Эталонная база данных",
@@ -52,6 +54,7 @@
             "name": "FinMarket",
             "description": "Цифровая финансовая платформа",
             "customer": "ОЮЛ 'Союз Банков Кыргызстана'",
+            "image": "projects/sbk.png",
             "is_visible": "True",
             
             "name_ru": "FinMarket",

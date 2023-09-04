@@ -48,15 +48,9 @@ class OurValuesSerializer(serializers.ModelSerializer):
 
 
 class TagSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField()
     class Meta:
         model = Tag
         fields = ('id', 'title', 'description', 'image',)
-        
-    # def get_image_url(self, obj):
-    #     request = self.context.get('request')
-    #     image_url = obj.image.url
-    #     return request.build_absolute_uri(image_url)
 
         
 class BigTextualContentSerializer(serializers.ModelSerializer):
@@ -67,8 +61,14 @@ class BigTextualContentSerializer(serializers.ModelSerializer):
         
     def get_tags(self, obj):
         queryset = Tag.objects.filter(related_content=obj)
-        return [TagSerializer(tag).data for tag in queryset]
-
+        tags_data = []
+        request = self.context.get("request")
+        for tag in queryset:
+            data = TagSerializer(tag).data
+            image_url = data['image']
+            data['image'] = request.build_absolute_uri(image_url)
+            tags_data.append(data)
+        return tags_data
 
 
 class SummaryNumericDataSerializer(serializers.ModelSerializer):
