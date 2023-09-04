@@ -3,23 +3,28 @@
     "model": "content.BigTextualContent",
     "pk": 1,
     "fields": {
+      "is_visible": "True",
       "image": "content/some_image.png",
+
+      "pre_title_image": "pre_about_us.png",
+      
+      "pre_title": "//01.О нас",
+
+      "pre_title_ru": "//01.About us",
+      "pre_title_en": "//01.About us",
+      "pre_title_ky": "//01.Биз жөнүндө",
 
       "title": "О компании",
       "description": "Компания ОсОО My Ticket была основана 14 февраля 2017 года для оказания услуг на местном рынке. Компанией успешно реализованы проекты для пользователей по всей республике.",
-      "tags": "Сведения о компании",
 
       "title_ru": "О компании",
       "description_ru": "Компания ОсОО My Ticket была основана 14 февраля 2017 года для оказания услуг на местном рынке. Компанией успешно реализованы проекты для пользователей по всей республике.",
-      "tags_ru": "Сведения о компании",
 
       "title_en": "About us",
       "description_en": "My Ticket LLC was founded on February 14, 2017 to provide services to the local market. The company has successfully implemented projects for users throughout the country.",
-      "tags_en": "Company information",
 
       "title_ky": "Компания жөнүндө",
-      "description_ky": "My Ticket ЖЧКсы 2017-жылдын 14-февралында жергиликтүү рынокко кызмат көрсөтүү максатында түзүлгөн. Компания бүткүл өлкө боюнча колдонуучулар үчүн долбоорлорду ийгиликтүү ишке ашырды.",
-      "tags_ky": "Компания маалыматы"
+      "description_ky": "My Ticket ЖЧКсы 2017-жылдын 14-февралында жергиликтүү рынокко кызмат көрсөтүү максатында түзүлгөн. Компания бүткүл өлкө боюнча колдонуучулар үчүн долбоорлорду ийгиликтүү ишке ашырды."
     }
   }
 ]

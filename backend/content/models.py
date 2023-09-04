@@ -128,16 +128,24 @@ class OurValues(models.Model):
 def textual_content(instance, filename):
     return f'textual_content/{filename}'
 
+def textual_pre_title(instance, filename):
+    return f'textual_content/pre_title/{filename}'
+
+def textual_tags(instance, filename):
+    return f'textual_content/tags/{filename}'
+
 
 class BigTextualContent(models.Model):
     """
     This class will have big content with some text in it.
     tags are short text that describes the characteristics
     """
-    title = models.CharField(max_length=255, default="No title provided", blank=True, verbose_name='Заголовок')
-    description = models.TextField(verbose_name='Описание')
-    tags = models.CharField(max_length=100, verbose_name='Теги')
-    image = models.ImageField(upload_to=textual_content, verbose_name='Картинка')
+    pre_title = models.CharField(max_length=100, verbose_name='Надзаголовок')
+    pre_title_image = models.ImageField(upload_to=textual_pre_title, verbose_name='Картинка надзаголовка')
+    
+    title = models.CharField(max_length=255, default="No title provided", verbose_name='Заголовок')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    image = models.ImageField(upload_to=textual_content, verbose_name='Общая картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
     
     class Meta:
@@ -146,6 +154,24 @@ class BigTextualContent(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Tag(models.Model):
+    """
+    This class represents tags used in BigTextualContent model.
+    """
+    title = models.CharField(max_length=100, verbose_name='Тег')
+    description = models.TextField(blank=True, verbose_name='Описание тега')
+    image = models.ImageField(upload_to=textual_tags, verbose_name='Иконка тега')
+    related_content = models.ForeignKey(to=BigTextualContent, verbose_name='Текстовый объект', on_delete=models.CASCADE, related_name='tags')
+    is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
+    
+    class Meta:
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+    def __str__(self):
+        return f'{self.related_content} | {self.title}'
 
 
 class UserSubscription(models.Model):

@@ -1,0 +1,44 @@
+[
+    {
+        "model": "content.tag",
+        "pk": 1,
+        "fields": {
+            "title": "Гарантированный резуьтат",
+            "description": "Результат точно будет. Обещаем.",
+
+            "related_content": 1,
+            "image": "guarantee.png",
+            "is_visible": "True",
+
+            "title_ru": "Гарантированный резуьтат",
+            "description_ru": "Результат точно будет. Обещаем.",
+
+            "title_en": "Guaranteed Results",
+            "description_en": "The result will definitely be. We promise.",
+
+            "title_ky": "Кепилденген натыйжа",
+            "description_ky": "Натыйжа сөзсүз болот. убада беребиз."
+        }
+    },
+    {
+        "model": "content.tag",
+        "pk": 2,
+        "fields": {
+            "title": "Команда лидеров отрасли",
+            "description": "Наши специалисты имеют огромный опыт. С Вашими данными работают профессионалы.",
+
+            "related_content": 1,
+            "image": "team.png",
+            "is_visible": "True",
+
+            "title_ru": "Команда лидеров отрасли",
+            "description_ru": "Наши специалисты имеют огромный опыт. С Вашими данными работают профессионалы.",
+
+            "title_en": "Team of Industry Experts",
+            "description_en": "The result will definitely be. We promise.",
+
+            "title_ky": "Өнөр жайдын жетекчилигинин командасы",
+            "description_ky": "Биздин адистердин чоң тажрыйбасы бар. Адистер маалыматыңыз менен иштешет."
+        }
+    }
+]
