@@ -15,23 +15,24 @@ descriptions = {
         }
 
 class AddressContactAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'address', 'get_little_image', 'is_visible',)
-    list_display_links = ('address',)
+    list_display = ('id', 'city', 'address', 'get_little_image', 'is_visible',)
+    list_display_links = ('city', 'address',)
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
-    search_fields = ('address_ru', 'address_en', 'address_ky',)
+    search_fields = ('city_ru', 'city_en', 'city_ky',
+        'address_ru', 'address_en', 'address_ky',)
 
     fieldsets = (
         ('Ru', {
-            'fields': ('address_ru',),
+            'fields': ('city_ru', 'address_ru', 'image',),
             'description': descriptions['ru'],
         }),
         ('En', {
-            'fields': ('address_en',),
+            'fields': ('city_en', 'address_en',),
             'description': descriptions['en']
         }),
         ('Ky', {
-            'fields': ('address_ky',),
+            'fields': ('city_ky', 'address_ky',),
             'description': descriptions['ky']
         }),
         ('Статус', {
@@ -164,15 +165,15 @@ admin.site.register(Employee, EmployeeAdmin)
 
 
 class SummaryNumericDataAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'data_description', 'number', 'is_visible',)
+    list_display = ('id', 'data_description', 'number', 'color', 'is_visible',)
     list_display_links = ('data_description',)
-    list_editable = ('number', 'is_visible',)
+    list_editable = ('number', 'color', 'is_visible',)
     ordering = ('-is_visible', 'id',)
     search_fields = ('data_description_ru', 'data_description_en', 'data_description_ky',)
     
     fieldsets = (
         ('Ru', {
-            'fields': ('data_description_ru', 'number',),
+            'fields': ('data_description_ru', 'number', 'color',),
             'description': descriptions['ru'],
         }),
         ('En', {
