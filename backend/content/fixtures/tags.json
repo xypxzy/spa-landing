@@ -3,14 +3,14 @@
         "model": "content.tag",
         "pk": 1,
         "fields": {
-            "title": "Гарантированный резуьтат",
+            "title": "Гарантированный результат",
             "description": "Результат точно будет. Обещаем.",
 
             "related_content": 1,
             "image": "guarantee.png",
             "is_visible": "True",
 
-            "title_ru": "Гарантированный резуьтат",
+            "title_ru": "Гарантированный результат",
             "description_ru": "Результат точно будет. Обещаем.",
 
             "title_en": "Guaranteed Results",

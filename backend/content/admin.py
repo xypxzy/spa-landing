@@ -221,35 +221,41 @@ class OurValuesAdmin(ContentActionAdminMixin, TranslationAdmin):
     )
     
     list_filter = ('is_visible',)
+    actions = ('make_visible', 'make_invisible',)
 
 admin.site.register(OurValues, OurValuesAdmin)
 
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'title', 'description', 'tags', 'get_little_image', 'is_visible',)
-    list_display_links = ('title', 'description', 'tags',)
+    list_display = ('id', 'title', 'description', 'get_little_image', 'is_visible',)
+    list_display_links = ('title', 'description', )
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
-    search_fields = ('title_ru', 'description_ru', 'tags_ru',
-                     'title_en', 'description_en', 'tags_en',
-                     'title_ky', 'description_ky', 'tags_ky',)
+    # search_fields = ('title_ru', 'description_ru', 'tags_ru',
+    #                  'title_en', 'description_en', 'tags_en',
+    #                  'title_ky', 'description_ky', 'tags_ky',)
+    
+    search_fields = ('title_ru', 'description_ru',
+                     'title_en', 'description_en',
+                     'title_ky', 'description_ky',)
     
     fieldsets = (
         ('Ru', {
-            'fields': ('title_ru', 'description_ru', 'tags_ru', 'image',),
+            'fields': ('title_ru', 'description_ru', 'image',),
             'description': descriptions['ru'],
         }),
         ('En', {
-            'fields': ('title_en', 'description_en', 'tags_en',),
+            'fields': ('title_en', 'description_en',),
             'description': descriptions['en'],
         }),
         ('Ky', {
-            'fields': ('title_ky', 'description_ky', 'tags_ky',),
+            'fields': ('title_ky', 'description_ky',),
             'description': descriptions['ky'],
         }),
     )
     
     list_filter = ('is_visible',)
+    actions = ('make_visible', 'make_invisible',)
 
 admin.site.register(BigTextualContent, BigTextualContentAdmin)
 

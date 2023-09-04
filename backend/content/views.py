@@ -79,3 +79,17 @@ class SummaryNumericDataListAPIView(ListAPIView):
 class BigTextualContentListAPIView(ListAPIView):
     queryset = BigTextualContent.objects.filter(is_visible=True)
     serializer_class = BigTextualContentSerializer
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({"request": self.request})
+        return context
+    
+    # def get(self, request):
+    #     serializer = self.get_serializer_class()
+    #     serializer_data = serializer(self.get_queryset(), many=True, context={"request": request})
+        
+    #     print(serializer_data.context)
+    #     return Response(serializer_data.data)
+    
+    
