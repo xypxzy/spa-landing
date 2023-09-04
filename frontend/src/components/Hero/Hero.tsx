@@ -37,6 +37,7 @@ const Hero = () => {
   }
 
   const text = t('homeTitle');
+  
   const words = text.split(" "); // Разбиваем текст на отдельные слова
 
   return (

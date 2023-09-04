@@ -6,14 +6,22 @@ import marketingLogo from '../../assets/marketing-logo.png';
 import { ReactComponent as DoneIcon } from '../../assets/marketing-icon.svg';
 import { motion } from 'framer-motion';
 import { featureAnimationProps, textAnimationProps } from './animation';
+import { useTranslation } from 'react-i18next';
+
 
 const Services: React.FC = () => {
+  
+  const { t } = useTranslation(['translation', 'services']);
+
+  const text = t('Services');
+  const words = text.split(" "); 
   return (
     <motion.div {...featureAnimationProps}>
       <section className={styles.services}>
         <div className={styles.services__container}>
           <div className={styles.services__header}>
-            <h1 className={styles.services__title}>Services</h1>
+            
+            <h1 className={styles.services__title}>{words}</h1>
           </div>
         </div>
       </section>
@@ -33,7 +41,7 @@ const Services: React.FC = () => {
                   {...textAnimationProps}
                   className={styles.marketing__title}
                 >
-                  We take your business reach from thousands to millions
+                  Принцип работы
                 </motion.h3>
               </div>
               <hr className={styles.hr} />
@@ -42,9 +50,8 @@ const Services: React.FC = () => {
                   {...textAnimationProps}
                   className={styles.marketing__desc}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  sollicitudinbibendum senectus scelerisque non. Turpis matis
-                  morbi vivera ipsum adipiscing Mauris volutpat sagittis, sit
+                Основополагающим принципом работы MyTicket является добросовестное ведение бизнеса
+
                 </motion.p>
                 <ul className={styles.marketing__list}>
                   <motion.li

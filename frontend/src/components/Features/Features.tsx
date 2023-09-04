@@ -7,8 +7,16 @@ import {
   featureAnimationProps,
   textAnimationProps
 } from '../../pages/ServicesPage/animation';
+import { useTranslation } from 'react-i18next';
+
 
 const Features: React.FC = () => {
+
+  const { t } = useTranslation(['translation', 'services']);
+
+  const text = t('Services');
+  const words = text.split(" "); 
+  
   const [expandedCards, setExpandedCards] = React.useState<number[]>([]);
   const toggleCards = (id: number) => {
     if (expandedCards.includes(id)) {
@@ -27,18 +35,18 @@ const Features: React.FC = () => {
   const cardContent: Card[] = [
     {
       id: 1,
-      title: 'Media Marketing',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+      title: 'Ответсвенность',
+      text: 'Мы ответственно подходим к выполнению всех наших обязательств перед заказчиками и персоналом.'
     },
     {
       id: 2,
-      title: 'Media Marketing',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, debitis deserunt error enim explicabo quia impedit officiis dolor harum, vitae numquam assumenda eligendi, nesciunt similique. Ratione quia asperiores ea facere'
+      title: 'Забота о природе',
+      text: 'Мы ориентируемся на использование технологий и решений, не наносящих вреда природе'
     },
     {
       id: 3,
-      title: 'Media Marketing',
-      text: 'Lorem ipsum dolor uia asperiores ea facere'
+      title: 'Репутация',
+      text: 'Мы дорожим своей надежной репутацией'
     }
   ];
 
@@ -48,8 +56,8 @@ const Features: React.FC = () => {
         <div className={styles.features__header}>
           <div className={styles.features__left}>
             <ServicesIcon className=" h-20 w-20 mb-10" />
-            <motion.h2 {...textAnimationProps}>
-              High-impact services to take your business to the next level
+            <motion.h2 {...textAnimationProps}>  
+             {words}
             </motion.h2>
           </div>
         </div>
