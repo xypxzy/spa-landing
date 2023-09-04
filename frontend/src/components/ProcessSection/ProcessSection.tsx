@@ -4,9 +4,9 @@ import processSection2 from '../../assets/homePage/proccessSection2.png'
 import processSection3 from '../../assets/homePage/proccessSection3.png'
 import processIcon from '../../assets/homePage/processIcon.png'
 
-import cls from './ProcessSection.module.css'
-import { DataProps } from '../../pages/HomePage/Home'
 import { FC } from 'react'
+import { DataProps } from '../../pages/HomePage/Home'
+import cls from './ProcessSection.module.css'
 
 interface ProcessSectionProps {
   data: DataProps;
