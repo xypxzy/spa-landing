@@ -4,11 +4,13 @@ import bgCardImg from '../../assets/homePage/footer-card.png';
 import {ReactComponent as Logo} from '../../assets/logo.svg'
 import axios from 'axios';
 import { DEFAULT_URL } from '../../consts/const';
+import { useTranslation } from 'react-i18next';
 
 const SendEmailCard = () => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
+  const { t } = useTranslation()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
@@ -50,12 +52,12 @@ const SendEmailCard = () => {
         </div>
         <img src={bgCardImg}  alt="bg img" />
         <div>
-          <h1>Subscribe now</h1>
-          <p className='text-sm text-[#D0D0D0]'>Industry's standard from dummy and make a type book.</p>
+          <h1>{t('emailTitle')}</h1>
+          <p className='text-sm text-[#D0D0D0]'>{t('emailDesc')}</p>
           <div className="mb-6">
             <input 
               type="text"
-              placeholder='Enter your name'
+              placeholder={t('Enter your name')}
               className={`${
                 isValidEmail ? '' : 'border-red-500'
               } ${cls.footer__card_block__input}`}
@@ -64,7 +66,7 @@ const SendEmailCard = () => {
             />
             <input 
               type="text"
-              placeholder='Enter your email'
+              placeholder={t('Enter your email')}
               className={`${
                 isValidEmail ? '' : 'border-red-500'
               } ${cls.footer__card_block__input}`}
@@ -76,10 +78,10 @@ const SendEmailCard = () => {
                 onClick={handleSubmit}
                 disabled={!isValidEmail}
               >
-                Submit
+                {t('Submit')}
               </button>
             {!isValidEmail && (
-              <p className="text-red-500 text-center">Invalid email</p>
+              <p className="text-red-500 text-center">{t('Invalid email')}</p>
             )}
           </div>
         </div>
