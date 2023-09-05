@@ -47,6 +47,10 @@ interface AboutUsSectionProps {
 
 const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
 
+  if(!data ) {
+    return null;
+  }
+
   return (
       <motion.section
         initial='hidden'

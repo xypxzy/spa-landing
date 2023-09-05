@@ -8,6 +8,55 @@ import { FC } from 'react'
 import { DataProps } from '../../pages/HomePage/Home'
 import cls from './ProcessSection.module.css'
 
+const processAnimation = {
+  hidden: {
+    y: 100,
+    opacity: 0
+  },
+  visible: (custom: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {delay: custom * 0.2}
+  })
+}
+
+
+const headerAnimation = {
+hidden: {
+  y: -50, // Начальное смещение хедера вверх
+  opacity: 0, // Начальная непрозрачность
+  scale: 0.8, // Начальный масштаб (можно настроить)
+},
+visible: (custom: number) => ({
+  y: 0, // Конечное смещение хедера (хедер останется на месте)
+  opacity: 1, // Конечная непрозрачность (хедер будет полностью видимым)
+  scale: 1, // Конечный масштаб (обычно 1 для естественного размера)
+  transition: {
+    type: 'spring', // Использовать пружинный тип анимации для плавности
+    damping: 10, // Коэффициент затухания (уменьшьте или увеличьте по желанию)
+    stiffness: 80, // Жесткость пружины (уменьшьте или увеличьте по желанию)
+    delay: custom * 0.2, // Задержка анимации
+  },
+}),
+}
+
+const textAnimation = {
+  hidden: {
+    y: 50, // Начальное смещение по вертикали
+    opacity: 0, // Начальная непрозрачность
+  }, 
+  visible: (custom: number) => ({
+    y: 0, // Конечное смещение по вертикали (текст останется на месте)
+    opacity: 1, // Конечная непрозрачность (текст будет полностью видимым)
+    transition: {
+      type: 'spring', // Использовать пружинный тип анимации для плавности
+      damping: 8, // Коэффициент затухания (уменьшьте или увеличьте по желанию)
+      stiffness: 60, // Жесткость пружины (уменьшьте или увеличьте по желанию)
+      delay: custom * 0.2, // Задержка анимации
+    },
+  }),
+}
+
 interface ProcessSectionProps {
   data: DataProps;
 }
@@ -15,53 +64,9 @@ interface ProcessSectionProps {
 
 const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
 
-  const processAnimation = {
-    hidden: {
-      y: 100,
-      opacity: 0
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {delay: custom * 0.2}
-    })
-  }
-
-
-const headerAnimation = {
-  hidden: {
-    y: -50, // Начальное смещение хедера вверх
-    opacity: 0, // Начальная непрозрачность
-    scale: 0.8, // Начальный масштаб (можно настроить)
-  },
-  visible: (custom: number) => ({
-    y: 0, // Конечное смещение хедера (хедер останется на месте)
-    opacity: 1, // Конечная непрозрачность (хедер будет полностью видимым)
-    scale: 1, // Конечный масштаб (обычно 1 для естественного размера)
-    transition: {
-      type: 'spring', // Использовать пружинный тип анимации для плавности
-      damping: 10, // Коэффициент затухания (уменьшьте или увеличьте по желанию)
-      stiffness: 80, // Жесткость пружины (уменьшьте или увеличьте по желанию)
-      delay: custom * 0.2, // Задержка анимации
-    },
-  }),
-}
-
-  const textAnimation = {
-    hidden: {
-      y: 50, // Начальное смещение по вертикали
-      opacity: 0, // Начальная непрозрачность
-    }, 
-    visible: (custom: number) => ({
-      y: 0, // Конечное смещение по вертикали (текст останется на месте)
-      opacity: 1, // Конечная непрозрачность (текст будет полностью видимым)
-      transition: {
-        type: 'spring', // Использовать пружинный тип анимации для плавности
-        damping: 8, // Коэффициент затухания (уменьшьте или увеличьте по желанию)
-        stiffness: 60, // Жесткость пружины (уменьшьте или увеличьте по желанию)
-        delay: custom * 0.2, // Задержка анимации
-      },
-    }),
+  
+  if(!data) {
+    return null;
   }
 
   return (
