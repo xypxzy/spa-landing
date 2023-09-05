@@ -5,7 +5,7 @@ import processSection3 from '../../assets/homePage/proccessSection3.png'
 import processIcon from '../../assets/homePage/processIcon.png'
 
 import { FC } from 'react'
-import { DataProps } from '../../pages/HomePage/Home'
+import { DataProps, TagsProps } from '../../pages/HomePage/Home'
 import cls from './ProcessSection.module.css'
 
 const processAnimation = {
@@ -63,7 +63,7 @@ interface ProcessSectionProps {
 
 
 const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
-
+  console.log(data);
   
   if(!data) {
     return null;
@@ -132,7 +132,7 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
               </div>
               <div className='md:w-[40%] w-[100%] lg:ml-0 ml-6'>
                 <h2 className={cls.process__card_title}>{data.tags.length > 0 && data.tags[0].title && data.tags[2].title}</h2>
-                <p className={cls.process__card_description}>{data?.tags[2].description}</p>
+                 <p className={cls.process__card_description}>{data?.tags[2].description}</p>
               </div>
             </motion.div>
           </div>
