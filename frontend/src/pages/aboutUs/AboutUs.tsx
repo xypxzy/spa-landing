@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection'
 import { TagsProps } from '../HomePage/Home'
+import { DEFAULT_URL } from '../../consts/const'
 
 interface summaryProps {
     number: number;
@@ -48,7 +49,7 @@ const AboutUs = () => {
     useEffect(() => {
         try {
             const api = async () => {
-                const data = await fetch("http://localhost:8002/content/summary/", {
+                const data = await fetch(`${DEFAULT_URL}/content/summary/`, {
                   method: "GET",
                   headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
@@ -66,7 +67,7 @@ const AboutUs = () => {
     useEffect(() => {
         try {
             const api = async () => {
-                const data = await fetch("http://localhost:8002/content/content/", {
+                const data = await fetch(`${DEFAULT_URL}/content/content/`, {
                   method: "GET",
                   headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
