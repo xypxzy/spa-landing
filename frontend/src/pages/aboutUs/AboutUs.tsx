@@ -152,8 +152,13 @@ const AboutUs = () => {
                     ))}
                 </motion.div>
             </section>
-           <AboutUsSection data={data[0]}/>
-           <div className='flex flex-col items-center justify-center'>
+            {data.map(item => {
+                if(item.id === 1)
+                return <AboutUsSection data={item}/>
+                else
+                return null
+            })}           
+            <div className='flex flex-col items-center justify-center bg-[#292930]'>
                 <div className={style.withoutCar}>
                         <div className={style.image_hghg}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none">
@@ -168,7 +173,9 @@ const AboutUs = () => {
                     </div>
                 <Carousel values={values} isTeam={false}/>
            </div>
-           <BestT teams={teams}/>
+           <div className='py-20'>
+                <BestT teams={teams}/>
+           </div>
         </main>
     )
 }
