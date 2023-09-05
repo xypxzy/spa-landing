@@ -4,12 +4,9 @@
     "pk": 1,
     "fields": {
       "is_visible": "True",
-      "image": "content/some_image.png",
-
-      "pre_title_image": "pre_about_us.png",
-
+      "image": "textual_content/aboutUsBg.png",
+      "pre_title_image": "textual_content/pre_title/aboutUsIcon.png",
       "pre_title": "//01.О нас",
-
       "pre_title_ru": "//01.О нас",
       "pre_title_en": "//01.About us",
       "pre_title_ky": "//01.Биз жөнүндө",
@@ -32,9 +29,10 @@
     "pk": 2,
     "fields": {
       "is_visible": "True",
-      "image": "content/some_image.png",
 
-      "pre_title_image": "pre_about_us.png",
+      "image": "textual_content/aboutUsBg.png",
+
+      "pre_title_image": "textual_content/pre_title/processIcon.png",
 
       "pre_title": "//02. Процессы",
 

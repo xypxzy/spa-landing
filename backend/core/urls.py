@@ -29,5 +29,6 @@ urlpatterns = [
     path('content/', include('content.urls'))
 ]
 
-urlpatterns += swagger_urlpatterns
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += swagger_urlpatterns
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

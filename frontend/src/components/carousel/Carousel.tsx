@@ -1,15 +1,15 @@
-import style from './Carousel.module.css'
-import icon from '../../assets/aboutAs/IconOr.png'
-import { useState, useEffect } from 'react'
-import {motion} from 'framer-motion'
-import { ContentM } from '../carouselCard/CarouselC'
-import { CarouselProps } from '../../const/about'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import icon from '../../assets/aboutAs/IconOr.png'
+import { CarouselProps } from '../../const/about'
+import { ContentM } from '../carouselCard/CarouselC'
+import style from './Carousel.module.css'
 
 const Carousel = () => {
     const [translateValue, setTranslateValue] = useState<number>(0);
     const [carouselReq, setCarouselReq] = useState<CarouselProps[]>([])
-    const { i18n } = useTranslation()
+    const { i18n, t } = useTranslation()
     const currentLang = i18n.language;
     const textAnim = {
         hidden:{
@@ -84,8 +84,8 @@ const Carousel = () => {
             <motion.div className={style.withoutCar} custom={1} variants={textAnim}>
                 <img src={icon} alt="icon" width='80px' className={style.image_hghg}/>
                 <div className={style.under_text}>
-                    <p className={style.na_ffff}><span style={{color: '#FEC90C'}}>//</span><span style={{color: '#D0D0D0'}}>02 . OUR VALUES</span></p>
-                    <p>The core values behind our work</p>
+                    <p className={style.na_ffff}><span style={{color: '#FEC90C'}}>//</span><span style={{color: '#D0D0D0'}}>02 . {t('OUR VALUES')}</span></p>
+                    <p>{t('Our team of expert')}</p>
                 </div>
             </motion.div>
 

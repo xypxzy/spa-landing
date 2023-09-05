@@ -47,7 +47,6 @@ interface AboutUsSectionProps {
 }
 
 const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
-  
 
   return (
       <motion.section

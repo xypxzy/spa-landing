@@ -3,7 +3,7 @@ import AdressC from '../adressCard/AdressC'
 import {motion} from 'framer-motion'
 
 const Adress = () => {
-    const numAnimatio ={ 
+    const numAnimation ={ 
         hidden:{
             x: -700,
             opacity: 0
@@ -20,7 +20,7 @@ const Adress = () => {
         whileInView='visible'
         viewport={{amount: 0.5, once: true}}
         >
-            <motion.div className={style.withoutCar} variants={numAnimatio} custom={1}>
+            <motion.div className={style.withoutCar} variants={numAnimation} custom={1}>
                 <div className={style.image_hghg}>
                     <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="Icon">
