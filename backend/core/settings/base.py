@@ -172,7 +172,7 @@ JAZZMIN_SETTINGS = {
 
     "navigation_expanded": True,
 
-    "hide_apps": ["auth", "groups",],
+    "hide_apps": [],
 
     "hide_models": [],
 

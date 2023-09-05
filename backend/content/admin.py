@@ -1,3 +1,4 @@
+from typing import Any
 from django.contrib import admin
 from modeltranslation.admin import (TranslationAdmin, TranslationStackedInline,
 TranslationTabularInline)
@@ -160,6 +161,10 @@ class EmployeeAdmin(ContentActionAdminMixin, TranslationAdmin):
     
     list_filter = ('position', 'is_visible',)
     actions = ('make_visible', 'make_invisible',)
+    
+    def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+        print()
+        return super().save_model(request, obj, form, change)
    
 admin.site.register(Employee, EmployeeAdmin)
 
