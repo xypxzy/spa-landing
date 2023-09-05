@@ -1,81 +1,81 @@
-.na_ffff{
-    font-family: Noto Sans;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 156.5%; /* 23.475px */
-    letter-spacing: 2.025px;
-    text-transform: uppercase; 
+.na_ffff {
+  font-family: Noto Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 156.5%; /* 23.475px */
+  letter-spacing: 2.025px;
+  text-transform: uppercase;
 }
-.carousel_a{
-    background-color: #292930;
-    padding: 70px 200px;
-    text-align: center;
+.carousel_a {
+  background-color: #292930;
+  padding: 70px 200px;
+  text-align: center;
+  height: 100vh;
 }
-.withoutCar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.under_text p:nth-child(2){
-    color: #FFF;
-    font-family: Nunito;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 110.5%;
-}
-.image_hghg{
-    margin: 20px 0 20px 0px;
-}
-.carousel{
-    margin-top: 30px;
-    overflow: hidden;
-    width: 100%;
-}
-.rotation{
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0px);
-    width: max-content;
-}
-.carus_button button{
-    position: relative;
-    top: -265px;
+.withoutCar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.under_text p:nth-child(2) {
+  color: #fff;
+  font-family: Nunito;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110.5%;
+}
+.image_hghg {
+  margin: 20px 0 20px 0px;
+}
+.carousel {
+  margin-top: 30px;
+  overflow: hidden;
+  width: 100%;
+}
+.rotation {
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0px);
+  width: max-content;
+}
+.carus_button button {
+  position: relative;
+  top: -265px;
+}
 
-.carus_button{
-    display: flex;
-    justify-content: space-between;
+.carus_button {
+  display: flex;
+  justify-content: space-between;
 }
-.header__lang{
-    @apply inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base;   
+.header__lang {
+  @apply inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base;
 }
-.button_hover:hover circle{
-    fill: #5956E8;
+.button_hover:hover circle {
+  fill: #5956e8;
 }
 
-@media (max-width: 1470px){
-    .carousel_a{
-        padding: 50px 180px;
-    }
+@media (max-width: 1470px) {
+  .carousel_a {
+    padding: 50px 180px;
+  }
 }
 @media (max-width: 920px) {
-    .carousel_a{
-        padding: 50px 120px;
-    }
-    .na_ffff{
-        font-size: 13px;
-    }
-    .under_text p:nth-child(2){
-        font-size: 35px;
-    }
+  .carousel_a {
+    padding: 50px 120px;
+  }
+  .na_ffff {
+    font-size: 13px;
+  }
+  .under_text p:nth-child(2) {
+    font-size: 35px;
+  }
 }
-@media (max-width: 660px){
-    .carousel_a{
-        padding: 15px;
-    }
+@media (max-width: 660px) {
+  .carousel_a {
+    padding: 15px;
+  }
 }

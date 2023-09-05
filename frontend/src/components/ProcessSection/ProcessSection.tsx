@@ -70,10 +70,10 @@ const headerAnimation = {
         <div className={cls.process__wrapper}>
           <div className={cls.process__header}>
             <img src={processIcon} alt="" className='xl:w-20 lg:h-20 h-14 w-14' />
-            <span>
+            <motion.span  variants={textAnimation}>
               <motion.p custom={1} variants={headerAnimation} className={cls.process__header_paragraph}>{data?.pre_title}</motion.p>
               <motion.h1 custom={2} variants={headerAnimation} className={cls.process__header_title}>{data?.title}</motion.h1>
-            </span>
+            </motion.span>
           </div>
 
           <div className={cls.process__steps_card}>
