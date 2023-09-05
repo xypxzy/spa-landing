@@ -11,6 +11,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECRET_KEY
 SECRET_KEY = config('SECRET_KEY')
 
+DEFAULT_ADMIN_NAME = config('DEFAULT_ADMIN_NAME')
+
+DEFAULT_ADMIN_PASSWORD = config('DEFAULT_ADMIN_PASSWORD')
+
+DEFAULT_ADMIN_EMAIL = config('DEFAULT_ADMIN_EMAIL')
+
+ADMIN_URL = config('ADMIN_URL')
+
+
 # DEBUG
 DEBUG = config('DEBUG', default=False, cast=bool)
 
@@ -18,6 +27,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+
+CSRF_TRUSTED_ORIGINS = ['https://*.team2back.sanarip.org','https://*.127.0.0.1',
+                        'https://*.localhost']
 
 
 # Application definition
