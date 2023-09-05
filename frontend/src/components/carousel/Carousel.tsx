@@ -41,7 +41,7 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
                     } duration-700 ease-in-out`}
                     data-carousel-item={index === activeIndex ? 'active' : ''}
                 >
-                    {isTeam ? <TeamM team={item as TeamProps} index={index}/> : <CarouselC  carousel={item as ValuesProps} index={index}/>}
+                    {isTeam ? <TeamM team={item as TeamProps} /> : <CarouselC  carousel={item as ValuesProps} index={index}/>}
                 </div>
                 ))}
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DropdownButton } from './DropdownButton';
 import { DropdownMenu } from './DropdownMenu';
 
@@ -22,12 +22,12 @@ function NavigationDropdown() {
   //   { label: 'Sign out', link: '#' },
   // ];
 
-  const doubleDropdownItems = [
-    { label: 'Overview', link: '#' },
-    { label: 'My downloads', link: '#' },
-    { label: 'Billing', link: '#' },
-    { label: 'Rewards', link: '#' },
-  ];
+  // const doubleDropdownItems = [
+  //   { label: 'Overview', link: '#' },
+  //   { label: 'My downloads', link: '#' },
+  //   { label: 'Billing', link: '#' },
+  //   { label: 'Rewards', link: '#' },
+  // ];
 
   return (
     <div>

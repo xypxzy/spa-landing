@@ -5,13 +5,12 @@ import style from './TeamC.module.css'
 
 interface TeamInt{
     team: TeamProps;
-    index: number
 }
 
 
 const TeamC = forwardRef<HTMLDivElement, TeamInt>(({team},ref: Ref<HTMLDivElement>) => {
  return(
-    <section className={`${style.card}`} ref={ref} style={{ background: '#FFF'}}>
+    <section className={`${style.card}`} ref={ref} style={{background: '#FFF'}}>
         <img src={team.image} alt="employee image" className={style.photo} width='180px'/>
         <div className={style.team_text}>
             <div className={style.lone}>

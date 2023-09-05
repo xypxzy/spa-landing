@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { DEFAULT_URL } from '../../consts/const';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { DEFAULT_URL } from '../../consts/const';
 
 interface ProjectProps {
   id: number,
