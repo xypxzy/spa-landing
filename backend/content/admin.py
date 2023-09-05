@@ -236,7 +236,7 @@ class TagInLine(TranslationStackedInline):
     
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'title', 'description', 'get_little_image', 'is_visible',)
+    list_display = ('id', 'pre_title', 'pre_title_image', 'title', 'description', 'get_little_image', 'is_visible',)
     list_display_links = ('title', 'description', )
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
