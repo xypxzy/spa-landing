@@ -11,10 +11,12 @@ interface Languages {
   [key: string]: Language;
 }
 
+interface LanguagesSwitcherProps {
+  handleCloseNav ?: (bool: boolean) => void;
+}
 
 
-
-const LanguagesSwitcher = () => {
+const LanguagesSwitcher = ({handleCloseNav}: LanguagesSwitcherProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -64,7 +66,11 @@ const LanguagesSwitcher = () => {
               >
                 <button 
                   className="block text-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  onClick={() => handleChangeLang(lng)}
+                  onClick={() => {
+                    handleChangeLang(lng);
+                    if(handleCloseNav)
+                      handleCloseNav(false);
+                  }}
                   disabled={i18n.resolvedLanguage === lng}
                   >
                     {lngs[lng].nativeName}

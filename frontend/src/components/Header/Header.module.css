@@ -16,7 +16,7 @@
 }
 
 .header__nav {
-  @apply md:mx-auto lg:flex hidden flex-wrap xl:gap-10 gap-5 items-center text-base justify-center;
+  @apply md:mx-auto md:flex hidden flex-wrap xl:gap-10 gap-5 items-center text-base justify-center;
 }
 
 .header__nav_item {

@@ -54,13 +54,13 @@ const Home = () => {
       <Hero />
       {data.map(item => {
         if(item.id === 1)
-          return <AboutUsSection data={item}/>
+          return <AboutUsSection key={item.id} data={item}/>
         else
           return null
       })}
       {data.map(item => {
         if(item.id === 2)
-          return  <ProcessSection data={item}/>
+          return  <ProcessSection key={item.id} data={item}/>
         else
           return null
       })}
