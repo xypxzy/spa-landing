@@ -29,7 +29,12 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    volumes:
+      - ./frontend/:/react-docker:delegated
+      - /node_modules
     ports:
       - "8082:8082"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     depends_on:
       - api

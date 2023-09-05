@@ -1,14 +1,13 @@
-import style from './AboutUs.module.css'
-import Ball from '../../components/ball/Ball'
-import Marketing from '../../components/marketing/Marketing'
-import Carousel from '../../components/carousel/Carousel'
-import BestT from '../../components/bestTeam/BestT'
-import {motion} from 'framer-motion'
-import Address from '../../components/adresses/Adress'
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection'
+import Ball from '../../components/ball/Ball'
+import BestT from '../../components/bestTeam/BestT'
+import Carousel from '../../components/carousel/Carousel'
+import { DEFAULT_URL } from '../../consts/const'
 import { TagsProps } from '../HomePage/Home'
+import style from './AboutUs.module.css'
 
 interface summaryProps {
     number: number;
@@ -48,7 +47,7 @@ const AboutUs = () => {
     useEffect(() => {
         try {
             const api = async () => {
-                const data = await fetch("http://localhost:8002/content/summary/", {
+                const data = await fetch(`${DEFAULT_URL}/content/summary/`, {
                   method: "GET",
                   headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
@@ -66,7 +65,7 @@ const AboutUs = () => {
     useEffect(() => {
         try {
             const api = async () => {
-                const data = await fetch("http://localhost:8002/content/content/", {
+                const data = await fetch(`${DEFAULT_URL}/content/content/`, {
                   method: "GET",
                   headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
@@ -111,11 +110,9 @@ const AboutUs = () => {
                     ))}
                 </motion.div>
             </section>
-           {/* <Marketing/> */}
            <AboutUsSection data={data[0]}/>
            <Carousel/>
            <BestT/>
-           {/* <Address/> */}
         </main>
     )
 }

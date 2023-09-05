@@ -80,30 +80,32 @@ const headerAnimation = {
             <motion.div
               custom={4}
               variants={processAnimation}
-              className={cls.process__card}>
+              className='flex md:flex-row flex-col justify-between items-center'>
               <img src={processSection1} alt="" className='xl:ml-24 ml-0 w-[250px] lg:w-[298px] md:h-[200px] hidden md:block' />
               <div className={cls.process__card__step}>
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
                 <div className={cls.process__card_step_icon}>1</div>
                 <div className={cls.process__card_step__line}></div>
               </div>
-              <div className='w-[40%] '>
+              <div className='md:w-[40%] w-full '>
                 <h2 className={cls.process__card_title}>{data?.tags[0].title}</h2>
                 <p className={cls.process__card_description}>{data?.tags[0].description}</p>
               </div>
             </motion.div>
-
             <motion.div
               custom={5}
               variants={processAnimation}
-              className='flex justify-between items-center'>
-              <div className='xl:w-[33.7%] w-[40%] text-right lg:ml-0 ml-1'>
+              className='flex md:flex-row flex-col justify-between items-center'>
+                <div className={`${cls.process__card_step_icon} md:hidden`}>
+                  2
+                </div>
+              <div className='xl:w-[33.7%] w-[100%] md:text-right text-left lg:ml-0 ml-1'>
                 <h2 className={cls.process__card_title}>{data?.tags[1].title}</h2>
                 <p className={cls.process__card_description}>{data?.tags[1].description}</p>
               </div>
-              <div className={cls.process__card__step}>
+              <div className={`${cls.process__card__step} md:flex hidden`}>
                 <div className={cls.process__card_step__line}></div>
-                <div className={cls.process__card_step_icon}>
+                <div className={`${cls.process__card_step_icon} md:flex hidden`}>
                   2
                 </div>
                 <div className={cls.process__card_step__line}></div>
@@ -114,7 +116,7 @@ const headerAnimation = {
             <motion.div
               custom={6}
               variants={processAnimation}
-              className='flex justify-between items-center'>
+              className='flex md:flex-row flex-col justify-between items-center'>
               <img src={processSection3} alt="" className='xl:ml-20 ml-0 mr-0 lg:mr-10 md:h-[200px] hidden md:block' />
               <div className={cls.process__card__step}>
                 <div className={cls.process__card_step__line}></div>
@@ -123,7 +125,7 @@ const headerAnimation = {
                 </div>
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
               </div>
-              <div className='w-[40%] lg:ml-0 ml-6'>
+              <div className='md:w-[40%] w-[100%] lg:ml-0 ml-6'>
                 <h2 className={cls.process__card_title}>{data?.tags[2].title}</h2>
                 <p className={cls.process__card_description}>{data?.tags[2].description}</p>
               </div>
