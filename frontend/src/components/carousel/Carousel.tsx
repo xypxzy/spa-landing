@@ -26,13 +26,13 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
 
     return(
         <motion.section 
-            className={`${!isTeam ? 'bg-[#292930]' : 'bg-white'} w-full py-[50px] px-[70px]`}
+            className={`${!isTeam ? 'bg-[#292930]' : 'bg-white'} w-full pb-[50px] px-[70px]`}
             initial='hidden'
             whileInView='visible'
             viewport={{amount: 0.2, once: true}}
         >
             <div id="indicators-carousel" className="relative w-full" data-carousel="static">
-            <div className="relative h-[800px] overflow-hidden rounded-lg md:h-[600px] my-10 flex justify-center items-center">
+            <div className="relative h-[800px] overflow-hidden rounded-lg md:h-[600px] flex justify-center items-center">
                 {(values).map((item, index) => (
                 <div
                     key={index}
@@ -45,7 +45,7 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
                 </div>
                 ))}
             </div>
-            <div className="absolute z-5 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2">
+            <div className="absolute z-5 flex space-x-3 -translate-x-1/2 -bottom-5 md:bottom-0 left-1/2">
                 {values.map((_, index) => (
                 <button
                     key={index}
@@ -63,11 +63,10 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
             <button
                 type="button"
                 className="absolute top-0 -left-10 z-5 flex items-center justify-center h-full md:px-4 px-0 cursor-pointer group focus:outline-none"
-                data-carousel-prev
                 onClick={prevSlide}
             >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white dark:text-gray-800' : 'text-gray-800 dark:text-white'}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30  group-hover:bg-white/50  group-focus:outline-none">
+                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white ' : 'text-gray-800'}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" d="M5 1 1 5l4 4"/>
                     </svg>
                     <span className="sr-only">Previous</span>
@@ -79,8 +78,8 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
                 data-carousel-next
                 onClick={nextSlide}
             >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white dark:text-gray-800' : 'text-gray-800 dark:text-white'}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30  group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white ' : 'text-gray-800 '}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" d="m1 9 4-4-4-4"/>
                     </svg>
                     <span className="sr-only">Next</span>
