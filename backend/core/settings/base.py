@@ -156,7 +156,7 @@ JAZZMIN_SETTINGS = {
     
     # "site_logo": 'img/mt_logo.png',
     
-    "copyright": "Sanarip Dolboor 2023",
+    "copyright": "Sanarip Dolboor",
     "topmenu_links": [
 
         {"name": "Главная",  "url": "admin:index", "permissions": ["auth.view_user"]},
@@ -172,7 +172,7 @@ JAZZMIN_SETTINGS = {
 
     "navigation_expanded": True,
 
-    "hide_apps": ["auth", "groups",],
+    "hide_apps": [],
 
     "hide_models": [],
 

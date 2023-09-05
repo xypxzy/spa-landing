@@ -15,27 +15,27 @@ from .serializers import (
 
 
 class ProjectListAPIView(ListAPIView):
-    queryset = Project.objects.filter(is_visible=True)
+    queryset = Project.objects.filter(is_visible=True).order_by('id')
     serializer_class = ProjectSerializer
 
 
 class EmployeeListAPIView(ListAPIView):
-    queryset = Employee.objects.filter(is_visible=True)
+    queryset = Employee.objects.filter(is_visible=True).order_by('id')
     serializer_class = EmployeeSerializer
 
 
 class EmailContactListAPIView(ListAPIView):
-    queryset = EmailContact.objects.filter(is_visible=True)
+    queryset = EmailContact.objects.filter(is_visible=True).order_by('id')
     serializer_class = EmailContactSerializer
 
 
 class PhoneContactListAPIView(ListAPIView):
-    queryset = PhoneContact.objects.filter(is_visible=True)
+    queryset = PhoneContact.objects.filter(is_visible=True).order_by('id')
     serializer_class = PhoneContactSerializer
 
 
 class AddressContactListAPIView(ListAPIView):
-    queryset = AddressContact.objects.filter(is_visible=True)
+    queryset = AddressContact.objects.filter(is_visible=True).order_by('id')
     serializer_class = AddressContactSerializer
 
 
@@ -62,22 +62,22 @@ class ContactsListAPIView(APIView):
 
 
 class UserSubscriptionCreateAPIView(CreateAPIView):
-    queryset = UserSubscription.objects.all()
+    queryset = UserSubscription.objects.all().order_by('id')
     serializer_class = UserSubscriptionSerializer
 
 
 class OurValuesListAPIView(ListAPIView):
-    queryset = OurValues.objects.filter(is_visible=True)
+    queryset = OurValues.objects.filter(is_visible=True).order_by('id')
     serializer_class = OurValuesSerializer
 
 
 class SummaryNumericDataListAPIView(ListAPIView):
-    queryset = SummaryNumericData.objects.filter(is_visible=True)
+    queryset = SummaryNumericData.objects.filter(is_visible=True).order_by('id')
     serializer_class = SummaryNumericDataSerializer
 
 
 class BigTextualContentListAPIView(ListAPIView):
-    queryset = BigTextualContent.objects.filter(is_visible=True)
+    queryset = BigTextualContent.objects.filter(is_visible=True).order_by('id')
     serializer_class = BigTextualContentSerializer
     
     def get_serializer_context(self):
