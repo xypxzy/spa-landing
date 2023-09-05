@@ -62,7 +62,7 @@ class ContactsListAPIView(APIView):
 
 
 class UserSubscriptionCreateAPIView(CreateAPIView):
-    queryset = UserSubscription.objects.all().order_by('id')
+    queryset = UserSubscription.objects.all()
     serializer_class = UserSubscriptionSerializer
 
 

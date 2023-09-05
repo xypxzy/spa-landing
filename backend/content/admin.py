@@ -268,10 +268,10 @@ admin.site.register(BigTextualContent, BigTextualContentAdmin)
 
 
 class UserSubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'name',)
-    list_display_links = ('email', 'name',)
-    readonly_fields = ('email', 'name',)
-    search_fields =('email', 'name__istartswith',)
+    list_display = ('id', 'email', 'phone', 'name',)
+    list_display_links = ('email', 'phone', 'name',)
+    readonly_fields = ('email', 'phone', 'name',)
+    search_fields =('email', 'phone', 'name__istartswith',)
     ordering = ('id',)
 
 admin.site.register(UserSubscription, UserSubscriptionAdmin)

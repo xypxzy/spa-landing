@@ -176,23 +176,24 @@ class Tag(models.Model):
     """
     This class represents tags used in BigTextualContent model.
     """
-    title = models.CharField(max_length=100, verbose_name='Тег')
-    description = models.TextField(blank=True, verbose_name='Описание тега')
-    image = models.ImageField(upload_to=textual_tags, verbose_name='Иконка тега')
+    title = models.CharField(max_length=100, verbose_name='Тезис')
+    description = models.TextField(blank=True, verbose_name='Описание тезиса')
+    image = models.ImageField(upload_to=textual_tags, verbose_name='Иконка тезиса')
     related_content = models.ForeignKey(to=BigTextualContent, verbose_name='Текстовый объект', on_delete=models.CASCADE, related_name='tags')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
     
     class Meta:
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        verbose_name = 'Тезис'
+        verbose_name_plural = 'Тезисы'
 
     def __str__(self):
         return f'{self.related_content} | {self.title}'
 
 
 class UserSubscription(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
+    name = models.CharField(max_length=255, verbose_name='Имя')
+    email = models.EmailField(verbose_name='email', blank=True)
+    phone = models.CharField(max_length=20, verbose_name='Номер телефона', blank=True)
 
     class Meta:
         verbose_name = 'Подписка'

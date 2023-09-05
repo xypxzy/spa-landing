@@ -38,7 +38,7 @@ class AddressContactSerializer(serializers.ModelSerializer):
 class UserSubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserSubscription
-        fields = ('id', 'name', 'email')
+        fields = ('id', 'name', 'phone', 'email',)
 
 
 class OurValuesSerializer(serializers.ModelSerializer):
