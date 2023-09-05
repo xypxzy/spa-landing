@@ -131,7 +131,7 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
               </div>
               <div className='md:w-[40%] w-[100%] lg:ml-0 ml-6'>
-                <h2 className={cls.process__card_title}>{data?.tags[2].title}</h2>
+                <h2 className={cls.process__card_title}>{data.tags.length > 0 && data.tags[0].title && data.tags[2].title}</h2>
                 <p className={cls.process__card_description}>{data?.tags[2].description}</p>
               </div>
             </motion.div>
