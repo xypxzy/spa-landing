@@ -8,7 +8,7 @@ interface CarouselInt{
     index: number
 }
 
-const Content = forwardRef<HTMLDivElement, CarouselInt>(({carousel, index} ,ref: Ref<HTMLDivElement>) => {
+const Content = forwardRef<HTMLDivElement, CarouselInt>(({carousel} ,ref: Ref<HTMLDivElement>) => {
     return(
         <section className={`${style.block} md:w-[380px] 2xl:w-[500px] w-[250px] md:h-[550px] h-auto p-5 py-10`}ref={ref}>
              <img src={carousel.image} alt="" width='100px'/>

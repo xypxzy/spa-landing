@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import cls from '../carousel/Carousel.module.css'
-import { TeamM } from '../teamCard/TeamC'
-import style from './BestT.module.css'
 import { TeamProps } from '../../const/about'
 import Carousel from '../carousel/Carousel'
+import style from './BestT.module.css'
 
 interface BetsTProps {
     teams: TeamProps[];
@@ -22,15 +19,6 @@ const container = {
       }
     }
   }
-  
-const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: (custom: number) => ({
-        x: 0,
-        opacity: 1,
-        transition: {delay: custom * 0.2}
-    })
-};
 
 const BestT = ({teams} : BetsTProps) => {
     const { t } = useTranslation()
