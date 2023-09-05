@@ -1,11 +1,11 @@
-import { FunctionComponent, SVGProps, useEffect, useState } from 'react'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ReactComponent as LocationIcon } from '../../assets/locationIcon.svg'
 import { ReactComponent as PhoneIcon } from '../../assets/phoneIcon.svg'
-import axios from 'axios'
 import { DEFAULT_URL } from '../../consts/const'
 import SendEmailCard from '../SendEmailCard/SendEmailCard'
 import cls from './Footer.module.css'
-import { useTranslation } from 'react-i18next'
 
 interface AddressProps {
   id: number,

@@ -1,10 +1,7 @@
-import style from './TeamC.module.css'
-import photo from '../../assets/aboutAs/Photo(1).png'
-import inst from '../../assets/aboutAs/Instagram.svg'
+import { motion } from 'framer-motion'
 import { forwardRef, Ref } from 'react'
-import {motion} from 'framer-motion'
 import { TeamProps } from '../../const/about'
-import emp from '../../assets/aboutAs/Photo(1).png'
+import style from './TeamC.module.css'
 
 interface TeamInt{
     team: TeamProps;
@@ -13,8 +10,8 @@ interface TeamInt{
 
 const TeamC = forwardRef<HTMLDivElement, TeamInt>(({team},ref: Ref<HTMLDivElement>) => {
  return(
-    <section className={style.card} ref={ref} style={team.id % 2 === 0 ? {background: 'linear-gradient(111deg, #E9F7FF 9.66%, #FFDBD4 57.52%, #FFF3CA 103.42%)'} : {background: '#FFF'}}>
-    <img src={team.image} alt="employee image" className={style.photo} width='300px'/>
+    <section className={`${style.card}`} ref={ref} style={{background: '#FFF'}}>
+        <img src={team.image} alt="employee image" className={style.photo} width='180px'/>
         <div className={style.team_text}>
             <div className={style.lone}>
                 <svg width="84" height="4" viewBox="0 0 84 4" fill="none" xmlns="http://www.w3.org/2000/svg">
