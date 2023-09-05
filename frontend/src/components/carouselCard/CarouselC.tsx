@@ -1,17 +1,17 @@
-import style from './CarouselC.module.css'
-import imageIc from '../../assets/aboutAs/Group 2484.png'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { forwardRef, Ref } from 'react'
-import { CarouselProps } from '../../const/about'
+import { ValuesProps } from '../../pages/aboutUs/AboutUs'
+import style from './CarouselC.module.css'
 
 interface CarouselInt{
-    carousel: CarouselProps;
+    carousel: ValuesProps;
+    index: number
 }
 
 const Content = forwardRef<HTMLDivElement, CarouselInt>(({carousel} ,ref: Ref<HTMLDivElement>) => {
     return(
-        <section className={style.block} ref={ref}>
-             <img src={imageIc} alt="" width='153px'/>
+        <section className={`${style.block} md:w-[380px] 2xl:w-[500px] w-[250px] md:h-[550px] h-auto p-5 py-10`}ref={ref}>
+             <img src={carousel.image} alt="" width='100px'/>
              <p className={style.tx_car}>{carousel.name}</p>
              <p className={style.txnext_car}>{carousel.description}</p>
              <div className={style.line_car}>

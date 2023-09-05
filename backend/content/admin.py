@@ -1,9 +1,10 @@
+from typing import Any
 from django.contrib import admin
-from django.utils.safestring import mark_safe
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import (TranslationAdmin, TranslationStackedInline,
+TranslationTabularInline)
 
 from content.models import (AddressContact, PhoneContact, EmailContact, Employee, Project,
-SummaryNumericData, OurValues, BigTextualContent, UserSubscription)
+SummaryNumericData, OurValues, Tag, BigTextualContent, UserSubscription)
 from content.mixins import ContentActionAdminMixin
 
 admin.site.site_header = "Myticket"
@@ -160,6 +161,10 @@ class EmployeeAdmin(ContentActionAdminMixin, TranslationAdmin):
     
     list_filter = ('position', 'is_visible',)
     actions = ('make_visible', 'make_invisible',)
+    
+    def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+        print()
+        return super().save_model(request, obj, form, change)
    
 admin.site.register(Employee, EmployeeAdmin)
 
@@ -225,15 +230,17 @@ class OurValuesAdmin(ContentActionAdminMixin, TranslationAdmin):
 
 admin.site.register(OurValues, OurValuesAdmin)
 
+class TagInLine(TranslationStackedInline):
+    model = Tag
+    extra = 0
+    
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
     list_display = ('id', 'title', 'description', 'get_little_image', 'is_visible',)
     list_display_links = ('title', 'description', )
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
-    # search_fields = ('title_ru', 'description_ru', 'tags_ru',
-    #                  'title_en', 'description_en', 'tags_en',
-    #                  'title_ky', 'description_ky', 'tags_ky',)
+    inlines = [TagInLine]
     
     search_fields = ('title_ru', 'description_ru',
                      'title_en', 'description_en',
@@ -261,10 +268,10 @@ admin.site.register(BigTextualContent, BigTextualContentAdmin)
 
 
 class UserSubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'name',)
-    list_display_links = ('email', 'name',)
-    readonly_fields = ('email', 'name',)
-    search_fields =('email', 'name__istartswith',)
+    list_display = ('id', 'email', 'phone', 'name',)
+    list_display_links = ('email', 'phone', 'name',)
+    readonly_fields = ('email', 'phone', 'name',)
+    search_fields =('email', 'phone', 'name__istartswith',)
     ordering = ('id',)
 
 admin.site.register(UserSubscription, UserSubscriptionAdmin)

@@ -25,7 +25,7 @@ swagger_urlpatterns = [
 ]
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f'{settings.ADMIN_URL}/', admin.site.urls),
     path('content/', include('content.urls'))
 ]
 

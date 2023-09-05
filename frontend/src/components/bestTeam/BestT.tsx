@@ -1,70 +1,28 @@
-import style from './BestT.module.css'
-import {motion} from 'framer-motion'
-import { TeamM } from '../teamCard/TeamC'
-import { useState, useEffect } from 'react'
-import { TeamProps } from '../../const/about'
-import cls from '../carousel/Carousel.module.css'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { TeamProps } from '../../const/about'
+import Carousel from '../carousel/Carousel'
+import style from './BestT.module.css'
 
-const BestT = () => {
-    const [teamReq, setTeamReq] = useState<TeamProps[]>([])
-    const [translateValue, setTranslateValue] = useState<number>(40);
-    const { i18n, t } = useTranslation()
-    const currentLang = i18n.language;
+interface BetsTProps {
+    teams: TeamProps[];
+}
 
-    const container = {
-        hidden: { opacity: 1, scale: 0 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2
-          }
-        }
+const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
       }
-      
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        visible: (custom: number) => ({
-            x: 0,
-            opacity: 1,
-            transition: {delay: custom * 0.2}
-        })
-    };
-    const handleCliclNextScroll = () => {
-        setTranslateValue(translateValue - 300);
+    }
+  }
 
-        if (translateValue <= (teamReq.length-1) * -300) {
-          setTranslateValue(translateValue + 300);
-        }
-    };
-    const handleCliclBackScroll = () => {
+const BestT = ({teams} : BetsTProps) => {
+    const { t } = useTranslation()
 
-        setTranslateValue(translateValue + 300);
-
-        if (translateValue >= 100) {
-          setTranslateValue(translateValue - 300);
-        }
-    };
-    useEffect(() => {
-        try {
-            const api = async () => {
-                const data = await fetch("http://localhost:8002/content/employees/", {
-                  method: "GET",
-                  headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
-                })
-                .then((response) => response.json())
-                .catch((error) => console.log(error))
-
-                setTeamReq(data)
-              };
-            api();
-        } catch (error) {
-            console.log(error)
-        }
-       
-    },[currentLang])
 
     return(
         <motion.section className={style.mainsinteam_a}
@@ -82,32 +40,10 @@ const BestT = () => {
                 </div>
                 <div className={style.under_text}>
                     <p className={style.na_ffff}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#292930'}}>03 . {t('OUR TEAM')}</span></p>
-                    <p>{t('The core values behind our work')}</p>
+                    <p>{t('Our team of expert')}</p>
                 </div>
             </motion.div>
-            <div className={style.teamMar} style={{
-                        transform: `translateX(${translateValue}px)`,
-                    }}>
-                {teamReq.map((team) => (
-                    <div key={team.id}>
-                        <TeamM team={team} variants={item} custom={1}/>
-                    </div>
-                ))}
-            </div>
-             <div className={cls.carus_button}>
-                <button className={cls.button_hover} onClick={handleCliclBackScroll}>
-                    <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="35" cy="35.3477" r="35" transform="rotate(-180 35 35.3477)" fill="#454545"/>
-                    <path d="M38 46.3477L28 35.3477L38 24.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-                <button className={cls.button_hover} onClick={handleCliclNextScroll}>
-                    <svg width="94" height="95" viewBox="0 0 94 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="47" cy="37.3477" r="35" fill="#454545"/> 
-                    <path d="M44 26.3477L54 37.3477L44 48.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-            </div>
+            <Carousel isTeam={true} values={teams}/>
         </motion.section>
     )
 }

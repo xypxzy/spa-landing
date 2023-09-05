@@ -11,6 +11,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECRET_KEY
 SECRET_KEY = config('SECRET_KEY')
 
+DEFAULT_ADMIN_NAME = config('DEFAULT_ADMIN_NAME')
+
+DEFAULT_ADMIN_PASSWORD = config('DEFAULT_ADMIN_PASSWORD')
+
+DEFAULT_ADMIN_EMAIL = config('DEFAULT_ADMIN_EMAIL')
+
+ADMIN_URL = config('ADMIN_URL')
+
+
 # DEBUG
 DEBUG = config('DEBUG', default=False, cast=bool)
 
@@ -18,6 +27,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+
+CSRF_TRUSTED_ORIGINS = ['https://*.team2back.sanarip.org','https://*.127.0.0.1',
+                        'https://*.localhost']
 
 
 # Application definition
@@ -144,7 +156,7 @@ JAZZMIN_SETTINGS = {
     
     # "site_logo": 'img/mt_logo.png',
     
-    "copyright": "Sanarip Dolboor 2023",
+    "copyright": "Sanarip Dolboor",
     "topmenu_links": [
 
         {"name": "Главная",  "url": "admin:index", "permissions": ["auth.view_user"]},
@@ -160,11 +172,13 @@ JAZZMIN_SETTINGS = {
 
     "navigation_expanded": True,
 
-    "hide_apps": ["auth", "groups",],
+    "hide_apps": [],
 
     "hide_models": [],
 
-    "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",],
+    "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",
+                              "content.project", "content.employee", "content.bigtextualcontent",
+                              "content.ourvalues", "content.SummaryNumericData", "content.usersubsriptions",],
     
     # "show_ui_builder": True,
 }

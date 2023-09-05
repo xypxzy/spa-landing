@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
+import { FC } from 'react'
 import aboutUsImg from '../../assets/homePage/aboutUs.png'
 import aboutUsBadge from '../../assets/homePage/aboutUsBadge.png'
-import aboutUsIcon from '../../assets/homePage/aboutUsIcon.png'
 import aboutUsIcon2 from '../../assets/homePage/aboutUsIcon2.png'
 import { DataProps, TagsProps } from '../../pages/HomePage/Home'
-import { FC } from 'react'
 
 const headerAnimation = {
   hidden: {
@@ -48,6 +47,10 @@ interface AboutUsSectionProps {
 
 const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
 
+  if(!data ) {
+    return null;
+  }
+
   return (
       <motion.section
         initial='hidden'
@@ -88,7 +91,7 @@ const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
             />
           </motion.div>
           <div className="lg:flex-grow md:w-1/2 xl:pl-24 md:pl-0 max-w-3xl ml-0 
-          flex gap-10 flex-col items-start md:text-left  justify-center h-screen text-left">
+          flex gap-10 flex-col items-start md:text-left  justify-center md:h-screen h-full text-left">
             <div className='flex items-start gap-5 text-left'>
               <img src={aboutUsBadge} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
               <span>

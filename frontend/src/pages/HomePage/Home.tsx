@@ -23,8 +23,12 @@ export interface DataProps {
   image: string
 }
 
+
+
+
 const Home = () => {
   const [data, setData] = useState<DataProps[]>([]);
+
   const { i18n } = useTranslation();
   const currentLang = i18n.language;  
 
@@ -48,8 +52,18 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <AboutUsSection data={data[0]}/>
-      <ProcessSection data={data[1]}/>
+      {data.map(item => {
+        if(item.id === 1)
+          return <AboutUsSection data={item}/>
+        else
+          return null
+      })}
+      {data.map(item => {
+        if(item.id === 2)
+          return  <ProcessSection data={item}/>
+        else
+          return null
+      })}
       <ProjectSection />
     </div>
   )

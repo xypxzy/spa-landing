@@ -1,50 +1,52 @@
-.card{
-    border-radius: 30px;
-    border: 1px solid #DCDCDC;
-    background: #FFF; 
-    width: 300px;
-    padding: 25px 25px 50px 25px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+.card {
+  border-radius: 30px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  width: 250px;
+  height: 400px;
+  padding: 25px 25px 50px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
-.lone{
-    margin: 20px 0px;
+.lone {
+  margin: 20px 0px;
 }
-.hhggg{
-    color: #555;
-    text-align: center;
-    font-family: Noto Sans;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; 
+.hhggg {
+  color: #555;
+  text-align: center;
+  font-family: Noto Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
 }
-.team_text{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.team_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.text_name{
-    text-align: center;
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 114.5%;
+.text_name {
+  text-align: center;
+  font-family: Nunito;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 114.5%;
 }
-.nerwork{
-    display: flex;
+.nerwork {
+  display: flex;
 }
 
-@media (max-width: 1470px){
-    .card{
-        margin: 9px;
-    }
+@media (max-width: 1470px) {
+  .card {
+    margin: 9px;
+  }
 }
-@media (max-width: 660px){
-    .card{
-        width: 100%;
-    }
+@media (max-width: 660px) {
+  .card {
+    width: 230px;
+    height: 450px;
+  }
 }
