@@ -32,7 +32,7 @@ const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
             viewport={{amount: 0.2, once: true}}
         >
             <div id="indicators-carousel" className="relative w-full" data-carousel="static">
-            <div className="relative h-[600px] overflow-hidden rounded-lg md:h-[400px] my-10 flex justify-center items-center">
+            <div className="relative h-[800px] overflow-hidden rounded-lg md:h-[600px] my-10 flex justify-center items-center">
                 {(values).map((item, index) => (
                 <div
                     key={index}
