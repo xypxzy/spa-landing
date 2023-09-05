@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import (TranslationAdmin, TranslationStackedInline,
-TranslationGenericTabularInline, TranslationGenericStackedInline, TabbedTranslationAdmin)
+TranslationTabularInline)
 
 from content.models import (AddressContact, PhoneContact, EmailContact, Employee, Project,
 SummaryNumericData, OurValues, Tag, BigTextualContent, UserSubscription)
@@ -227,15 +227,8 @@ admin.site.register(OurValues, OurValuesAdmin)
 
 class TagInLine(TranslationStackedInline):
     model = Tag
-    # fieldsets = (
-    #     ('tag_ru', {
-    #         'fields': ('title_ru', 'description_ru', 'image', 'is_visible',),
-    #     }),
-    #     ('tag_en', {
-    #         'fields': ('title_en', 'description_en',),
-    #     }),
-    # )
-
+    extra = 0
+    
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
     list_display = ('id', 'title', 'description', 'get_little_image', 'is_visible',)
@@ -243,10 +236,6 @@ class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
     inlines = [TagInLine]
-    
-    # search_fields = ('title_ru', 'description_ru', 'tags_ru',
-    #                  'title_en', 'description_en', 'tags_en',
-    #                  'title_ky', 'description_ky', 'tags_ky',)
     
     search_fields = ('title_ru', 'description_ru',
                      'title_en', 'description_en',
