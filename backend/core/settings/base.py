@@ -164,7 +164,9 @@ JAZZMIN_SETTINGS = {
 
     "hide_models": [],
 
-    "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",],
+    "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",
+                              "content.project", "content.employee", "content.bigtextualcontent",
+                              "content.ourvalues", "content.SummaryNumericData", "content.usersubsriptions",],
     
     # "show_ui_builder": True,
 }
