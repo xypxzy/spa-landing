@@ -102,7 +102,7 @@ const AboutUs = () => {
         const fetchTeam = async () => {
             try {
                 const api = async () => {
-                    const data = await fetch("http://localhost:8002/content/employees/", {
+                    const data = await fetch(`${DEFAULT_URL}/content/employees/`, {
                       method: "GET",
                       headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                     })
