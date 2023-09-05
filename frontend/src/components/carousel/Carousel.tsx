@@ -5,6 +5,7 @@ import icon from '../../assets/aboutAs/IconOr.png'
 import { CarouselProps } from '../../const/about'
 import { ContentM } from '../carouselCard/CarouselC'
 import style from './Carousel.module.css'
+import { DEFAULT_URL } from '../../consts/const'
 
 const Carousel = () => {
     const [translateValue, setTranslateValue] = useState<number>(0);
@@ -57,7 +58,7 @@ const Carousel = () => {
     useEffect(() => {
         try {
             const api = async () => {
-                const data = await fetch("http://localhost:8002/content/values/", {
+                const data = await fetch(`${DEFAULT_URL}/content/values/`, {
                   method: "GET",
                   headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
                 })
@@ -84,7 +85,7 @@ const Carousel = () => {
             <motion.div className={style.withoutCar} custom={1} variants={textAnim}>
                 <img src={icon} alt="icon" width='80px' className={style.image_hghg}/>
                 <div className={style.under_text}>
-                    <p className={style.na_ffff}><span style={{color: '#FEC90C'}}>//</span><span style={{color: '#D0D0D0'}}>02 . {t('OUR VALUES')}</span></p>
+                    <p className={style.na_ffff}><span style={{color: '#FEC90C'}}>//</span><span style={{color: '#D0D0D0'}}>03 . {t('OUR VALUES')}</span></p>
                     <p>{t('Our team of expert')}</p>
                 </div>
             </motion.div>
