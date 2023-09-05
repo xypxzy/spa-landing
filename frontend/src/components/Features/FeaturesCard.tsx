@@ -5,8 +5,8 @@ import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-left.svg';
 
 type FeaturesCardProps = {
   id: number;
-  title: string;
-  text: string;
+  name: string;
+  descr: string;
   isExpanded: boolean;
   onToggle: (id: number) => void;
 };
@@ -18,7 +18,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
   isExpanded,
   onToggle
 }) => {
-  const cardText = isExpanded ? text : text.slice(0, 66);
+  const cardText = isExpanded ? descr : descr.slice(0, 66);
   const cardHeight = isExpanded ? 'auto' : '415px';
 
   return (
@@ -27,7 +27,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
         <img src={CardIcon} alt="" className="w-22 h-22" />
       </div>
       <h3 className={styles.features__card__title}>{name}</h3>
-      <p className={styles.features__card__desc}>{descr}</p>
+      <p className={styles.features__card__desc}>{cardText}</p>
 
       <div className="flex justify-end items-center">
         {descr.length > 66 && (

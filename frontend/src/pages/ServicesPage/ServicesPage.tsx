@@ -10,31 +10,33 @@ import { featureAnimationProps, textAnimationProps } from './animation';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_URL } from '../../consts/const';
 
-
 interface NameProps {
-  id: number,
-  name: string,
+  id: number;
+  name: string;
 }
 
 interface DescrProps {
-  id: number,
-  description: string,
+  id: number;
+  description: string;
 }
 
 const Services: React.FC = () => {
- const [name, setName] = React.useState<NameProps[]>([]);
- const [descr, setDescr] = React.useState<DescrProps[]>([]);
-  const { t,i18n } = useTranslation();
-  const currentLang = i18n.language;  
+  const [name, setName] = React.useState<NameProps[]>([]);
+  const [descr, setDescr] = React.useState<DescrProps[]>([]);
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
   React.useEffect(() => {
     const fetchName = async () => {
       try {
-        const response = await axios.get<DataProps[]>(`${DEFAULT_URL}/content/content/`, {
-          headers: {
-            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
-          },
-        }); 
+        const response = await axios.get<NameProps[]>(
+          `${DEFAULT_URL}/content/content/`,
+          {
+            headers: {
+              'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`
+            }
+          }
+        );
         setName(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -47,11 +49,14 @@ const Services: React.FC = () => {
   React.useEffect(() => {
     const fetchDescr = async () => {
       try {
-        const response = await axios.get<DataProps[]>(`${DEFAULT_URL}/content/content/`, {
-          headers: {
-            'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`,
-          },
-        }); 
+        const response = await axios.get<DescrProps[]>(
+          `${DEFAULT_URL}/content/content/`,
+          {
+            headers: {
+              'Accept-Language': `${currentLang == 'kg' ? 'ky' : currentLang}`
+            }
+          }
+        );
         setDescr(response.data);
       } catch (error) {
         console.error('Ошибка при запросе данных:', error);
@@ -80,7 +85,7 @@ const Services: React.FC = () => {
                   {...featureAnimationProps}
                   src={marketingLogo}
                   alt="marketing logo"
-                /> 
+                />
                 <motion.h3
                   {...textAnimationProps}
                   className={styles.marketing__title}
