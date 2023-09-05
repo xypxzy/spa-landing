@@ -7,7 +7,7 @@ from content.models import Project, Employee, EmailContact, PhoneContact, \
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('id', 'name', 'description', 'customer',)
+        fields = ('id', 'name', 'description', 'customer', 'image',)
 
 
 class EmployeeSerializer(serializers.ModelSerializer):

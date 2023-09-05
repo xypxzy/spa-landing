@@ -1,9 +1,9 @@
 from django.contrib import admin
-from django.utils.safestring import mark_safe
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import (TranslationAdmin, TranslationStackedInline,
+TranslationGenericTabularInline, TranslationGenericStackedInline, TabbedTranslationAdmin)
 
 from content.models import (AddressContact, PhoneContact, EmailContact, Employee, Project,
-SummaryNumericData, OurValues, BigTextualContent, UserSubscription)
+SummaryNumericData, OurValues, Tag, BigTextualContent, UserSubscription)
 from content.mixins import ContentActionAdminMixin
 
 admin.site.site_header = "Myticket"
@@ -225,12 +225,25 @@ class OurValuesAdmin(ContentActionAdminMixin, TranslationAdmin):
 
 admin.site.register(OurValues, OurValuesAdmin)
 
+class TagInLine(TranslationStackedInline):
+    model = Tag
+    # fieldsets = (
+    #     ('tag_ru', {
+    #         'fields': ('title_ru', 'description_ru', 'image', 'is_visible',),
+    #     }),
+    #     ('tag_en', {
+    #         'fields': ('title_en', 'description_en',),
+    #     }),
+    # )
+
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
     list_display = ('id', 'title', 'description', 'get_little_image', 'is_visible',)
     list_display_links = ('title', 'description', )
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
+    inlines = [TagInLine]
+    
     # search_fields = ('title_ru', 'description_ru', 'tags_ru',
     #                  'title_en', 'description_en', 'tags_en',
     #                  'title_ky', 'description_ky', 'tags_ky',)
