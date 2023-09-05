@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 const BestT = () => {
     const [teamReq, setTeamReq] = useState<TeamProps[]>([])
     const [translateValue, setTranslateValue] = useState<number>(40);
-    const { i18n } = useTranslation()
+    const { i18n, t } = useTranslation()
     const currentLang = i18n.language;
 
     const container = {
@@ -47,8 +47,6 @@ const BestT = () => {
           setTranslateValue(translateValue - 300);
         }
     };
-    console.log(translateValue)
-
     useEffect(() => {
         try {
             const api = async () => {
@@ -83,8 +81,8 @@ const BestT = () => {
                     </svg>
                 </div>
                 <div className={style.under_text}>
-                    <p className={style.na_ffff}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#292930'}}>03 . OUR TEAM</span></p>
-                    <p>The core values behind our work</p>
+                    <p className={style.na_ffff}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#292930'}}>03 . {t('OUR TEAM')}</span></p>
+                    <p>{t('The core values behind our work')}</p>
                 </div>
             </motion.div>
             <div className={style.teamMar} style={{
