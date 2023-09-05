@@ -1,0 +1,140 @@
+[
+  {
+    "model": "content.OurServices",
+    "pk": 1,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/gear.png",
+      "name": "Наши ценности",
+
+      "name_ru": "Наши ценности",
+
+      "name_en": "Our serives",
+
+      "name_ky": "Биздин баалуулуктар",
+    }
+  },
+
+  {
+    "model": "content.OurServices",
+    "pk": 2,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/team.png",
+      "name": "Ответственность",
+      "description": "Мы ответственно подходим к выполнению всех наших обязательств перед заказчиками и персоналом.",
+
+      "name_ru": "Ответственность",
+      "description_ru": "Мы ответственно подходим к выполнению всех наших обязательств перед заказчиками и персоналом.",
+
+      "name_en": "Responsibility",
+      "description_en": "We take a responsible approach to fulfilling all our obligations to customers and staff",
+
+      "name_ky": "Жоопкерчилик",
+      "description_ky": "Биз кардарлар жана кызматкерлер алдындагы бардык милдеттенмелерибизди аткарууга жоопкерчилик менен мамиле кылабыз."
+    }
+  },
+
+
+  {
+    "model": "content.OurServices",
+    "pk": 3,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/checkmark.png",
+      "name": "Защита природы",
+      "description": "Мы ориентируемся на использование технологий и решений, не наносящих вреда природе",
+
+      "name_ru": "Защита природы",
+      "description_ru": "Мы ориентируемся на использование технологий и решений, не наносящих вреда природе",
+
+      "name_en": "Nature protection",
+      "description_en": "We focus on the use of technologies and solutions that do not harm nature",
+
+      "name_ky": "Жаратылышты коргоо",
+      "description_ky": "Биз басым жасайбыз технологияны колдонуу жана чечимдерди кабыл алуу жаратылышка зыян келтирүү."
+    }
+  },
+
+  {
+    "model": "content.OurServices",
+    "pk": 4,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/team.png",
+      "name": "Репутация ",
+      "description": "We value our reliable reputation",
+
+      "name_ru": "Reputation",
+      "description_ru": "We value our reliable reputation",
+
+      "name_en": "Team work",
+      "description_en": "outstanding professionals who are fluent in their areas of expertise. We cooperate harmoniously and inspire each other to reach new heights. Thanks to our coordinated work, we are able to solve complex problems and provide customers with solutions that exceed expectations.",
+
+      "name_ky": "Бедел",
+      "description_ky": "Биз өзүбүздү баалайбыз ишенимдүү абройго ээ."
+    }
+  },
+  
+  {
+    "model": "content.OurServices",
+    "pk": 5,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/quality.png",
+      "name": "Основные направления деятельности",
+
+      "name_ru": "Основные направления деятельности",
+
+      "name_en": "Main areas of activity",
+
+      "name_ky": " Негизги багыттар иш-аракеттер ",
+    }
+  },
+  {
+    "model": "content.OurServices",
+    "pk": 6,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/quality.png",
+      "name": "Разработка программного обеспечения",
+
+      "name_ru": "Разработка программного обеспечения",
+
+      "name_en": "Software development",
+
+      "name_ky": "Программалык камсыздоону иштеп чыгуу",
+    }
+  },
+  {
+    "model": "content.OurServices",
+    "pk": 7,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/quality.png",
+      "name": "Автоматизация бизнеспроцессов",
+
+      "name_ru": "Автоматизация бизнеспроцессов",
+
+      "name_en": "Main areas of activity",
+
+      "name_ky": "Бизнес процесстерин автоматташтыруу",
+    }
+  },
+  {
+    "model": "content.OurServices",
+    "pk": 8,
+    "fields": {
+      "is_visible": "True",
+      "image": "values/quality.png",
+      "name": "Разработка технического задания",
+
+      "name_ru": "Разработка технического задания",
+
+      "name_en": "Development of technical specifications",
+
+      "name_ky": "Техникалык тапшырманы иштеп чыгуу",
+    }
+  },
+
+]
