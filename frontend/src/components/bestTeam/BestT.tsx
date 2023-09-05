@@ -32,14 +32,14 @@ const BestT = () => {
             transition: {delay: custom * 0.2}
         })
     };
-    const handleCliclNextScroll = () => {
+    const handleClickBackScroll = () => {
         setTranslateValue(translateValue - 300);
 
         if (translateValue <= (teamReq.length-1) * -300) {
           setTranslateValue(translateValue + 300);
         }
     };
-    const handleCliclBackScroll = () => {
+    const handleClickNextScroll = () => {
 
         setTranslateValue(translateValue + 300);
 
@@ -95,13 +95,13 @@ const BestT = () => {
                 ))}
             </div>
              <div className={cls.carus_button}>
-                <button className={cls.button_hover} onClick={handleCliclBackScroll}>
+                <button className={cls.button_hover} onClick={handleClickBackScroll}>
                     <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="35" cy="35.3477" r="35" transform="rotate(-180 35 35.3477)" fill="#454545"/>
                     <path d="M38 46.3477L28 35.3477L38 24.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                 </button>
-                <button className={cls.button_hover} onClick={handleCliclNextScroll}>
+                <button className={cls.button_hover} onClick={handleClickNextScroll}>
                     <svg width="94" height="95" viewBox="0 0 94 95" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="47" cy="37.3477" r="35" fill="#454545"/> 
                     <path d="M44 26.3477L54 37.3477L44 48.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>

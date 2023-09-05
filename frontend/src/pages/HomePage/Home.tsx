@@ -6,6 +6,7 @@ import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
 import { DEFAULT_URL } from '../../consts/const';
+import Carousel from '../../components/carousel/Carousel';
 export interface TagsProps {
   id: number,
   title: string,

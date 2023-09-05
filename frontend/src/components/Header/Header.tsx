@@ -46,13 +46,11 @@ function Header() {
   const navLink: LinkProps[] = [
     {title: t("Home"), path: '/'},
     {title: t('About us'), path: '/aboutUs'},
-    // {title: t('Services'), path: '/services'},
   ]
 
   const navLinkMobile: LinkProps[] = [
     {title: t('Home'), path: '/', onClick: closeModal},
     {title: t('About us'), path: '/aboutUs', onClick: closeModal },
-    // {title: t('Services'), path: '/services', onClick: closeModal},
   ]
 
 

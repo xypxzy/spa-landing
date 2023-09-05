@@ -44,9 +44,9 @@
 }
 
 .process__card_title {
-  @apply lg:text-[25px] md:text-[20px] text-[18px] font-semibold;
+  @apply lg:text-[25px] md:text-[20px] text-[20px] font-semibold;
 }
 
 .process__card_description {
-  @apply lg:text-[16px] md:text-[14px] text-[12px] lg:leading-6 md:leading-4 leading-3 text-[#555];
+  @apply lg:text-[18px] md:text-[16px] text-[14px] lg:leading-6 md:leading-4 leading-3 text-[#555];
 }
