@@ -1,124 +1,92 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import icon from '../../assets/aboutAs/IconOr.png'
-import { CarouselProps } from '../../const/about'
-import { ContentM } from '../carouselCard/CarouselC'
-import style from './Carousel.module.css'
-import { DEFAULT_URL } from '../../consts/const'
+import { FC, useState } from 'react'
+import { TeamProps } from '../../const/about'
+import { ValuesProps } from '../../pages/aboutUs/AboutUs'
+import CarouselC from '../carouselCard/CarouselC'
+import { TeamM } from '../teamCard/TeamC'
 
-const Carousel = () => {
-    const [translateValue, setTranslateValue] = useState<number>(0);
-    const [carouselReq, setCarouselReq] = useState<CarouselProps[]>([])
-    const { i18n, t } = useTranslation()
-    const currentLang = i18n.language;
-    const textAnim = {
-        hidden:{
-            x: -500,
-            opacity: 0
-        },
-        visible: (custom: number) => ({
-            x: 0,
-            opacity: 1,
-            transition: {delay: custom * 0.2}
-        })
-    }
+interface CarouselProps {
+    values: ValuesProps[] | TeamProps[];
+    isTeam: boolean;
+}
+
+const Carousel: FC<CarouselProps> = ({values, isTeam}) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const nextSlide = () => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % values.length);
+    };
   
-
-    const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
-        const scrollAmount = event.deltaY;
-        setTranslateValue(translateValue + scrollAmount);
-
-         // Decrease by 10px
-        if (translateValue <= (carouselReq.length-1) * -360) {
-            const newTranslateValue = translateValue + 20
-            setTranslateValue(newTranslateValue);
-        }
-        if (translateValue >= 100) {
-            const newTranslateValueBack = translateValue - 20
-            setTranslateValue(newTranslateValueBack);
-        }
+    const prevSlide = () => {
+      setActiveIndex((prevIndex) =>
+        prevIndex === 0 ? values.length - 1 : prevIndex - 1
+      );
     };
-    const handleCliclNextScroll = () => {
-        setTranslateValue(translateValue - 400);
-
-        if (translateValue <= (carouselReq.length-1) * -360) {
-          setTranslateValue(translateValue + 400);
-        }
-    };
-    const handleCliclBackScroll = () => {
-
-        setTranslateValue(translateValue + 400);
-
-        if (translateValue >= 100) {
-          setTranslateValue(translateValue - 400);
-        }
-    };
-
-    useEffect(() => {
-        try {
-            const api = async () => {
-                const data = await fetch(`${DEFAULT_URL}/content/values/`, {
-                  method: "GET",
-                  headers: {"Accept-Language": `${currentLang == 'kg' ? 'ky' : currentLang}`}
-                })
-                .then((response) => response.json())
-                .catch((error) => console.log(error))
-
-                setCarouselReq(data)
-              };
-            api();
-        } catch (error) {
-            console.log(error)
-        }
-        
-    },[currentLang])
 
 
     return(
         <motion.section 
-            className={style.carousel_a}
+            className={`${!isTeam ? 'bg-[#292930]' : 'bg-white'} w-full py-[50px] px-[70px]`}
             initial='hidden'
             whileInView='visible'
-            viewport={{amount: 0.5, once: true}}
+            viewport={{amount: 0.2, once: true}}
         >
-            <motion.div className={style.withoutCar} custom={1} variants={textAnim}>
-                <img src={icon} alt="icon" width='80px' className={style.image_hghg}/>
-                <div className={style.under_text}>
-                    <p className={style.na_ffff}><span style={{color: '#FEC90C'}}>//</span><span style={{color: '#D0D0D0'}}>03 . {t('OUR VALUES')}</span></p>
-                    <p>{t('Our team of expert')}</p>
-                </div>
-            </motion.div>
-
-            <section className={style.carousel} >
-                <div className={style.rotation}  
-                    style={{
-                        transform: `translateX(${translateValue}px)`,
-                    }}
-                    onWheel={handleScroll}
+            <div id="indicators-carousel" className="relative w-full" data-carousel="static">
+            <div className="relative h-[600px] overflow-hidden rounded-lg md:h-[400px] my-10 flex justify-center items-center">
+                {(values).map((item, index) => (
+                <div
+                    key={index}
+                    className={`${
+                    index === activeIndex ? 'block' : 'hidden'
+                    } duration-700 ease-in-out`}
+                    data-carousel-item={index === activeIndex ? 'active' : ''}
                 >
-                    {carouselReq.map((car, i) => (
-                        <div key={i}>
-                            <ContentM carousel={car} custom={i} variants={textAnim}/>
-                        </div>
-                    ))}
+                    {isTeam ? <TeamM team={item as TeamProps} index={index}/> : <CarouselC  carousel={item as ValuesProps} index={index}/>}
                 </div>
-            </section>
-            <div className={style.carus_button}>
-                <button className={style.button_hover} onClick={handleCliclBackScroll}>
-                    <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="35" cy="35.3477" r="35" transform="rotate(-180 35 35.3477)" fill="#454545"/>
-                    <path d="M38 46.3477L28 35.3477L38 24.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-                <button className={style.button_hover} onClick={handleCliclNextScroll}>
-                    <svg width="94" height="95" viewBox="0 0 94 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="47" cy="37.3477" r="35" fill="#454545"/> 
-                    <path d="M44 26.3477L54 37.3477L44 48.3477" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
+                ))}
             </div>
-
+            <div className="absolute z-5 flex space-x-3 -translate-x-1/2 -bottom-10 left-1/2">
+                {values.map((_, index) => (
+                <button
+                    key={index}
+                    type="button"
+                    className={`w-3 h-3 rounded-full ${
+                    index === activeIndex ? 'bg-blue-500' : 'bg-gray-300'
+                    }`}
+                    aria-current={index === activeIndex ? 'true' : 'false'}
+                    aria-label={`Slide ${index + 1}`}
+                    data-carousel-slide-to={index}
+                    onClick={() => setActiveIndex(index)}
+                ></button>
+                ))}
+            </div>
+            <button
+                type="button"
+                className="absolute top-0 -left-10 z-5 flex items-center justify-center h-full md:px-4 px-0 cursor-pointer group focus:outline-none"
+                data-carousel-prev
+                onClick={prevSlide}
+            >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white dark:text-gray-800' : 'text-gray-800 dark:text-white'}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" d="M5 1 1 5l4 4"/>
+                    </svg>
+                    <span className="sr-only">Previous</span>
+                </span>
+            </button>
+            <button
+                type="button"
+                className="absolute top-0 -right-10 z-5 flex items-center justify-center h-full md:px-4 px-0 cursor-pointer group focus:outline-none"
+                data-carousel-next
+                onClick={nextSlide}
+            >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg className={`w-4 h-4 ${!isTeam ? 'text-white dark:text-gray-800' : 'text-gray-800 dark:text-white'}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" d="m1 9 4-4-4-4"/>
+                    </svg>
+                    <span className="sr-only">Next</span>
+                </span>
+            </button>
+            </div>
         </motion.section>
     )
 }
