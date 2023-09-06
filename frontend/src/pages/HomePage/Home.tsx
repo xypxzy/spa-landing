@@ -6,6 +6,8 @@ import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
 import { DEFAULT_URL } from '../../consts/const';
+import ValuesSection from '../../components/ValuesSection/ValuesSection';
+import TeamSection from '../../components/TeamSection/TeamSection';
 export interface TagsProps {
   id: number,
   title: string,
@@ -64,6 +66,8 @@ const Home = () => {
         else
           return null
       })}
+      <ValuesSection />
+      <TeamSection />
       <ProjectSection />
     </div>
   )

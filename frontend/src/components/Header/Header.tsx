@@ -57,7 +57,6 @@ function Header() {
 
   const navLink: LinkProps[] = [
     {title: t("Home"), path: '/'},
-    {title: t('About us'), path: '/aboutUs'},
   ]
 
   
