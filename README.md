@@ -19,7 +19,7 @@
 1. Склонируйте репозиторий проекта с GitHub:
 
    ```bash
-   git clone [](https://github.com/xypxzy/spa-landing)
+   git clone https://github.com/xypxzy/spa-landing
    ```
 
 2. Перейдите в корневую директорию проекта:
