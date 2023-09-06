@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Element } from 'react-scroll';
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection';
 import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
+import TeamSection from '../../components/TeamSection/TeamSection';
+import ValuesSection from '../../components/ValuesSection/ValuesSection';
 import { DEFAULT_URL } from '../../consts/const';
+
 export interface TagsProps {
   id: number,
   title: string,
@@ -22,8 +26,6 @@ export interface DataProps {
   tags: TagsProps[],
   image: string
 }
-
-
 
 
 const Home = () => {
@@ -45,26 +47,41 @@ const Home = () => {
         console.error('Ошибка при запросе данных:', error);
       }
     };
-
     fetchData();
   }, [currentLang]);
 
   return (
     <div>
-      <Hero />
+      <Element name='hero'>
+        <Hero/>
+      </Element>
       {data.map(item => {
         if(item.id === 1)
-          return <AboutUsSection data={item}/>
+          return (
+              <Element key={item.id} name='about'>
+                <AboutUsSection key={item.id} data={item}/>
+              </Element>
+            )
         else
           return null
       })}
       {data.map(item => {
         if(item.id === 2)
-          return  <ProcessSection data={item}/>
+        return (<Element key={item.id} name='process' >
+                  <ProcessSection key={item.id} data={item}/>
+                </Element>)
         else
           return null
       })}
-      <ProjectSection />
+      <Element name='values'>
+        <ValuesSection />
+      </Element>
+      <Element name='team'>
+        <TeamSection />
+      </Element>
+      <Element name='projects'>
+        <ProjectSection />
+      </Element>
     </div>
   )
 }

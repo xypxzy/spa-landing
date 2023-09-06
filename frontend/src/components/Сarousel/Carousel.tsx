@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
-import { TeamProps } from '../../const/about'
-import { ValuesProps } from '../../pages/aboutUs/AboutUs'
-import CarouselC from '../carouselCard/CarouselC'
-import { TeamM } from '../teamCard/TeamC'
+import { TeamProps } from '../../consts/about'
+import { ValuesProps } from '../ValuesSection/ValuesSection';
+import { TeamM } from '../TeamCard/TeamC';
+import CarouselC from '../СarouselCard/CarouselC';
 
 interface CarouselProps {
     values: ValuesProps[] | TeamProps[];

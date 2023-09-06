@@ -1,5 +1,5 @@
 import i18n from 'i18next';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 
@@ -11,11 +11,14 @@ interface Languages {
   [key: string]: Language;
 }
 
+interface LanguagesSwitcherProps {
+  handleCloseNav ?: (bool: boolean) => void;
+}
 
 
-
-const LanguagesSwitcher = () => {
+const LanguagesSwitcher = ({handleCloseNav}: LanguagesSwitcherProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const { t } = useTranslation();
 
   const lngs: Languages = {
@@ -23,6 +26,24 @@ const LanguagesSwitcher = () => {
     ru: { nativeName: t('Russian') },
     kg: { nativeName: t('Kyrgyz') },
   };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -56,7 +77,7 @@ const LanguagesSwitcher = () => {
           )
         }
       </button>
-      <div id="dropdownDelay" className={`z-10 ${isDropdownOpen ? 'absolute' : 'hidden'} w-full bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700`}>
+      <div id="dropdownDelay" className={`z-10 ${isDropdownOpen ? 'absolute' : 'hidden'} w-full bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700`} ref={menuRef}>
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             {Object.keys(lngs).map(lng => (
               <li
@@ -64,7 +85,11 @@ const LanguagesSwitcher = () => {
               >
                 <button 
                   className="block text-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  onClick={() => handleChangeLang(lng)}
+                  onClick={() => {
+                    handleChangeLang(lng);
+                    if(handleCloseNav)
+                      handleCloseNav(false);
+                  }}
                   disabled={i18n.resolvedLanguage === lng}
                   >
                     {lngs[lng].nativeName}

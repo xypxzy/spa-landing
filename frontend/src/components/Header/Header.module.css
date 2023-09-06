@@ -3,7 +3,7 @@
 }
 
 .header__wrapper {
-  @apply fixed mx-auto md:px-40 px-10 w-full flex flex-wrap p-5 md:flex-row items-center justify-between;
+  @apply fixed mx-auto xl:px-40 px-10 w-full flex flex-wrap p-5 xl:flex-row items-center justify-between;
   z-index: 1;
 }
 
@@ -12,15 +12,15 @@
 }
 
 .header__logo_title {
-  @apply ml-5 lg:text-xl xl:text-3xl text-xl hidden md:block uppercase font-bold;
+  @apply ml-5 lg:text-xl xl:text-3xl text-xl hidden md:block uppercase font-bold cursor-pointer;
 }
 
 .header__nav {
-  @apply md:mx-auto lg:flex hidden flex-wrap xl:gap-10 gap-5 items-center text-base justify-center;
+  @apply xl:mx-auto xl:flex hidden flex-wrap xl:gap-10 gap-5 items-center text-base justify-center;
 }
 
 .header__nav_item {
-  @apply text-black hover:text-gray-900 xl:text-xl lg:text-lg;
+  @apply m-0 text-black hover:text-gray-900 xl:text-xl lg:text-lg cursor-pointer;
 }
 
 .header__lang {

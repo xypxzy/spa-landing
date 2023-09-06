@@ -86,7 +86,7 @@ const ProjectSection = () => {
 
   return (
     <motion.section initial='hidden' whileInView='visible' viewport={{amount: 0.5, once: true}} className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto overflow-hidden">
+      <div className="container px-5 py-40 mx-auto overflow-hidden">
         <div className="flex flex-col text-center w-full mb-20">
           <motion.h1 variants={headerAnimation} custom={1} className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{t('Our Projects')}</motion.h1>
           <motion.p variants={textAnimation} custom={1} className="lg:w-2/3 mx-auto leading-relaxed text-base">

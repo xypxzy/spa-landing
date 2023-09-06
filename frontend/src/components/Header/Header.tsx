@@ -1,26 +1,45 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import LanguagesSwitcher from '../LanguagesSwitcher/LanguagesSwitcher';
 import cls from './Header.module.css';
 
+
 interface LinkProps {
   title: string;
-  path: string;
   onClick?: () => void;
+  scrollName: string
 }
 
 
+
 function Header() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const [scrollY, setScrollY] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  
-  // При скролле навешивается bg-color для хедера
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null); // Specify the type explicitly
   const handleScroll = () => setScrollY(window.scrollY);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -32,47 +51,20 @@ function Header() {
       ? 'bg-white transition-color duration-100 ease-in-out'
       : 'bg-none';
 
-  // Для открытие и закрытие модального окна
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   // Рендер навигационной меню
 
   const navLink: LinkProps[] = [
-    {title: t("Home"), path: '/'},
-    {title: t('About us'), path: '/aboutUs'},
+    {title: t("About us"), scrollName: 'about'},
+    {title: t("Process"), scrollName: 'process'},
+    {title: t("Our Values"), scrollName: 'values'},
+    {title: t("Team"), scrollName: 'team'},
+    {title: t("Projects"), scrollName: 'projects'}
   ]
-
-  const navLinkMobile: LinkProps[] = [
-    {title: t('Home'), path: '/', onClick: closeModal},
-    {title: t('About us'), path: '/aboutUs', onClick: closeModal },
-  ]
-
-
-  const renderNavMenu: FC<{ links: LinkProps[] }> = ({ links }) => (
-    <>
-      {links.map((link, id) => (
-        <Link
-          key={id}
-          to={link.path}
-          className={`${cls.header__nav_item} ${cls['link-underline']} ${cls['link-underline-black']}`}
-          onClick={link.onClick && link.onClick}
-        >
-          {link.title}
-        </Link>
-      ))}
-    </>
-  );
 
   return (
     <header className={cls.header}>
       <div className={`${cls.header__wrapper} ${bgColor}`}>
-        <Link to={'/'} className={cls.header__logo}>
+        <Link to={'hero'} smooth={true} duration={500} className={cls.header__logo}>
           <Logo className="w-14 h-14" />
           <span className={cls.header__logo_title}>{'My Ticket'}</span>
         </Link>
@@ -80,42 +72,61 @@ function Header() {
           {navLink.map((link, id) => (
             <Link
               key={id}
-              to={link.path}
+              to={link.scrollName}
+              smooth={true}
+              duration={500}
+              offset={-10}
               className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
             >
               {link.title}
             </Link>
           ))}
         </nav>
-        {isModalOpen ? (
-          <div className="fixed inset-0 flex items-center justify-center z-10 overflow-hidden">
-            <div className="bg-white rounded shadow-md w-screen h-screen overflow-y-hidden">
-              <span
-                className="absolute top-4 right-9 m-4 cursor-pointer text-3xl"
-                onClick={closeModal}
+        <nav className=" xl:hidden block right-8 border-gray-200  ">
+          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+          >
+              <button
+                data-collapse-toggle="navbar-dropdown"
+                type="button"
+                className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
+                aria-controls="navbar-dropdown"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setIsMenuOpen(!isMenuOpen);
+                }}
               >
-                &times;
-              </span>
-              <nav className="flex flex-col h-screen justify-center items-center text-xl gap-6">
-                {renderNavMenu({ links: navLinkMobile })}
-                <LanguagesSwitcher />
-              </nav>
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+              </button>
+            <div className={`w-full  top-16 left-0 xl:w-auto ${isMenuOpen ? 'absolute' : 'hidden'}`} id="navbar-dropdown" ref={menuRef}>
+              <ul className={`flex flex-col gap-3 items-center font-medium p-8 xl:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 xl:flex-row md:space-x-8 xl:mt-0 md:border-0 md:bg-white`}>
+              {navLink.map((link, id) => (
+                <Link
+                  key={id}
+                  to={link.scrollName}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.title}
+                </Link>
+              ))}
+              <LanguagesSwitcher handleCloseNav={() => setIsMenuOpen(false)}/>
+              </ul>
             </div>
           </div>
-          ) : (
-              <button
-                className={`relative group ${cls.header__modal_button}`}
-                onClick={openModal}
-              >             
-                <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-transparent ring-0 ring-transparent hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200">
-                  <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
-                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-                    <div className="bg-black h-[2px] w-5 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
-                    <div className="bg-black h-[2px] w-5 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
-                  </div>
-                </div>
-              </button>)}
-        <div className="hidden lg:inline-block">
+        </nav>
+        <div className="hidden xl:inline-block">
             <LanguagesSwitcher />
         </div>
       </div>

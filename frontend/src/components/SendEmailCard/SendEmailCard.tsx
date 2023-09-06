@@ -9,17 +9,38 @@ import { useTranslation } from 'react-i18next';
 const SendEmailCard = () => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
+  const [isValidPhone, setIsValidPhone] = useState<boolean>(true);
+  const [errorValidate, setErrorValidate] = useState<boolean>(true);
+  const [errorValidateName, setErrorValidateName] = useState<boolean>(true);
   const { t } = useTranslation()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
     setIsValidEmail(validateEmail(newEmail));
+    if(newEmail == '') {
+      setIsValidEmail(true)
+    }
   };
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
     setName(newEmail);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPhone = e.target.value;
+    setPhone(newPhone);
+    setIsValidPhone(validatePhone(newPhone));
+    if(newPhone == '') {
+      setIsValidPhone(true)
+    }
+  };
+
+  const validatePhone = (inputPhone: string): boolean => {
+    const phonePattern = /^\d{10}$/; // Пример формата номера: 1234567890 (10 цифр)
+    return phonePattern.test(inputPhone);
   };
 
   const validateEmail = (inputEmail: string): boolean => {
@@ -29,9 +50,24 @@ const SendEmailCard = () => {
 
   const handleSubmit = async () => {
       try {
+        if(!(email || phone)) {
+          setErrorValidate(false)
+          return;
+        } else {
+          setErrorValidate(true)
+        }
+
+        if(!(name)) {
+          setErrorValidateName(false)
+          return;
+        } else {
+          setErrorValidateName(true)
+        }
+ 
         const postData = {
           name: name,
           email: email,
+          phone: phone,
         };
   
         const response = await axios.post(`${DEFAULT_URL}/content/subscribe/`, postData);
@@ -59,7 +95,7 @@ const SendEmailCard = () => {
               type="text"
               placeholder={t('Enter your name')}
               className={`${
-                isValidEmail ? '' : 'border-red-500'
+                (isValidEmail || isValidPhone)  ? '' : 'border-red-500'
               } ${cls.footer__card_block__input}`}
               value={name}
               onChange={handleNameChange}
@@ -73,16 +109,39 @@ const SendEmailCard = () => {
               value={email}
               onChange={handleEmailChange}
             />
+            <input
+              type="text"
+              placeholder={t('Enter your phone')}
+              className={`${
+                isValidPhone ? '' : 'border-red-500'
+              } ${cls.footer__card_block__input}`}
+              value={phone}
+              onChange={handlePhoneChange}
+            />
             <button 
-                className={`${cls.footer__card_block__button} ${!isValidEmail ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
+                className={`${cls.footer__card_block__button} ${!(isValidPhone && isValidEmail) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]
+                active:bg-opacity-50
+                transition-all duration-300
+              `} 
                 onClick={handleSubmit}
-                disabled={!isValidEmail}
+                disabled={!(isValidPhone && isValidEmail)}
               >
                 {t('Submit')}
               </button>
-            {!isValidEmail && (
-              <p className="text-red-500 text-center">{t('Invalid email')}</p>
-            )}
+              {(!isValidEmail) && (
+                <p className="text-red-500 text-center">{t('Invalid email')}</p>
+              )}
+
+              {(!isValidPhone) && (
+                <p className="text-red-500 text-center">{t('Invalid phone')}</p>
+              )}
+
+              {(!errorValidate) && (
+                <p className="text-red-500 text-center mt-5">{t('Phone or email field is required')}</p>
+              )}
+              {(!errorValidateName) && (
+                <p className="text-red-500 text-center mt-5">{t('Name field is required')}</p>
+              )}
           </div>
         </div>
       </div>
