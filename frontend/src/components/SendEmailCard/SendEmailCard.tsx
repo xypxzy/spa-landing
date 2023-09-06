@@ -18,6 +18,9 @@ const SendEmailCard = () => {
     const newEmail = e.target.value;
     setEmail(newEmail);
     setIsValidEmail(validateEmail(newEmail));
+    if(newEmail == '') {
+      setIsValidEmail(true)
+    }
   };
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
@@ -28,6 +31,9 @@ const SendEmailCard = () => {
     const newPhone = e.target.value;
     setPhone(newPhone);
     setIsValidPhone(validatePhone(newPhone));
+    if(newPhone == '') {
+      setIsValidPhone(true)
+    }
   };
 
   const validatePhone = (inputPhone: string): boolean => {
@@ -73,7 +79,7 @@ const SendEmailCard = () => {
               type="text"
               placeholder={t('Enter your name')}
               className={`${
-                isValidEmail ? '' : 'border-red-500'
+                (isValidEmail || isValidPhone)  ? '' : 'border-red-500'
               } ${cls.footer__card_block__input}`}
               value={name}
               onChange={handleNameChange}
@@ -97,18 +103,19 @@ const SendEmailCard = () => {
               onChange={handlePhoneChange}
             />
             <button 
-                className={`${cls.footer__card_block__button} ${(!isValidEmail || !isValidPhone) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
+                className={`${cls.footer__card_block__button} ${!(isValidPhone && isValidEmail) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
                 onClick={handleSubmit}
-                disabled={!isValidPhone || !isValidEmail}
+                disabled={!(isValidPhone && isValidEmail)}
               >
                 {t('Submit')}
               </button>
-            {(!isValidEmail ) && (
-              <p className="text-red-500 text-center">{t('Invalid email')}</p>
-            )}
-            {(!isValidPhone ) && (
-              <p className="text-red-500 text-center">{t('Invalid phone')}</p>
-            )}
+              {(!isValidEmail) && (
+                <p className="text-red-500 text-center">{t('Invalid email')}</p>
+              )}
+
+              {(!isValidPhone) && (
+                <p className="text-red-500 text-center">{t('Invalid phone')}</p>
+              )}
           </div>
         </div>
       </div>
