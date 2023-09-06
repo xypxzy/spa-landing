@@ -13,6 +13,7 @@ const SendEmailCard = () => {
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
   const [isValidPhone, setIsValidPhone] = useState<boolean>(true);
   const [errorValidate, setErrorValidate] = useState<boolean>(true);
+  const [errorValidateName, setErrorValidateName] = useState<boolean>(true);
   const { t } = useTranslation()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +55,13 @@ const SendEmailCard = () => {
           return;
         } else {
           setErrorValidate(true)
+        }
+
+        if(!(name)) {
+          setErrorValidateName(false)
+          return;
+        } else {
+          setErrorValidateName(true)
         }
  
         const postData = {
@@ -128,8 +136,11 @@ const SendEmailCard = () => {
                 <p className="text-red-500 text-center">{t('Invalid phone')}</p>
               )}
 
-{             (!errorValidate) && (
+              {(!errorValidate) && (
                 <p className="text-red-500 text-center mt-5">{t('Phone or email field is required')}</p>
+              )}
+              {(!errorValidateName) && (
+                <p className="text-red-500 text-center mt-5">{t('Name field is required')}</p>
               )}
           </div>
         </div>

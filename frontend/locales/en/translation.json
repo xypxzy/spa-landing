@@ -7,7 +7,7 @@
   "Kyrgyz": "Кыргызча",
   "Lang": "Eng",
   "homeTitle": "We know the code. We know the business. We know how to help you achieve your goals.",
-  "Copyright © 2023 My Ticket": "Copyright © 2023 My Ticket",
+  "Copyright © 2023 Sanarip Dolboor": "Copyright © 2023 Sanarip Dolboor",
   "Location": "Location",
   "Get in touch with": "Get in touch with",
   "emailTitle": "Learn More About Our Product",
@@ -27,5 +27,8 @@
   "Our Values": "Our Values",
   "Process": "Process",
   "About Us": "About Us",
-  "Invalid phone": "Invalid phone"
+  "Invalid phone": "Invalid phone",
+  "Phone or email field is required": "Phone or email field is required",
+  "Enter your phone": "Enter your phone",
+  "Name field is required": "Name field is required"
 }

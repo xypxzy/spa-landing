@@ -54,7 +54,7 @@ function Header() {
   // Рендер навигационной меню
 
   const navLink: LinkProps[] = [
-    {title: t("About Us"), scrollName: 'about'},
+    {title: t("About us"), scrollName: 'about'},
     {title: t("Process"), scrollName: 'process'},
     {title: t("Our Values"), scrollName: 'values'},
     {title: t("Team"), scrollName: 'team'},
@@ -82,13 +82,13 @@ function Header() {
             </Link>
           ))}
         </nav>
-        <nav className=" md:hidden block right-8 border-gray-200  ">
+        <nav className=" xl:hidden block right-8 border-gray-200  ">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
           >
               <button
                 data-collapse-toggle="navbar-dropdown"
                 type="button"
-                className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
+                className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
                 aria-controls="navbar-dropdown"
                 onClick={(event) => {
                   event.preventDefault();
@@ -106,8 +106,8 @@ function Header() {
                   <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
               </button>
-            <div className={`w-full  top-16 left-0 md:w-auto ${isMenuOpen ? 'absolute' : 'hidden'}`} id="navbar-dropdown" ref={menuRef}>
-              <ul className={`flex flex-col gap-3 items-center font-medium p-8 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white`}>
+            <div className={`w-full  top-16 left-0 xl:w-auto ${isMenuOpen ? 'absolute' : 'hidden'}`} id="navbar-dropdown" ref={menuRef}>
+              <ul className={`flex flex-col gap-3 items-center font-medium p-8 xl:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 xl:flex-row md:space-x-8 xl:mt-0 md:border-0 md:bg-white`}>
               {navLink.map((link, id) => (
                 <Link
                   key={id}
@@ -126,7 +126,7 @@ function Header() {
             </div>
           </div>
         </nav>
-        <div className="hidden md:inline-block">
+        <div className="hidden xl:inline-block">
             <LanguagesSwitcher />
         </div>
       </div>
