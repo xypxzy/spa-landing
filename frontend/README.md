@@ -1,27 +1,54 @@
-# React + TypeScript + Vite
+# My Ticket Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Добро пожаловать в фронтенд-часть проекта My Ticket! Это одностраничное веб-приложение, разработанное с использованием React, TypeScript, Axios и Tailwind CSS.
 
-Currently, two official plugins are available:
+## Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+My Ticket Frontend - это клиентская часть веб-сайта компании My Ticket, специализирующейся на продаже билетов на мероприятия. Это одностраничное приложение предоставляет пользователям информацию о компании и ее услугах. На этой странице размещена информация о сотрудниках, проектах, email-адресах, телефонах и адресах компании.
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React:** Мы используем React для создания динамического интерфейса на одной странице.
 
-- Configure the top-level `parserOptions` property like this:
+- **TypeScript:** TypeScript добавляет типизацию к JavaScript, что делает код более надежным и понятным.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **Axios:** Axios используется для получения данных о сотрудниках, проектах, email, телефонах и адресах с бэкенда.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Tailwind CSS:** Tailwind CSS позволяет стилизовать компоненты и создавать современный и адаптивный дизайн.
+
+## Установка и запуск
+
+Прежде чем начать работу с фронтендом, убедитесь, что у вас установлен Node.js. Затем выполните следующие шаги:
+
+1. Склонируйте репозиторий:
+
+   ```bash
+   git clone [https://github.com/xypxzy/spa-landing.git]
+   cd my-ticket-frontend
+   ```
+
+2. Установите зависимости:
+
+   ```bash
+   npm install
+   ```
+
+3. Запустите приложение:
+
+   ```bash
+   npm start
+   ```
+
+   Приложение будет доступно по адресу `http://localhost:8082`.
+
+## Дополнительные команды
+
+- Сборка приложения для продакшена:
+
+  ```bash
+  npm run build
+  ```
+
+---
+
+Спасибо, что используете My Ticket Frontend! Если у вас есть какие-либо вопросы или предложения, не стесняйтесь обращаться к нам.
