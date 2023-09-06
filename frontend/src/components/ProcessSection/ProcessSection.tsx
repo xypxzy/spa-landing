@@ -121,7 +121,7 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
               custom={6}
               variants={processAnimation}
               className='flex md:flex-row flex-col justify-between items-center'>
-              <img src={processSection3} alt="" className='xl:ml-20 ml-0 mr-0 lg:mr-12 md:h-[200px] hidden md:block' />
+              <img src={processSection3} alt="" className='xl:ml-[75px] ml-0 mr-0 lg:mr-12 md:h-[200px] hidden md:block' />
               <div className={cls.process__card__step}>
                 <div className={cls.process__card_step__line}></div>
                 <div className={cls.process__card_step_icon}>
