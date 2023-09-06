@@ -12,6 +12,7 @@ const SendEmailCard = () => {
   const [phone, setPhone] = useState<string>('');
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
   const [isValidPhone, setIsValidPhone] = useState<boolean>(true);
+  const [errorValidate, setErrorValidate] = useState<boolean>(true);
   const { t } = useTranslation()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +49,13 @@ const SendEmailCard = () => {
 
   const handleSubmit = async () => {
       try {
+        if(!(email || phone)) {
+          setErrorValidate(false)
+          return;
+        } else {
+          setErrorValidate(true)
+        }
+ 
         const postData = {
           name: name,
           email: email,
@@ -103,7 +111,10 @@ const SendEmailCard = () => {
               onChange={handlePhoneChange}
             />
             <button 
-                className={`${cls.footer__card_block__button} ${!(isValidPhone && isValidEmail) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
+                className={`${cls.footer__card_block__button} ${!(isValidPhone && isValidEmail) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]
+                active:bg-opacity-50
+                transition-all duration-300
+              `} 
                 onClick={handleSubmit}
                 disabled={!(isValidPhone && isValidEmail)}
               >
@@ -115,6 +126,10 @@ const SendEmailCard = () => {
 
               {(!isValidPhone) && (
                 <p className="text-red-500 text-center">{t('Invalid phone')}</p>
+              )}
+
+{             (!errorValidate) && (
+                <p className="text-red-500 text-center mt-5">{t('Phone or email field is required')}</p>
               )}
           </div>
         </div>

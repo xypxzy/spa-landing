@@ -58,7 +58,7 @@ const Home = () => {
       {data.map(item => {
         if(item.id === 1)
           return (
-              <Element name='about'>
+              <Element key={item.id} name='about'>
                 <AboutUsSection key={item.id} data={item}/>
               </Element>
             )
@@ -67,7 +67,7 @@ const Home = () => {
       })}
       {data.map(item => {
         if(item.id === 2)
-        return (<Element name='process' >
+        return (<Element key={item.id} name='process' >
                   <ProcessSection key={item.id} data={item}/>
                 </Element>)
         else
