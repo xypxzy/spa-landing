@@ -23,7 +23,7 @@ export interface DataProps {
   pre_title_image: string,
   title: string,
   description: string,
-  tags: TagsProps[],
+  theses: TagsProps[],
   image: string
 }
 

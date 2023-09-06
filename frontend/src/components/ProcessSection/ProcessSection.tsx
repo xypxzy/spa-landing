@@ -92,8 +92,8 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
                 <div className={cls.process__card_step__line}></div>
               </div>
               <div className='md:w-[40%] w-full '>
-                <h2 className={cls.process__card_title}>{data?.tags[0].title}</h2>
-                <p className={cls.process__card_description}>{data?.tags[0].description}</p>
+                <h2 className={cls.process__card_title}>{data?.theses[0].title}</h2>
+                <p className={cls.process__card_description}>{data?.theses[0].description}</p>
               </div>
             </motion.div>
             <motion.div
@@ -104,8 +104,8 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
                   2
                 </div>
               <div className='xl:w-[33.7%] w-[100%] md:text-right text-left lg:ml-0 ml-1'>
-                <h2 className={cls.process__card_title}>{data?.tags[1].title}</h2>
-                <p className={cls.process__card_description}>{data?.tags[1].description}</p>
+                <h2 className={cls.process__card_title}>{data?.theses[1].title}</h2>
+                <p className={cls.process__card_description}>{data?.theses[1].description}</p>
               </div>
               <div className={`${cls.process__card__step} md:flex hidden`}>
                 <div className={cls.process__card_step__line}></div>
@@ -130,8 +130,8 @@ const ProcessSection: FC<ProcessSectionProps> = ({data}) => {
                 <div className={`${cls.process__card_step__line} border-transparent`}></div>
               </div>
               <div className='md:w-[40%] w-[100%] lg:ml-0 ml-6'>
-                <h2 className={cls.process__card_title}>{data.tags.length > 0 && data.tags[0].title && data.tags[2].title}</h2>
-                 <p className={cls.process__card_description}>{data?.tags[2].description}</p>
+                <h2 className={cls.process__card_title}>{data.theses.length > 0 && data.theses[0].title && data.theses[2].title}</h2>
+                 <p className={cls.process__card_description}>{data?.theses[2].description}</p>
               </div>
             </motion.div>
           </div>

@@ -113,8 +113,8 @@ const AboutUsSection: FC<AboutUsSectionProps> = ({data}) => {
               {data?.description}
             </motion.p>
             <div className='md:ml-20 ml-0 flex flex-col gap-5'>
-              {data?.tags.length > 0 && (
-                data.tags.map((tag: TagsProps) => (
+              {data?.theses && data?.theses.length > 0 && (
+                data.theses.map((tag: TagsProps) => (
                   <span key={tag.id} className='flex gap-4'>
                     <motion.img custom={7} variants={textAnimation} src={aboutUsIcon2} alt="img" className='md:w-20 md:h-20 w-16 h-16'/>
                     <span>
