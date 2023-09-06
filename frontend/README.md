@@ -51,7 +51,7 @@ My Ticket Frontend - это клиентская часть веб-сайта к
   ```
 
 ## Структура папок
-my-ticket-frontend/
+frontend/
 │
 ├── src/
 │   ├── assets/         # Изображения
@@ -78,6 +78,7 @@ my-ticket-frontend/
 ├── .eslintrc.js        # Конфигурация ESLint
 ├── .prettierrc.js      # Конфигурация Prettier
 ├── README.md           # Файл README
+
 
 
 ## Навигационная панель
