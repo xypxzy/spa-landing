@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { forwardRef, Ref } from 'react'
-import { ValuesProps } from '../../pages/aboutUs/AboutUs'
 import style from './CarouselC.module.css'
+import { ValuesProps } from '../ValuesSection/ValuesSection';
 
 interface CarouselInt{
     carousel: ValuesProps;

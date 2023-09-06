@@ -1,5 +1,5 @@
 import style from './Adress.module.css'
-import AdressC from '../adressCard/AdressC'
+import AdressC from '../AddressCard/AdressC'
 import {motion} from 'framer-motion'
 
 const Adress = () => {
