@@ -78,22 +78,24 @@ function Footer() {
       <div className={cls.footer__container}>
         <div className={cls.footer__wrapper}>
           <SendEmailCard />
-          <div className='md:w-1/2'>
+          <div className='md:w-1/2 md:h-[620px] h-full'>
             <div className={cls.footer__navigation_block}>
               <span className={cls.footer__navigation_contact}>
                 <span className='flex items-center gap-1'>
                   <PhoneIcon className='w-5 h-5' />
                   <h2 className='font-semi text-lg'>{t('Get in touch with')}</h2>  
                 </span>
-                <span className='my-5'>
+                <span className='my-5 w-full flex flex-wrap gap-5'>
                   {phone.length > 0 && 
-                    <a 
+                    phone.map(item => (
+                      <a 
                       href={`tel:${phone[0].phone.replace(/ /g, '')}`}                   
                       target='_blank'
                       className={cls.footer__navigation_phone}
                     >
-                      {phone[0].phone}
+                      {item.phone}
                     </a>
+                    ))
                   }
                 </span>
                 {
@@ -102,25 +104,35 @@ function Footer() {
                   )
                 }
               </span>
-              <span className='lg:w-1/2 h-full flex flex-col gap-3'>
+              <span className='lg:w-full h-full flex flex-col gap-3'>
                 <span className='flex items-center gap-1'>
                   <LocationIcon className='w-5 h-5'/>
                   <h2 className='font-semi text-lg'>{t('Location')}</h2>
                 </span>
-                <p className='py-2'>{address.length > 0 ? address[0].address : null}</p>
-                <a 
-                  href={`https://www.google.com/maps?q=${address.length > 0 && address[0].address}`}
-                  className='text-yellow-400 hover:text-yellow-100 underline'
-                  target='_blank'
-                >
-                  {t('Location').toLowerCase()}
-                </a>
+                <span className=' flex flex-wrap gap-3'>
+                {
+                  address.length > 0 && (
+                    address.map(item => (
+                      <div className='w-[250px]'>
+                      <p className='py-2'>{item.address}</p>
+                      <a 
+                        href={`https://www.google.com/maps?q=${item.address}`}
+                        className='text-yellow-400 hover:text-yellow-100 underline'
+                        target='_blank'
+                      >
+                        {t('Location').toLowerCase()}
+                      </a>
+                    </div>
+                    ))
+                  )
+                }
+                </span>
               </span>
             </div>
           </div>
         </div>
         <p className="mt-8 text-sm flex justify-center">
-              {t('Copyright © 2023 My Ticket')}
+              {t('Copyright © 2023 Sanarip Dolboor')}
         </p>
       </div>
     </footer>

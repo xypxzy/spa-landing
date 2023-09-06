@@ -1,5 +1,5 @@
 .footer__card_block {
-  @apply md:w-1/2 flex md:justify-end justify-center md:mr-8;
+  @apply md:w-1/2 flex md:justify-end justify-center md:mr-8 h-[620px];
 }
 
 .footer__card_block__wrapper {

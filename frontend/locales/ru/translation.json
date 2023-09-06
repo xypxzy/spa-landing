@@ -7,7 +7,7 @@
   "Kyrgyz": "Кыргызча",
   "Lang": "Рус",
   "homeTitle": "Мы знаем код. Мы знаем бизнес. Мы знаем, как помочь вам достичь целей.",
-  "Copyright © 2023 My Ticket": "Все права защищены © 2023 My Ticket",
+  "Copyright © 2023 Sanarip Dolboor": "Все права защищены © 2023 Sanarip Dolboor",
   "Location": "Расположение",
   "Get in touch with": "Свяжитесь с",
   "emailTitle": "Узнайте больше о нашем продукте",
@@ -27,5 +27,8 @@
   "Our Values": "Ценности",
   "Process": "Процессы",
   "About Us": "О нас",
-  "Invalid phone": "Неправильный номер"
+  "Invalid phone": "Неправильный номер",
+  "Phone or email field is required": "Поле «Телефон или адрес электронной почты» обязательно для заполнения",
+  "Enter your phone": "Введите номер телефона",
+  "Name field is required": "Поле «Имя» обязательно для заполнения"
 }

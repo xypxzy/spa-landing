@@ -7,7 +7,7 @@
   "Kyrgyz": "Кыргызча",
   "Lang": "Кыр",
   "homeTitle": "Биз кодду, бизнести билебиз. Сиздин максаттарыңызга жетүүгө жардам беребиз.",
-  "Copyright © 2023 My Ticket": "Автордук укук © 2023 My Ticket",
+  "Copyright © 2023 Sanarip Dolboor": "Автордук укук © 2023 Sanarip Dolboor",
   "Location": "Жайгашкан жери",
   "Get in touch with": "Байланышуу үчүн",
   "emailTitle": "Биздин продукт жөнүндө көбүрөөк билүү",
@@ -26,5 +26,8 @@
   "Team": "Командабыз",
   "Our Values": "Баалуулуктар",
   "Process": "Процесстер",
-  "Invalid phone": "Туура эмес номер"
+  "Invalid phone": "Туура эмес номер",
+  "Phone or email field is required": "Телефон же электрондук почта талаасы талап кылынат",
+  "Enter your phone": "Тел номеринизди киргизиниз",
+  "Name field is required": "Атыныз талап кылынат"
 }

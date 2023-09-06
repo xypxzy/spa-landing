@@ -11,15 +11,15 @@
 }
 
 .footer__navigation_block {
-  @apply inline-block lg:flex md:items-center md:justify-between gap-y-5 border-b pb-3;
+  @apply inline-block lg:flex flex-col  md:items-start md:justify-between gap-y-5 pb-3;
 }
 
 .footer__navigation_contact {
-  @apply lg:w-1/2 h-full flex flex-col gap-3 lg:mb-0 mb-5;
+  @apply h-full flex flex-col gap-3 lg:mb-0 mb-5 border-b md:border-b-0;
 }
 
 .footer__navigation_phone {
-  @apply bg-[#3C3C45] lg:p-5 p-3 font-bold text-lg lg:text-xl rounded-lg text-yellow-400;
+  @apply bg-[#3C3C45] w-[250px] lg:p-5 p-3 font-bold text-lg lg:text-xl rounded-lg text-yellow-400;
 }
 
 .footer__navigation_links {
