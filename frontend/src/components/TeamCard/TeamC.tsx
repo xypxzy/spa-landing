@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { forwardRef, Ref } from 'react'
-import { TeamProps } from '../../const/about'
+import { TeamProps } from '../../consts/about'
 import style from './TeamC.module.css'
 
 interface TeamInt{

@@ -1,13 +1,15 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection';
 import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
 import ProjectSection from '../../components/ProjectSection/ProjectSection';
-import { DEFAULT_URL } from '../../consts/const';
-import ValuesSection from '../../components/ValuesSection/ValuesSection';
 import TeamSection from '../../components/TeamSection/TeamSection';
+import ValuesSection from '../../components/ValuesSection/ValuesSection';
+import { DEFAULT_URL } from '../../consts/const';
+import { Element } from 'react-scroll';
+
 export interface TagsProps {
   id: number,
   title: string,
@@ -24,8 +26,6 @@ export interface DataProps {
   tags: TagsProps[],
   image: string
 }
-
-
 
 
 const Home = () => {
@@ -47,28 +47,41 @@ const Home = () => {
         console.error('Ошибка при запросе данных:', error);
       }
     };
-
     fetchData();
   }, [currentLang]);
 
   return (
     <div>
-      <Hero />
+      <Element name='hero'>
+        <Hero/>
+      </Element>
       {data.map(item => {
         if(item.id === 1)
-          return <AboutUsSection key={item.id} data={item}/>
+          return (
+              <Element name='about'>
+                <AboutUsSection key={item.id} data={item}/>
+              </Element>
+            )
         else
           return null
       })}
       {data.map(item => {
         if(item.id === 2)
-          return  <ProcessSection key={item.id} data={item}/>
+        return (<Element name='process' >
+                  <ProcessSection key={item.id} data={item}/>
+                </Element>)
         else
           return null
       })}
-      <ValuesSection />
-      <TeamSection />
-      <ProjectSection />
+      <Element name='values'>
+        <ValuesSection />
+      </Element>
+      <Element name='team'>
+        <TeamSection />
+      </Element>
+      <Element name='projects'>
+        <ProjectSection />
+      </Element>
     </div>
   )
 }

@@ -35,7 +35,7 @@ const ValuesSection = () => {
   },[currentLang]);
 
   return (
-    <div className='flex flex-col items-center justify-center bg-[#292930] md:px-[180px] px-0'>
+    <div className='flex flex-col items-center justify-center bg-[#292930] md:px-[180px] px-0 md:py-16 py-4'>
       <div className={cls.values__container}>
         <div className={cls.values__icon}>
           <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none">
@@ -44,7 +44,7 @@ const ValuesSection = () => {
           </svg>              
         </div>
         <div className={cls.values__title_wrapper}>
-          <p className={cls.values__title}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#fff'}}>02 . {t('OUR VALUES')}</span></p>
+          <p className={cls.values__title}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#fff'}}>03 . {t('OUR VALUES')}</span></p>
           <p className='text-white text-xl xl:text-4xl lg:text-3xl md:text-2xl'>{t('The core values behind our work')}</p>
         </div>
       </div>

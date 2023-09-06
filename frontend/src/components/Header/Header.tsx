@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import LanguagesSwitcher from '../LanguagesSwitcher/LanguagesSwitcher';
 import cls from './Header.module.css';
 
+
 interface LinkProps {
   title: string;
-  path: string;
   onClick?: () => void;
+  scrollName: string
 }
+
 
 
 function Header() {
@@ -20,10 +22,6 @@ function Header() {
   const menuRef = useRef<HTMLDivElement | null>(null); // Specify the type explicitly
   const handleScroll = () => setScrollY(window.scrollY);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -56,15 +54,17 @@ function Header() {
   // Рендер навигационной меню
 
   const navLink: LinkProps[] = [
-    {title: t("Home"), path: '/'},
+    {title: t("About Us"), scrollName: 'about'},
+    {title: t("Process"), scrollName: 'process'},
+    {title: t("Our Values"), scrollName: 'values'},
+    {title: t("Team"), scrollName: 'team'},
+    {title: t("Projects"), scrollName: 'projects'}
   ]
-
-  
 
   return (
     <header className={cls.header}>
       <div className={`${cls.header__wrapper} ${bgColor}`}>
-        <Link to={'/'} className={cls.header__logo}>
+        <Link to={'hero'} smooth={true} duration={500} className={cls.header__logo}>
           <Logo className="w-14 h-14" />
           <span className={cls.header__logo_title}>{'My Ticket'}</span>
         </Link>
@@ -72,7 +72,10 @@ function Header() {
           {navLink.map((link, id) => (
             <Link
               key={id}
-              to={link.path}
+              to={link.scrollName}
+              smooth={true}
+              duration={500}
+              offset={-10}
               className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
             >
               {link.title}
@@ -108,7 +111,10 @@ function Header() {
               {navLink.map((link, id) => (
                 <Link
                   key={id}
-                  to={link.path}
+                  to={link.scrollName}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
                   className={`${cls.header__nav_item} ${cls["link-underline"]} ${cls["link-underline-black"]}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
