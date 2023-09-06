@@ -4,7 +4,7 @@ import cls from './TeamSection.module.css'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import { DEFAULT_URL } from '../../consts/const'
-import { TeamProps } from '../../const/about'
+import { TeamProps } from '../../consts/about'
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -49,7 +49,7 @@ const TeamSection = () => {
 },[currentLang])
 
   return (
-    <div className='py-20'>
+    <div className='py-5'>
       <motion.section className={cls.mainsinteam_a}
         initial="hidden"
         whileInView='visible'
@@ -64,7 +64,7 @@ const TeamSection = () => {
               </svg>
             </div>
             <div className={cls.under_text}>
-              <p className={cls.na_ffff}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#292930'}}>03 . {t('OUR TEAM')}</span></p>
+              <p className={cls.na_ffff}><span style={{color: '#5956E8'}}>//</span><span style={{color: '#292930'}}>04 . {t('OUR TEAM')}</span></p>
               <p>{t('Our team of expert')}</p>
             </div>
           </motion.div>

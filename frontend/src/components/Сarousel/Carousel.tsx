@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
-import { TeamProps } from '../../const/about'
+import { TeamProps } from '../../consts/about'
 import { ValuesProps } from '../ValuesSection/ValuesSection';
 import { TeamM } from '../TeamCard/TeamC';
 import CarouselC from '../СarouselCard/CarouselC';
