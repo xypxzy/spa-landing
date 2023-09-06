@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { RefObject, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Element } from 'react-scroll';
 import AboutUsSection from '../../components/AboutUsSection/AboutUsSection';
 import Hero from '../../components/Hero/Hero';
 import ProcessSection from '../../components/ProcessSection/ProcessSection';
@@ -8,7 +9,6 @@ import ProjectSection from '../../components/ProjectSection/ProjectSection';
 import TeamSection from '../../components/TeamSection/TeamSection';
 import ValuesSection from '../../components/ValuesSection/ValuesSection';
 import { DEFAULT_URL } from '../../consts/const';
-import { Element } from 'react-scroll';
 
 export interface TagsProps {
   id: number,
