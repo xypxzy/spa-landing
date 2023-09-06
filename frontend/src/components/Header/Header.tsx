@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
@@ -13,7 +13,7 @@ interface LinkProps {
 
 
 function Header() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,7 +60,6 @@ function Header() {
     {title: t('About us'), path: '/aboutUs'},
   ]
 
-  console.log(isMenuOpen);
   
 
   return (
