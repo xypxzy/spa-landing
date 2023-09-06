@@ -1,5 +1,5 @@
 import i18n from 'i18next';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 
@@ -18,6 +18,7 @@ interface LanguagesSwitcherProps {
 
 const LanguagesSwitcher = ({handleCloseNav}: LanguagesSwitcherProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const { t } = useTranslation();
 
   const lngs: Languages = {
@@ -25,6 +26,24 @@ const LanguagesSwitcher = ({handleCloseNav}: LanguagesSwitcherProps) => {
     ru: { nativeName: t('Russian') },
     kg: { nativeName: t('Kyrgyz') },
   };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -58,7 +77,7 @@ const LanguagesSwitcher = ({handleCloseNav}: LanguagesSwitcherProps) => {
           )
         }
       </button>
-      <div id="dropdownDelay" className={`z-10 ${isDropdownOpen ? 'absolute' : 'hidden'} w-full bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700`}>
+      <div id="dropdownDelay" className={`z-10 ${isDropdownOpen ? 'absolute' : 'hidden'} w-full bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700`} ref={menuRef}>
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             {Object.keys(lngs).map(lng => (
               <li

@@ -128,8 +128,7 @@ const AboutUs = () => {
             <section className={style.top}>
                 <div className={style.img}>
                     <Ball/>
-                    <div className={style.text_position}><p className={style.text_about}><span className={style.fg_bn}>{t('About us')}</span></p></div>
-                    
+                    <div className={style.text_position}><p className={'xl:text-6xl lg:text-5xl md:text-4xl sm:text-2xl text-lg'}>{t('About us')}</p></div>
                 </div>
                 <motion.div className={style.num}
                     initial='hidden'
@@ -154,11 +153,11 @@ const AboutUs = () => {
             </section>
             {data.map(item => {
                 if(item.id === 1)
-                return <AboutUsSection data={item}/>
+                return <AboutUsSection key={item.id} data={item}/>
                 else
                 return null
             })}           
-            <div className='flex flex-col items-center justify-center bg-[#292930] px-[180px]'>
+            <div className='flex flex-col items-center justify-center bg-[#292930] md:px-[180px] px-0'>
                 <div className={style.withoutCar}>
                         <div className={style.image_hghg}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none">

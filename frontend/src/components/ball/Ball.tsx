@@ -16,7 +16,7 @@ const Ball = () => {
 
     return(
         <section className={style.ball}>
-            <img className={`${style.rotate} md:w-full md:h-full w-72 h-72`} src={baller} alt="ball" style={{transform: `rotate(${rotateValue}deg)`,}}/>
+            <img className={`${style.rotate} md:w-full md:h-full w-64 h-64`} src={baller} alt="ball" style={{transform: `rotate(${rotateValue}deg)`,}}/>
         </section>
     )
 }
