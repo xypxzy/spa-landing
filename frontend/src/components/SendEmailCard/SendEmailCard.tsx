@@ -9,7 +9,9 @@ import { useTranslation } from 'react-i18next';
 const SendEmailCard = () => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
+  const [isValidPhone, setIsValidPhone] = useState<boolean>(true);
   const { t } = useTranslation()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +24,17 @@ const SendEmailCard = () => {
     setName(newEmail);
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPhone = e.target.value;
+    setPhone(newPhone);
+    setIsValidPhone(validatePhone(newPhone));
+  };
+
+  const validatePhone = (inputPhone: string): boolean => {
+    const phonePattern = /^\d{10}$/; // Пример формата номера: 1234567890 (10 цифр)
+    return phonePattern.test(inputPhone);
+  };
+
   const validateEmail = (inputEmail: string): boolean => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(inputEmail);
@@ -32,6 +45,7 @@ const SendEmailCard = () => {
         const postData = {
           name: name,
           email: email,
+          phone: phone,
         };
   
         const response = await axios.post(`${DEFAULT_URL}/content/subscribe/`, postData);
@@ -73,15 +87,27 @@ const SendEmailCard = () => {
               value={email}
               onChange={handleEmailChange}
             />
+            <input
+              type="text"
+              placeholder={t('Enter your phone')}
+              className={`${
+                isValidPhone ? '' : 'border-red-500'
+              } ${cls.footer__card_block__input}`}
+              value={phone}
+              onChange={handlePhoneChange}
+            />
             <button 
-                className={`${cls.footer__card_block__button} ${!isValidEmail ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
+                className={`${cls.footer__card_block__button} ${(!isValidEmail || !isValidPhone) ? 'bg-gray-500 hover:bg-gray-800 text-white' : 'bg-[#FFDC60] text-black'} hover:bg-[#FFDC20]`} 
                 onClick={handleSubmit}
-                disabled={!isValidEmail}
+                disabled={!isValidPhone || !isValidEmail}
               >
                 {t('Submit')}
               </button>
-            {!isValidEmail && (
+            {(!isValidEmail ) && (
               <p className="text-red-500 text-center">{t('Invalid email')}</p>
+            )}
+            {(!isValidPhone ) && (
+              <p className="text-red-500 text-center">{t('Invalid phone')}</p>
             )}
           </div>
         </div>
