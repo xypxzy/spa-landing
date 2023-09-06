@@ -54,31 +54,31 @@ My Ticket Frontend - это клиентская часть веб-сайта к
 my-ticket-frontend/
 │
 ├── src/
-│   ├── assets/                 # Изображения
+│   ├── assets/         # Изображения
 │   │
-│   ├── components/             # Компоненты React
+│   ├── components/     # Компоненты React
 │   │
-│   ├── pages/                  # Страницы приложения
-│   │   ├── Home.tsx            # Главная страница
-│   │   └── NotFound.tsx        # Страница "404 Not Found"
+│   ├── pages/          # Страницы приложения
+│   │   ├── Home.tsx    # Главная страница
+│   │   └── NotFound.tsx # Страница "404 Not Found"
 │   │
+│   ├── layout/         # Макеты (например, шаблоны страниц)
+│   │   ├── Layout.tsx  # Основной макет приложения
 │   │
-│   ├── layout/                 # Макеты (например, шаблоны страниц)
-│   │   ├── Layout.tsx          # Основной макет приложения
+│   ├── utils/          # Утилиты (вспомогательные функции)
 │   │
-│   ├── utils/                  # Утилиты (вспомогательные функции)
-│   │
-│   ├── App.tsx                 # Основной компонент приложения
-│   ├── main.tsx                # Входная точка приложения
+│   ├── App.tsx         # Основной компонент приложения
 │
+├── main.tsx            # Входная точка приложения
 │
-├── index.html                  # HTML-файл
-├── package.json                # Файл зависимостей и настроек
-├── tsconfig.json               # Конфигурация TypeScript
-├── tailwind.config.js          # Конфигурация Tailwind CSS
-├── .eslintrc.js                # Конфигурация ESLint
-├── .prettierrc.js              # Конфигурация Prettier
-├── README.md                   # Файл README
+├── index.html          # HTML-файл
+├── package.json        # Файл зависимостей и настроек
+├── tsconfig.json       # Конфигурация TypeScript
+├── tailwind.config.js  # Конфигурация Tailwind CSS
+├── .eslintrc.js        # Конфигурация ESLint
+├── .prettierrc.js      # Конфигурация Prettier
+├── README.md           # Файл README
+
 
 ## Навигационная панель
 
