@@ -8,7 +8,7 @@ def address_images(instance, filename):
 class AddressContact(models.Model):
     city = models.CharField(max_length=255, verbose_name='Город')
     address = models.CharField(max_length=255, verbose_name='Адрес')
-    image = models.ImageField(blank=True, null=True, upload_to=address_images, verbose_name='Картинка')
+    image = models.ImageField(null=True, upload_to=address_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
@@ -52,7 +52,7 @@ class Project(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
     customer = models.CharField(max_length=255, blank=True, verbose_name='Заказчик')
-    image = image = models.ImageField(blank=True, null=True, upload_to=project_images, verbose_name='Картинка')
+    image = image = models.ImageField(null=True, upload_to=project_images, verbose_name='Картинка')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
 
     class Meta:
@@ -72,7 +72,7 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=255, verbose_name='Фамилия')
     position = models.CharField(max_length=255, verbose_name='Должность')
     
-    image = models.ImageField(blank=True, null=True, upload_to=employee_images, verbose_name='Фото')
+    image = models.ImageField(null=True, upload_to=employee_images, verbose_name='Фото')
     facebook = models.CharField(max_length=255, blank=True, null=True)
     whatsapp = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.CharField(max_length=255, blank=True, null=True)
@@ -156,8 +156,8 @@ class BigTextualContent(models.Model):
     This class will have big content with some text in it.
     tags are short text that describes the characteristics
     """
-    pre_title = models.CharField(max_length=100, verbose_name='Надзаголовок')
-    pre_title_image = models.ImageField(upload_to=textual_pre_title, verbose_name='Картинка надзаголовка')
+    pre_title = models.CharField(max_length=100, verbose_name='Метка раздела')
+    pre_title_image = models.ImageField(upload_to=textual_pre_title, verbose_name='Иконка раздела')
     
     title = models.CharField(max_length=255, default="No title provided", verbose_name='Заголовок')
     description = models.TextField(blank=True, verbose_name='Описание')
@@ -172,14 +172,14 @@ class BigTextualContent(models.Model):
         return self.title
 
 
-class Tag(models.Model):
+class Thesis(models.Model):
     """
     This class represents tags used in BigTextualContent model.
     """
     title = models.CharField(max_length=100, verbose_name='Тезис')
-    description = models.TextField(blank=True, verbose_name='Описание тезиса')
+    description = models.TextField(blank=True, verbose_name='Раскрытие тезиса')
     image = models.ImageField(upload_to=textual_tags, verbose_name='Иконка тезиса')
-    related_content = models.ForeignKey(to=BigTextualContent, verbose_name='Текстовый объект', on_delete=models.CASCADE, related_name='tags')
+    related_content = models.ForeignKey(to=BigTextualContent, verbose_name='Текстовый объект', on_delete=models.CASCADE, related_name='theses')
     is_visible = models.BooleanField(default=False, verbose_name='Виден на сайте')
     
     class Meta:

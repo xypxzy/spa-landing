@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from content.models import Project, Employee, EmailContact, PhoneContact, \
     AddressContact, UserSubscription, \
-    BigTextualContent, Tag, SummaryNumericData, OurValues
+    BigTextualContent, Thesis, SummaryNumericData, OurValues
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -47,24 +47,24 @@ class OurValuesSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'image',)
 
 
-class TagSerializer(serializers.ModelSerializer):
+class ThesisSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tag
+        model = Thesis
         fields = ('id', 'title', 'description', 'image',)
 
         
 class BigTextualContentSerializer(serializers.ModelSerializer):
-    tags = serializers.SerializerMethodField()
+    theses = serializers.SerializerMethodField()
     class Meta:
         model = BigTextualContent
-        fields = ('id', 'pre_title', 'pre_title_image', 'title', 'description', 'tags', 'image',)
+        fields = ('id', 'pre_title', 'pre_title_image', 'title', 'description', 'theses', 'image',)
         
-    def get_tags(self, obj):
-        queryset = Tag.objects.filter(related_content=obj)
+    def get_theses(self, obj):
+        queryset = Thesis.objects.filter(related_content=obj)
         tags_data = []
         request = self.context.get("request")
         for tag in queryset:
-            data = TagSerializer(tag).data
+            data = ThesisSerializer(tag).data
             image_url = data['image']
             data['image'] = request.build_absolute_uri(image_url)
             tags_data.append(data)

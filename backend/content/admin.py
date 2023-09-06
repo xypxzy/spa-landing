@@ -1,10 +1,12 @@
 from typing import Any
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+
 from modeltranslation.admin import (TranslationAdmin, TranslationStackedInline,
 TranslationTabularInline)
 
 from content.models import (AddressContact, PhoneContact, EmailContact, Employee, Project,
-SummaryNumericData, OurValues, Tag, BigTextualContent, UserSubscription)
+SummaryNumericData, OurValues, Thesis, BigTextualContent, UserSubscription)
 from content.mixins import ContentActionAdminMixin
 
 admin.site.site_header = "Myticket"
@@ -23,9 +25,10 @@ class AddressContactAdmin(ContentActionAdminMixin, TranslationAdmin):
     search_fields = ('city_ru', 'city_en', 'city_ky',
         'address_ru', 'address_en', 'address_ky',)
 
+    readonly_fields = ('get_little_image',)
     fieldsets = (
         ('Ru', {
-            'fields': ('city_ru', 'address_ru', 'image',),
+            'fields': ('city_ru', 'address_ru', ('image', 'get_little_image'),),
             'description': descriptions['ru'],
         }),
         ('En', {
@@ -95,14 +98,15 @@ admin.site.register(EmailContact, EmailContactAdmin)
 
 
 class ProjectAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'name', 'description', 'customer', 'is_visible',)
+    list_display = ('id', 'name', 'description', 'customer', 'get_little_image', 'is_visible',)
     list_display_links = ('name', 'description', 'customer',)
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
+    readonly_fields = ('get_little_image',)
 
     fieldsets = (
         ('Ru', {
-            'fields': ('name_ru', 'description_ru', 'customer_ru',),
+            'fields': ('name_ru', 'description_ru', 'customer_ru', ('image', 'get_little_image',),),
             'description': descriptions['ru'],
         }),
         ('En', {
@@ -133,10 +137,11 @@ class EmployeeAdmin(ContentActionAdminMixin, TranslationAdmin):
     list_display_links = ('first_name', 'last_name', 'position',)
     list_editable = ('is_visible',)
     ordering = ('-is_visible', '-is_active', 'id',)
+    readonly_fields = ('get_little_image',)
     
     fieldsets = (
         ('Ru', {
-            'fields': ('first_name_ru', 'last_name_ru', 'position_ru', 'image',),
+            'fields': ('first_name_ru', 'last_name_ru', 'position_ru', ('image', 'get_little_image',),),
             'description': descriptions['ru'],
         }),
         ('En', {
@@ -163,7 +168,9 @@ class EmployeeAdmin(ContentActionAdminMixin, TranslationAdmin):
     actions = ('make_visible', 'make_invisible',)
     
     def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
-        print()
+        if not obj.is_active:
+            obj.is_visible = False
+        # print()
         return super().save_model(request, obj, form, change)
    
 admin.site.register(Employee, EmployeeAdmin)
@@ -209,10 +216,11 @@ class OurValuesAdmin(ContentActionAdminMixin, TranslationAdmin):
     search_fields = ('name_ru', 'description_ru',
                      'name_en', 'description_en',
                      'name_ky', 'description_ky',)
+    readonly_fields = ('get_little_image',)
     
     fieldsets = (
         ('Ru', {
-            'fields': ('name_ru', 'description_ru', 'image',),
+            'fields': ('name_ru', 'description_ru', ('image', 'get_little_image',),),
             'description': descriptions['ru'],
         }),
         ('En', {
@@ -230,25 +238,32 @@ class OurValuesAdmin(ContentActionAdminMixin, TranslationAdmin):
 
 admin.site.register(OurValues, OurValuesAdmin)
 
-class TagInLine(TranslationStackedInline):
-    model = Tag
+class ThesisInLine(ContentActionAdminMixin, TranslationStackedInline):
+    fields = ('title_ru', 'title_en', 'title_ky',
+              'description_ru', 'description_en', 'description_ky',
+              ('image', 'get_little_image',),
+              'is_visible',)
+    readonly_fields = ('get_little_image',)
+    model = Thesis
     extra = 0
-    
+
 
 class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
-    list_display = ('id', 'pre_title', 'pre_title_image', 'title', 'description', 'get_little_image', 'is_visible',)
-    list_display_links = ('title', 'description', )
+    list_display = ('id', 'pre_title', 'title', 'description', 'get_little_image', 'is_visible',)
+    list_display_links = ('title', 'description',)
     list_editable = ('is_visible',)
     ordering = ('-is_visible', 'id',)
-    inlines = [TagInLine]
+    inlines = [ThesisInLine]
     
     search_fields = ('title_ru', 'description_ru',
                      'title_en', 'description_en',
                      'title_ky', 'description_ky',)
     
+    readonly_fields = ('get_little_image', 'get_little_icon',)
+    
     fieldsets = (
         ('Ru', {
-            'fields': ('title_ru', 'description_ru', 'image',),
+            'fields': ('title_ru', 'description_ru', ('image', 'get_little_image',),),
             'description': descriptions['ru'],
         }),
         ('En', {
@@ -259,10 +274,20 @@ class BigTextualContentAdmin(ContentActionAdminMixin, TranslationAdmin):
             'fields': ('title_ky', 'description_ky',),
             'description': descriptions['ky'],
         }),
+        ('Метка раздела', {
+            'fields': ('pre_title', ('pre_title_image', 'get_little_icon'),),
+            'description': 'Добавьте метку раздела и иконку к ней.',
+        }),
     )
     
     list_filter = ('is_visible',)
     actions = ('make_visible', 'make_invisible',)
+    
+    def get_little_icon(self, object):
+        if object.pre_title_image:
+            return mark_safe(f"<img src='{object.pre_title_image.url}' width=50>")
+    
+    get_little_icon.short_description = ""
 
 admin.site.register(BigTextualContent, BigTextualContentAdmin)
 

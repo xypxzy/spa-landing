@@ -1,13 +1,13 @@
 [
   {
-    "model": "content.tag",
+    "model": "content.thesis",
     "pk": 1,
     "fields": {
       "title": "Гарантированный результат",
       "description": "Результат точно будет. Обещаем.",
 
       "related_content": 1,
-      "image": "textual_content/tags/aboutUSGuarantedTagsImage.png",
+      "image": "textual_content/theses/aboutUSGuarantedTagsImage.png",
       "is_visible": "True",
 
       "title_ru": "Гарантированный результат",
@@ -21,14 +21,14 @@
     }
   },
   {
-    "model": "content.tag",
+    "model": "content.thesis",
     "pk": 2,
     "fields": {
       "title": "Команда лидеров отрасли",
       "description": "Наши специалисты имеют огромный опыт. С Вашими данными работают профессионалы.",
 
       "related_content": 1,
-      "image": "textual_content/tags/aboutUsTeamTagsImage.png",
+      "image": "textual_content/theses/aboutUsTeamTagsImage.png",
       "is_visible": "True",
 
       "title_ru": "Команда лидеров отрасли",
@@ -42,14 +42,14 @@
     }
   },
   {
-    "model": "content.tag",
+    "model": "content.thesis",
     "pk": 3,
     "fields": {
       "title": "Составления маркетингового плана",
       "description": "Это стратегический документ, который определяет ключевые шаги и тактики для продвижения продуктов или услуг на рынке. В нём описываются цели, целевая аудитория, маркетинговые стратегии, бюджет и временные рамки, чтобы обеспечить успешное внедрение продукции и достижение поставленных маркетинговых целей",
 
       "related_content": 2,
-      "image": "textual_content/tags/processImg1.png",
+      "image": "textual_content/theses/processImg1.png",
       "is_visible": "True",
 
       "title_ru": "Составления маркетингового плана",
@@ -63,14 +63,14 @@
     }
   },
   {
-    "model": "content.tag",
+    "model": "content.thesis",
     "pk": 4,
     "fields": {
       "title": "Осуществление работ",
       "description": "Эта фаза включает в себя координацию, коммуникацию и мониторинг с целью достижения успешных результатов, что делает ее ключевой частью любого проекта или инициативы.",
 
       "related_content": 2,
-      "image": "textual_content/tags/processImg2.png",
+      "image": "textual_content/theses/processImg2.png",
       "is_visible": "True",
 
       "title_ru": "Осуществление работ",
@@ -84,14 +84,14 @@
     }
   },
   {
-    "model": "content.tag",
+    "model": "content.thesis",
     "pk": 5,
     "fields": {
       "title": "Рост и масштабирования",
       "description": "это секция, посвященная стратегии роста и масштабирования. Здесь вы найдете информацию о том, как расширить ваш бизнес, оптимизировать ресурсы и разработать долгосрочные планы для достижения высокой эффективности и устойчивого успеха вашей компании. Эта секция поможет вам исследовать рынок, разработать стратегии роста и определить необходимые ресурсы и инвестиции для успешного масштабирования вашего бизнеса",
 
       "related_content": 2,
-      "image": "textual_content/tags/processImg3.png",
+      "image": "textual_content/theses/processImg3.png",
       "is_visible": "True",
 
       "title_ru": "Рост и масштабирования",

@@ -17,4 +17,4 @@ class ContentActionAdminMixin:
         if object.image:
             return mark_safe(f"<img src='{object.image.url}' width=50>")
     
-    get_little_image.short_description = "Картинка"
+    get_little_image.short_description = ""

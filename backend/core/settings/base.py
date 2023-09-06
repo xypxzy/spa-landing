@@ -38,6 +38,7 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'django_cleanup',
     'drf_yasg',
+    'django_admin_logs',
 ]
 
 LOCAL_APPS = [
@@ -76,7 +77,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,10 +152,14 @@ else:
 
 FRONTEND_HOME = config('FRONTEND_HOME', default='')
 
+# Admin site customization
+
+DJANGO_ADMIN_LOGS_ENABLED = False
+
 JAZZMIN_SETTINGS = {
     "site_title": "MyTicket Admin",
     
-    # "site_logo": 'img/mt_logo.png',
+    "site_logo": 'img/mt_logo.png',
     
     "copyright": "Sanarip Dolboor",
     "topmenu_links": [
@@ -179,6 +184,8 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",
                               "content.project", "content.employee", "content.bigtextualcontent",
                               "content.ourvalues", "content.SummaryNumericData", "content.usersubsriptions",],
+    
+    "changeform_format_overrides": {"content.bigtextualcontent.thesis": "collapsible",},
     
     # "show_ui_builder": True,
 }
