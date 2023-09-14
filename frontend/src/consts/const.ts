@@ -1,1 +1,1 @@
-export const DEFAULT_URL = 'http://localhost:8002';
+export const DEFAULT_URL = 'https://team2back.sanarip.org';
