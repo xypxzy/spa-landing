@@ -11,7 +11,7 @@
 }
 
 .footer__navigation_block {
-  @apply inline-block lg:flex flex-col  md:items-start md:justify-between gap-y-5 pb-3;
+  @apply inline-block lg:flex flex-col md:items-start md:justify-between gap-y-5 pb-3;
 }
 
 .footer__navigation_contact {
