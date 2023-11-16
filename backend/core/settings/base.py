@@ -19,7 +19,6 @@ DEFAULT_ADMIN_EMAIL = config('DEFAULT_ADMIN_EMAIL')
 
 ADMIN_URL = config('ADMIN_URL')
 
-
 # DEBUG
 DEBUG = config('DEBUG', default=False, cast=bool)
 
@@ -28,9 +27,8 @@ PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
-CSRF_TRUSTED_ORIGINS = ['https://*.team2back.sanarip.org','https://*.127.0.0.1',
-                        'https://*.localhost']
-
+CSRF_TRUSTED_ORIGINS = ['https://*.team2back.sanarip.org', 'https://*.127.0.0.1',
+                        'https://*.localhost', 'http://localhost:8016']
 
 # Application definition
 THIRD_PARTY_APPS = [
@@ -74,6 +72,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -110,8 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -130,15 +128,14 @@ LANGUAGES = (
     ('ky', gettext_lazy('Kyrgyz')),
 )
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-MEDIA_URL = '/media_storage/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_storage/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -158,15 +155,15 @@ DJANGO_ADMIN_LOGS_ENABLED = False
 
 JAZZMIN_SETTINGS = {
     "site_title": "MyTicket Admin",
-    
+
     "site_logo": 'img/mt_logo.png',
-    
+
     "copyright": "Sanarip Dolboor",
     "topmenu_links": [
 
-        {"name": "Главная",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
 
-        {"name": "Открыть сайт", "url":FRONTEND_HOME},
+        {"name": "Открыть сайт", "url": FRONTEND_HOME},
 
         {"app": "content", "name": "Контент"},
     ],
@@ -183,10 +180,10 @@ JAZZMIN_SETTINGS = {
 
     "order_with_respect_to": ["content.phonecontact", "content.emailcontact", "content.addresscontact",
                               "content.project", "content.employee", "content.bigtextualcontent",
-                              "content.ourvalues", "content.SummaryNumericData", "content.usersubsriptions",],
-    
-    "changeform_format_overrides": {"content.bigtextualcontent.thesis": "collapsible",},
-    
+                              "content.ourvalues", "content.SummaryNumericData", "content.usersubsriptions", ],
+
+    "changeform_format_overrides": {"content.bigtextualcontent.thesis": "collapsible", },
+
     # "show_ui_builder": True,
 }
 

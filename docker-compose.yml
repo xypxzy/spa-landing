@@ -5,26 +5,41 @@ services:
     image: postgres:14-alpine
     env_file:
       - backend/.env
-    ports:
-      - "5445:5445"
     expose:
       - "5445"
     volumes:
-      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./pgdata:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     restart: always
     command: -p 5445
+
+
 
   api:
     container_name: djangoapp_t2
     build:
       context: ./backend
-    ports:
-      - "8002:8002"
-    command: python manage.py runserver 0.0.0.0:8002
+    expose:
+      - 8002
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8002
+    volumes:
+      - static_root:/backend/static/
+      - media_storage:/backend/media/
     depends_on:
       - postgres
     restart: always
+
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "8016:8016"
+    depends_on:
+      - api
+    volumes:
+      - static_root:/backend/static/
+      - media_storage:/backend/media/
+
+
 
   frontend:
     build:
@@ -36,3 +51,14 @@ services:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - api
+
+
+
+
+volumes:
+  postgres_data:
+  static_root:
+  media_storage:
+
+
+

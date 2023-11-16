@@ -26,7 +26,7 @@ swagger_urlpatterns = [
 
 urlpatterns = [
     path(f'{settings.ADMIN_URL}/', admin.site.urls),
-    path('content/', include('content.urls'))
+    path('api/', include('content.urls'))
 ]
 
 if settings.DEBUG:
